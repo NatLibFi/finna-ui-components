@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "postinstall": "npm run pl:install",
+    "postinstall": "npm run pl:install && npm run bootstrap && npm run link:theme",
     "pl:build": "patternlab build --config ./patternlab-config.json",
     "pl:build-uikit": "cross-env-shell PL_CONFIG_PATH='${INIT_CWD}/.patternlabrc.js' npm run pl:build --prefix node_modules/@pattern-lab/uikit-workshop -- --patternlabrc '$PL_CONFIG_PATH'",
     "pl:dev": "node ./node_modules/@pattern-lab/uikit-workshop/build-tools.js",
@@ -13,7 +13,11 @@
     "pl:serve": "patternlab serve --config ./patternlab-config.json",
     "pl:start": "npm run pl:serve",
     "pl:version": "patternlab --version",
-    "serve": "gulp"
+    "dev": "gulp watch",
+    "link:theme": "gulp symLinkTheme",
+    "copy:theme": "gulp copyTheme",
+    "bootstrap": "gulp bootstrap",
+    "list:tasks": "gulp --tasks"
   },
   "keywords": [],
   "author": "",
@@ -23,18 +27,27 @@
     "@pattern-lab/core": "^5.10.1",
     "@pattern-lab/engine-phtml": "git://github.com/aleksip/engine-phtml.git",
     "@pattern-lab/starterkit-twig-demo": "^5.10.1",
-    "@pattern-lab/uikit-workshop": "^5.10.2"
+    "@pattern-lab/uikit-workshop": "^5.10.2",
+    "dotenv": "^8.2.0"
   },
   "devDependencies": {
     "browser-sync": "^2.26.7",
+    "eslint": "^7.3.1",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
     "gulp-clean": "^0.4.0",
     "gulp-clean-css": "^4.3.0",
     "gulp-concat": "^2.6.1",
+    "gulp-inject": "^5.0.5",
     "gulp-less": "^4.0.1",
     "gulp-rename": "^2.0.0",
     "gulp-shell": "^0.8.0",
-    "gulp-uglify": "^3.0.2"
+    "gulp-uglify": "^3.0.2",
+    "husky": "^4.2.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "./node_modules/.bin/eslint source"
+    }
   }
 }

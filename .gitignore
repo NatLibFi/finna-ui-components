@@ -3,3 +3,10 @@ public/*
 pattern_exports/
 yarn.lock
 package-lock.json
+
+#Pattern Lab
+dependencyGraph.json
+
+#Vufind
+source/styles/bootstrap.css
+source/styles/finna-variables.less

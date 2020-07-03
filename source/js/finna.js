@@ -12,6 +12,6 @@ var finna = (function finnaModule() {
   };
 })();
 
-$(document).ready(function () {
+$(document).ready(function onReady() {
   finna.init();
 });

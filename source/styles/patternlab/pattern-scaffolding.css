@@ -240,3 +240,8 @@
 		max-width: 20rem;
 	}
 }
+
+
+.pl-c-pattern .pl-c-pattern-info {
+	height: 30rem !important;
+}

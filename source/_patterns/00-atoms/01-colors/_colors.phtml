@@ -1,6 +1,6 @@
 <ul class="sg-colors">
   <?php foreach($items as $item): ?>
-    <li>
+  <li>
     <span class="sg-swatch" style="background: <?= $item['value'] ?>;"></span>
     <span class="sg-label">
       <?= $item['name'] ?>
@@ -13,5 +13,4 @@
 </ul>
 <!--end sg-colors-->
 
-<small><?=$data['meta']['description']?></small>
-
+<small><?=$meta['description']?></small>

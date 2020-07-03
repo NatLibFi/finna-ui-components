@@ -1,4 +1,1 @@
-<?php
-  $patternsPath = dirname(dirname(dirname(dirname(__DIR__)))).'/source/_patterns';
-  include($patternsPath.'/00-atoms/01-colors/_colors.phtml');
-?>
+<?php $this->render('_patterns/00-atoms/01-colors/_colors.phtml', ['items' => $items, 'meta' => $meta]); ?>

@@ -88,7 +88,6 @@ const watchTask = () => {
   gulp.watch(`${config.paths.source.js}/components/**/*.js`, componentScripts);
 
   gulp.watch(`${config.paths.source.patterns}**/*.phtml`, patternLab);
-  gulp.watch(`${config.paths.source.patterns}**/*.json`, patternLab);
 };
 
 const serve = gulp.series(defaultTask, watchTask);

@@ -9,7 +9,7 @@
     "pl:build:patterns": "patternlab build -p --config ./patternlab-config.json",
     "pl:build-uikit": "cross-env-shell PL_CONFIG_PATH='${INIT_CWD}/.patternlabrc.js' npm run pl:build --prefix node_modules/@pattern-lab/uikit-workshop -- --patternlabrc '$PL_CONFIG_PATH'",
     "pl:dev": "node ./node_modules/@pattern-lab/uikit-workshop/build-tools.js",
-    "pl:help": "patternlab build --help",
+    "pl:help": "patternlab --help",
     "pl:install": "patternlab install --config ./patternlab-config.json",
     "pl:serve": "patternlab serve --config ./patternlab-config.json",
     "pl:start": "npm run pl:serve",

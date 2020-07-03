@@ -19,18 +19,8 @@ const cleanPublic = () => {
 const patternLab = () => {
   return gulp
     .src('.', {allowEmpty: true})
-    .pipe(shell(['patternlab build --config ./patternlab-config.json']));
-};
-
-const patterns = () => {
-  const source = config.paths.source.patterns;
-  const dest = config.paths.public.patterns;
-
-  return gulp
-    .src(`${source}/**/.phtml`)
-    .pipe(shell(['patternlab build -p --config ./patternlab-config.json']))
-    .pipe(gulp.dest(dest))
-    .pipe(browserSync.reload());
+    .pipe(shell(['patternlab build --config ./patternlab-config.json']))
+    .pipe(browserSync.stream());
 };
 
 const styles = () => {
@@ -85,7 +75,10 @@ const watchTask = () => {
       baseDir: config.paths.public.root
     },
     ghostMode: true,
-    open: 'external'
+    open: 'external',
+    snippetOptions: {
+      blacklist: ['/index.html', '/']
+    }
   });
 
   gulp.watch(`${config.paths.source.styles}/**/*.less`, styles);
@@ -94,8 +87,8 @@ const watchTask = () => {
   gulp.watch(`${config.paths.source.js}/*.js`, globalScripts);
   gulp.watch(`${config.paths.source.js}/components/**/*.js`, componentScripts);
 
-  gulp.watch(`${config.paths.source.patterns}**/*.phtml`, patterns);
-  gulp.watch(`${config.paths.source.patterns}**/*.json`, patterns);
+  gulp.watch(`${config.paths.source.patterns}**/*.phtml`, patternLab);
+  gulp.watch(`${config.paths.source.patterns}**/*.json`, patternLab);
 };
 
 const serve = gulp.series(defaultTask, watchTask);

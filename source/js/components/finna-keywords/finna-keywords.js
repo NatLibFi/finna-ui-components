@@ -1,4 +1,5 @@
-finna.keywords = (function () {
+/* global finna */
+finna.keywords = (function keywords() {
   var $wrapper = $('.js-keywords-wrapper');
   var $controls = $('.js-controls');
   var $current = $('.js-current');
@@ -6,22 +7,22 @@ finna.keywords = (function () {
   var $keywordsList = $('.js-keywords-list');
   var $loader = $('.js-spinner');
 
-  var updateCounter = function () {
+  var updateCounter = function updateCounter() {
     var $keywords = $('.js-keyword');
 
     $counter.text($keywords.length);
   };
 
-  var getTags = function () {
+  var getTags = function getTags() {
     $loader.show();
 
     $.ajax({
       url: '/finna/tags',
       method: 'GET'
-    }).done(function (response) {
+    }).done(function onRequestDone(response) {
       $keywordsList.empty();
 
-      $.each(response.tags, function (index, tag) {
+      $.each(response.tags, function appendKeyword(index, tag) {
         var $newKeyword = $(
           '<button data-tag-id="' +
             tag.id +
@@ -40,7 +41,7 @@ finna.keywords = (function () {
     });
   };
 
-  var deleteKeyword = function () {
+  var deleteKeyword = function deleteKeyword() {
     var editMode = $wrapper.hasClass('open');
 
     if (editMode) {
@@ -54,21 +55,21 @@ finna.keywords = (function () {
         url: '/finna/tags',
         method: 'DELETE',
         data: JSON.stringify(data)
-      }).done(function () {
+      }).done(function onRequestDone() {
         getTags();
       });
     }
   };
 
-  var initAddKeyword = function () {
+  var initAddKeyword = function initAddKeyword() {
     var $input = $wrapper.find('input[id="keyword"]');
     var $form = $('.js-add-keyword');
 
-    $input.one('blur keydown', function () {
+    $input.one('blur keydown', function onInputTouched() {
       $(this).addClass('touched');
     });
 
-    $form.on('submit', function (event) {
+    $form.on('submit', function onSubmit(event) {
       event.preventDefault();
 
       $form.removeClass('invalid');
@@ -80,7 +81,7 @@ finna.keywords = (function () {
           url: '/finna/tags',
           method: 'POST',
           data: JSON.stringify({tag: $input.val()})
-        }).done(function () {
+        }).done(function onRequestDone() {
           getTags();
         });
       } else {
@@ -89,10 +90,10 @@ finna.keywords = (function () {
     });
   };
 
-  var initToggle = function () {
+  var initToggle = function initToggle() {
     var $toggleModuleButton = $('.js-toggle-keywords');
 
-    $toggleModuleButton.on('click', function () {
+    $toggleModuleButton.on('click', function onToggleModule() {
       $(this).toggleClass('open');
       $wrapper.toggleClass('open');
       $controls.toggleClass('open');
@@ -100,11 +101,11 @@ finna.keywords = (function () {
     });
   };
 
-  var initKeywords = function () {
+  var initKeywords = function initKeywords() {
     getTags();
   };
 
-  var init = function () {
+  var init = function init() {
     initKeywords();
     initToggle();
     initAddKeyword();

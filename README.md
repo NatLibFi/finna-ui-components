@@ -33,13 +33,13 @@ npm install
 Start the development server with hot reloading
 
 ```
-yarn serve
+yarn watch
 ```
 
 or
 
 ```
-npm run serve
+npm run watch
 ```
 
 ### Build theme

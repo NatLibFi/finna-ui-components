@@ -1,26 +1,19 @@
 /* global finna */
 finna.keywords = (function keywords() {
-  var $wrapper = $('.js-keywords-wrapper');
-  var $controls = $('.js-controls');
-  var $current = $('.js-current');
-  var $counter = $('.js-keywords-counter');
-  var $keywordsList = $('.js-keywords-list');
-  var $loader = $('.js-spinner');
-
   var updateCounter = function updateCounter() {
     var $keywords = $('.js-keyword');
 
-    $counter.text($keywords.length);
+    $('.js-keywords-counter').text($keywords.length);
   };
 
   var getTags = function getTags() {
-    $loader.show();
+    $('.js-spinner').show();
 
     $.ajax({
       url: '/finna/tags',
       method: 'GET'
     }).done(function onRequestDone(response) {
-      $keywordsList.empty();
+      $('.js-keywords-list').empty();
 
       $.each(response.tags, function appendKeyword(index, tag) {
         var $newKeyword = $(
@@ -31,21 +24,21 @@ finna.keywords = (function keywords() {
             '</span><i class="fa fa-times keyword__button-icon" aria-hidden="true"></i></button>'
         );
 
-        $keywordsList.append($newKeyword);
+        $('.js-keywords-list').append($newKeyword);
         $newKeyword.on('click', deleteKeyword);
       });
 
       updateCounter();
 
-      $loader.hide();
+      $('.js-spinner').hide();
     });
   };
 
   var deleteKeyword = function deleteKeyword() {
-    var editMode = $wrapper.hasClass('open');
+    var editMode = $('.js-keywords-wrapper').hasClass('open');
 
     if (editMode) {
-      $loader.show();
+      $('.js-spinner').show();
 
       var data = {
         id: $(this).data('tag-id').toString()
@@ -62,7 +55,7 @@ finna.keywords = (function keywords() {
   };
 
   var initAddKeyword = function initAddKeyword() {
-    var $input = $wrapper.find('input[id="keyword"]');
+    var $input = $('.js-keywords-wrapper').find('input[id="keyword"]');
     var $form = $('.js-add-keyword');
 
     $input.one('blur keydown', function onInputTouched() {
@@ -75,7 +68,7 @@ finna.keywords = (function keywords() {
       $form.removeClass('invalid');
 
       if ($form[0].checkValidity()) {
-        $loader.show();
+        $('.js-spinner').show();
 
         $.ajax({
           url: '/finna/tags',
@@ -95,9 +88,9 @@ finna.keywords = (function keywords() {
 
     $toggleModuleButton.on('click', function onToggleModule() {
       $(this).toggleClass('open');
-      $wrapper.toggleClass('open');
-      $controls.toggleClass('open');
-      $current.toggleClass('open');
+      $('.js-keywords-wrapper').toggleClass('open');
+      $('.js-controls').toggleClass('open');
+      $('.js-current').toggleClass('open');
     });
   };
 

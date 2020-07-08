@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const config = require('./patternlab-config.json');
 
 const gulp = require('gulp');
@@ -11,19 +12,23 @@ const minify = require('gulp-clean-css');
 const uglify = require('gulp-uglify');
 const rename = require('gulp-rename');
 const concat = require('gulp-concat');
+const inject = require('gulp-inject');
 
 const cleanPublic = () => {
-  return gulp.src(`${config.paths.public.root}/*`).pipe(clean({force: true}));
+  return gulp.src(`${config.paths.public.root}/*`).pipe(clean({ force: true }));
+};
+
+const patternLabBuild = () => {
+  return gulp
+    .src('.', { allowEmpty: true })
+    .pipe(shell(['patternlab build --config ./patternlab-config.json']));
 };
 
 const patternLab = () => {
-  return gulp
-    .src('.', {allowEmpty: true})
-    .pipe(shell(['patternlab build --config ./patternlab-config.json']))
-    .pipe(browserSync.stream());
-};
+  return patternLabBuild().pipe(browserSync.stream())
+}
 
-const styles = () => {
+const stylesBuild = () => {
   const source = config.paths.source.styles;
   const dest = config.paths.public.styles;
 
@@ -32,41 +37,48 @@ const styles = () => {
     .pipe(less())
     .pipe(autoprefixer())
     .pipe(minify())
-    .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest(dest))
-    .pipe(browserSync.stream());
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(gulp.dest(dest));
 };
 
-const globalScripts = () => {
+const styles = () => {
+  return stylesBuild().pipe(browserSync.stream())
+};
+
+const scriptsBuild = () => {
   const source = config.paths.source.js;
   const dest = config.paths.public.js;
 
   return gulp
-    .src(`${source}/*.js`)
+    .src([`${source}/finna.js`, `!${source}/vendor/*.js`, `${source}/components/*.js`])
     .pipe(concat('main.js'))
     .pipe(gulp.dest(dest))
     .pipe(uglify())
-    .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest(dest))
-    .pipe(browserSync.stream());
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(gulp.dest(dest));
 };
 
-const componentScripts = () => {
+const scripts = () => {
+  return scriptsBuild().pipe(browserSync.stream())
+};
+
+
+const vendorScripts = () => {
   const source = config.paths.source.js;
-  const dest = `${config.paths.public.js}/components`;
+  const dest = `${config.paths.public.js}/vendor`;
 
   return gulp
-    .src(`${source}/components/**/*.js`)
+    .src(`${source}/vendor/*.js`)
     .pipe(gulp.dest(dest))
     .pipe(uglify())
-    .pipe(rename({suffix: '.min'}))
+    .pipe(rename({ suffix: '.min' }))
     .pipe(gulp.dest(dest))
     .pipe(browserSync.stream());
 };
 
 const defaultTask = gulp.series(
   cleanPublic,
-  gulp.parallel(patternLab, styles, globalScripts, componentScripts)
+  gulp.parallel(patternLab, styles, scripts, vendorScripts)
 );
 
 const watchTask = () => {
@@ -84,12 +96,39 @@ const watchTask = () => {
   gulp.watch(`${config.paths.source.styles}/**/*.less`, styles);
   gulp.watch(`${config.paths.source.patterns}**/*.less`, styles);
 
-  gulp.watch(`${config.paths.source.js}/*.js`, globalScripts);
-  gulp.watch(`${config.paths.source.js}/components/**/*.js`, componentScripts);
+  gulp.watch(`${config.paths.source.js}/**/*.js`, scripts);
 
   gulp.watch(`${config.paths.source.patterns}**/*.phtml`, patternLab);
 };
 
-const serve = gulp.series(defaultTask, watchTask);
 
-exports.default = serve;
+const copyScripts = () => {
+  const source = `${config.paths.source.js}/components`;
+  const dest = './../js/';
+
+  return gulp.src(`${source}/*.js`).pipe(gulp.dest(dest));
+};
+
+const copyStyles = () => {
+  const patterns = './../less'
+
+  return gulp.src(`${patterns}/patterns.less`).pipe(inject(gulp.src(`${config.paths.source.styles}/components/**/*.less`, { read: false, }), {
+    starttag: '/* Patterns start */', endtag: '/* Patterns end */', transform: (filePath) => `@import "./../ui-component-library-proto${filePath}";`
+  })).pipe(gulp.dest(patterns));
+};
+
+const copyPatterns = () => {
+  const source = `${config.paths.source.patterns}`;
+  const dest = './../templates/_patterns';
+
+  return gulp.src(`${source}/**/*phtml`).pipe(gulp.dest(dest));
+}
+
+const themeBuildTask = gulp.series(copyPatterns, copyStyles, copyScripts);
+
+const watch = gulp.series(defaultTask, watchTask);
+const themeBuild = themeBuildTask;
+
+exports.watch = watch;
+exports.themeBuild = themeBuild;
+

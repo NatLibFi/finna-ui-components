@@ -43,7 +43,7 @@ npm run serve
 ```
 
 ### Build theme
-Copy relevant patterns, scripts and styles from the component library under dedicated directories to your working theme.
+Copy relevant patterns, scripts and styles from the component library to dedicated directories in your working theme.
 
 ```
 yarn build:theme

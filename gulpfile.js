@@ -1,5 +1,7 @@
 const config = require('./patternlab-config.json');
 
+const fs = require('fs');
+
 const gulp = require('gulp');
 const less = require('gulp-less');
 const shell = require('gulp-shell');
@@ -74,9 +76,15 @@ const copyScripts = () => {
 const copyStyles = () => {
   const patterns = './../less'
 
-  return gulp.src(`${patterns}/patterns.less`).pipe(inject(gulp.src(`${config.paths.source.styles}/components/**/*.less`, { read: false, }), {
+  if (!fs.existsSync(`${patterns}/patterns.less`)) {
+    fs.openSync(`${patterns}/patterns.less`, 'w');
+
+    fs.writeFileSync(`${patterns}/patterns.less`, "/* Patterns start */\r\n/* Patterns end */");
+  }
+
+  return gulp.src(`${patterns}/patterns.less`, { allowEmpty: true }).pipe(inject(gulp.src(`${config.paths.source.styles}/components/**/*.less`, { read: false, }), {
     starttag: '/* Patterns start */', endtag: '/* Patterns end */', transform: (filePath) => `@import "./../ui-component-library-proto${filePath}";`
-  })).pipe(gulp.dest(patterns));
+  })).pipe(gulp.dest(patterns, { overwrite: true }));
 };
 
 const copyPatterns = () => {
@@ -111,11 +119,11 @@ const watchTask = () => {
   gulp.watch(`${config.paths.source.patterns}**/*.phtml`, patternLab);
 };
 
-const themeBuildTask = gulp.series(copyPatterns, copyStyles, copyScripts);
+const buildThemeTask = gulp.series(copyPatterns, copyStyles, copyScripts);
 
 const watch = gulp.series(defaultTask, watchTask);
-const themeBuild = themeBuildTask;
+const buildTheme = buildThemeTask;
 
 exports.watch = watch;
-exports.themeBuild = themeBuild;
+exports.buildTheme = buildTheme;
 

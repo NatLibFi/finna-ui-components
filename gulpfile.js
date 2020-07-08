@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 const config = require('./patternlab-config.json');
 
 const gulp = require('gulp');

@@ -18,17 +18,13 @@ const cleanPublic = () => {
   return gulp.src(`${config.paths.public.root}/*`).pipe(clean({ force: true }));
 };
 
-const patternLabBuild = () => {
+const patternLab = () => {
   return gulp
     .src('.', { allowEmpty: true })
-    .pipe(shell(['patternlab build --config ./patternlab-config.json']));
+    .pipe(shell(['patternlab build --config ./patternlab-config.json'])).pipe(browserSync.stream());
 };
 
-const patternLab = () => {
-  return patternLabBuild().pipe(browserSync.stream())
-}
-
-const stylesBuild = () => {
+const styles = () => {
   const source = config.paths.source.styles;
   const dest = config.paths.public.styles;
 
@@ -38,14 +34,11 @@ const stylesBuild = () => {
     .pipe(autoprefixer())
     .pipe(minify())
     .pipe(rename({ suffix: '.min' }))
-    .pipe(gulp.dest(dest));
+    .pipe(gulp.dest(dest))
+    .pipe(browserSync.stream());
 };
 
-const styles = () => {
-  return stylesBuild().pipe(browserSync.stream())
-};
-
-const scriptsBuild = () => {
+const scripts = () => {
   const source = config.paths.source.js;
   const dest = config.paths.public.js;
 
@@ -55,13 +48,9 @@ const scriptsBuild = () => {
     .pipe(gulp.dest(dest))
     .pipe(uglify())
     .pipe(rename({ suffix: '.min' }))
-    .pipe(gulp.dest(dest));
+    .pipe(gulp.dest(dest))
+    .pipe(browserSync.stream());
 };
-
-const scripts = () => {
-  return scriptsBuild().pipe(browserSync.stream())
-};
-
 
 const vendorScripts = () => {
   const source = config.paths.source.js;
@@ -74,6 +63,28 @@ const vendorScripts = () => {
     .pipe(rename({ suffix: '.min' }))
     .pipe(gulp.dest(dest))
     .pipe(browserSync.stream());
+};
+
+const copyScripts = () => {
+  const source = `${config.paths.source.js}/components`;
+  const dest = './../js/';
+
+  return gulp.src(`${source}/*.js`).pipe(gulp.dest(dest));
+};
+
+const copyStyles = () => {
+  const patterns = './../less'
+
+  return gulp.src(`${patterns}/patterns.less`).pipe(inject(gulp.src(`${config.paths.source.styles}/components/**/*.less`, { read: false, }), {
+    starttag: '/* Patterns start */', endtag: '/* Patterns end */', transform: (filePath) => `@import "./../ui-component-library-proto${filePath}";`
+  })).pipe(gulp.dest(patterns));
+};
+
+const copyPatterns = () => {
+  const source = `${config.paths.source.patterns}`;
+  const dest = './../templates/_patterns';
+
+  return gulp.src(`${source}/**/*phtml`).pipe(gulp.dest(dest));
 };
 
 const defaultTask = gulp.series(
@@ -100,29 +111,6 @@ const watchTask = () => {
 
   gulp.watch(`${config.paths.source.patterns}**/*.phtml`, patternLab);
 };
-
-
-const copyScripts = () => {
-  const source = `${config.paths.source.js}/components`;
-  const dest = './../js/';
-
-  return gulp.src(`${source}/*.js`).pipe(gulp.dest(dest));
-};
-
-const copyStyles = () => {
-  const patterns = './../less'
-
-  return gulp.src(`${patterns}/patterns.less`).pipe(inject(gulp.src(`${config.paths.source.styles}/components/**/*.less`, { read: false, }), {
-    starttag: '/* Patterns start */', endtag: '/* Patterns end */', transform: (filePath) => `@import "./../ui-component-library-proto${filePath}";`
-  })).pipe(gulp.dest(patterns));
-};
-
-const copyPatterns = () => {
-  const source = `${config.paths.source.patterns}`;
-  const dest = './../templates/_patterns';
-
-  return gulp.src(`${source}/**/*phtml`).pipe(gulp.dest(dest));
-}
 
 const themeBuildTask = gulp.series(copyPatterns, copyStyles, copyScripts);
 

@@ -82,9 +82,9 @@ const copyStyles = () => {
     fs.writeFileSync(`${patterns}/patterns.less`, "/* Patterns start */\r\n/* Patterns end */");
   }
 
-  return gulp.src(`${patterns}/patterns.less`, { allowEmpty: true }).pipe(inject(gulp.src(`${config.paths.source.styles}/components/**/*.less`, { read: false, }), {
+  return gulp.src(`${patterns}/patterns.less`).pipe(inject(gulp.src(`${config.paths.source.styles}/components/**/*.less`, { read: false, }), {
     starttag: '/* Patterns start */', endtag: '/* Patterns end */', transform: (filePath) => `@import "./../ui-component-library-proto${filePath}";`
-  })).pipe(gulp.dest(patterns, { overwrite: true }));
+  })).pipe(gulp.dest(patterns));
 };
 
 const copyPatterns = () => {

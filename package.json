@@ -14,7 +14,8 @@
     "pl:start": "npm run pl:serve",
     "pl:version": "patternlab --version",
     "dev": "gulp watch",
-    "build:theme": "gulp buildTheme"
+    "build:theme": "gulp buildTheme",
+    "list-tasks": "gulp --tasks"
   },
   "keywords": [],
   "author": "",

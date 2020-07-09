@@ -28,18 +28,18 @@ npm install
 
 ## Scripts
 
-### Watch
+### Development
 
 Start the development server with hot reloading
 
 ```
-yarn watch
+yarn dev
 ```
 
 or
 
 ```
-npm run watch
+npm run dev
 ```
 
 ### Build theme

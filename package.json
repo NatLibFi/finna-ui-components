@@ -13,7 +13,7 @@
     "pl:serve": "patternlab serve --config ./patternlab-config.json",
     "pl:start": "npm run pl:serve",
     "pl:version": "patternlab --version",
-    "watch": "gulp watch",
+    "dev": "gulp watch",
     "build:theme": "gulp buildTheme"
   },
   "keywords": [],

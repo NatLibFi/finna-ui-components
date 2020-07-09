@@ -49,11 +49,11 @@ styles.description = "Convert and minify Less to CSS"
 gulp.task(styles);
 
 const scripts = () => {
-  const source = config.paths.source.js;
+  const source = config.paths.source.root;
   const dest = config.paths.public.js;
 
   return gulp
-    .src([`${source}/finna.js`, `!${source}/vendor/*.js`, `${source}/components/*.js`])
+    .src([`${source}/js/finna.js`, `!${source}/js/vendor/*.js`, `${source}/_patterns/**/*.js`])
     .pipe(concat('main.js'))
     .pipe(gulp.dest(dest))
     .pipe(uglify())
@@ -82,10 +82,10 @@ vendorScripts.description = "Build and uglify vendor Javascript";
 gulp.task(vendorScripts);
 
 const copyScripts = () => {
-  const source = `${config.paths.source.js}/components`;
-  const dest = './../js/';
+  const source = `${config.paths.source.patterns}`;
+  const dest = './../js';
 
-  return gulp.src(`${source}/*.js`).pipe(gulp.dest(dest));
+  return gulp.src(`${source}/**/*.js`).pipe(rename({ prefix: 'finna-', dirname: '' })).pipe(gulp.dest(dest));
 };
 
 copyScripts.description = "Copy Javascript components to theme js directory";
@@ -100,7 +100,7 @@ const copyStyles = () => {
     fs.writeFileSync(`${patterns}/patterns.less`, "/* Patterns start */\r\n/* Patterns end */");
   }
 
-  return gulp.src(`${patterns}/patterns.less`).pipe(inject(gulp.src(`${config.paths.source.styles}/components/**/*.less`, { read: false, }), {
+  return gulp.src(`${patterns}/patterns.less`).pipe(inject(gulp.src(`${config.paths.source.patterns}/**/*.less`, { read: false, }), {
     starttag: '/* Patterns start */', endtag: '/* Patterns end */', transform: (filePath) => `@import "./../ui-component-library-proto${filePath}";`
   })).pipe(gulp.dest(patterns));
 };
@@ -112,7 +112,7 @@ const copyPatterns = () => {
   const source = `${config.paths.source.patterns}`;
   const dest = './../templates/_patterns';
 
-  return gulp.src(`${source}/**/*phtml`).pipe(gulp.dest(dest));
+  return gulp.src(`${source}/**/*.phtml`).pipe(gulp.dest(dest));
 };
 
 copyPatterns.description = "Copy _patterns directory to theme templates directory";

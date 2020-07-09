@@ -244,3 +244,16 @@
 .pl-c-pattern .pl-c-pattern-info {
   height: 30rem !important;
 }
+
+.c-button-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.c-button-list__item {
+  margin-bottom: 1rem;
+}
+
+.c-button-list__item:not(:last-child) {
+  margin-right: 1rem;
+}

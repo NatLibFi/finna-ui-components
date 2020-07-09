@@ -2,7 +2,7 @@
     #Vendor
 \*------------------------------------*/
 @import './vendor/font-awesome/font-awesome.less';
-@fa-font-path: "../fonts";
+@fa-font-path: '../fonts';
 
 @import './vendor/bootstrap/bootstrap.less';
 
@@ -31,6 +31,9 @@
 /*------------------------------------*\
     #COMPONENTS
 \*------------------------------------*/
-@import './components/00-atoms/00-alerts/in-testing-alert.less';
-@import './components/01-molecules/00-forms/add-keyword.less';
-@import './components/02-organisms/00-keywords/keywords.less';
+
+@import '../_patterns/02-organisms/00-keywords/keywords.less';
+
+@import '../_patterns/01-molecules/00-forms/add-keyword.less';
+
+@import '../_patterns/00-atoms/02-alerts/in-testing-alert.less';

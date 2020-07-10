@@ -22,6 +22,13 @@ const cleanPublic = () => {
 cleanPublic.description = "Remove all files under public directory"
 gulp.task(cleanPublic);
 
+const cleanDist = () => {
+  return gulp.src('dist/*').pipe(clean({ force: true }));
+};
+
+cleanDist.description = "Remove all files under dist directory"
+gulp.task(cleanDist);
+
 const patternLab = () => {
   return gulp
     .src('.', { allowEmpty: true })
@@ -81,49 +88,71 @@ const vendorScripts = () => {
 vendorScripts.description = "Build and uglify vendor Javascript";
 gulp.task(vendorScripts);
 
-const copyScripts = () => {
-  const source = `${config.paths.source.patterns}`;
-  const dest = './../js';
+const distScripts = () => {
+  const source = config.paths.source.patterns;
+  const dest = './dist/js';
 
   return gulp.src(`${source}/**/*.js`).pipe(rename({ prefix: 'finna-', dirname: '' })).pipe(gulp.dest(dest));
 };
 
-copyScripts.description = "Copy Javascript components to theme js directory";
-gulp.task(copyScripts);
+distScripts.description = "Distribute Javascript components";
+gulp.task(distScripts);
 
-const copyStyles = () => {
-  const patterns = './../less'
+const distStyles = () => {
+  const source = config.paths.source.patterns;
+  const dest = './dist/less';
 
-  if (!fs.existsSync(`${patterns}/patterns.less`)) {
-    fs.openSync(`${patterns}/patterns.less`, 'w');
-
-    fs.writeFileSync(`${patterns}/patterns.less`, "/* Patterns start */\r\n/* Patterns end */");
-  }
-
-  return gulp.src(`${patterns}/patterns.less`).pipe(inject(gulp.src(`${config.paths.source.patterns}/**/*.less`, { read: false, }), {
-    starttag: '/* Patterns start */', endtag: '/* Patterns end */', transform: (filePath) => `@import "./../ui-component-library-proto${filePath}";`
-  })).pipe(gulp.dest(patterns));
+  return gulp
+    .src(`${source}/**/*.less`)
+    .pipe(rename({ dirname: '' }))
+    .pipe(gulp.dest(dest));
 };
 
-copyStyles.description = "Import Less components to theme patterns.less file";
-gulp.task(copyStyles);
+distStyles.description = "Import Less components to dist patterns.less file";
+gulp.task(distStyles);
 
-const copyPatterns = () => {
+const distPatterns = () => {
   const source = `${config.paths.source.patterns}`;
-  const dest = './../templates/_patterns';
+  const dest = './dist/_patterns';
 
   return gulp.src(`${source}/**/*.phtml`).pipe(gulp.dest(dest));
 };
 
-copyPatterns.description = "Copy _patterns directory to theme templates directory";
-gulp.task(copyPatterns);
+distPatterns.description = "Distribute _patterns directory";
+gulp.task(distPatterns);
+
+const buildTheme = gulp.series(cleanDist, distPatterns, distStyles, distScripts);
+
+buildTheme.description = 'Distribute patterns, Less and Javascript from source directory'
+
+const symLinkPatterns = () => {
+  return gulp
+    .src('dist/_patterns')
+    .pipe(gulp.symlink('../NDL-VuFind2/themes/finna2/templates/'));
+};
+
+const symLinkStyles = () => {
+  return gulp
+    .src('dist/less/*.less')
+    .pipe(gulp.symlink('../NDL-VuFind2/themes/finna2/less/finna/'))
+};
+
+const symLinkScripts = () => {
+  return gulp
+    .src('dist/js/*.js')
+    .pipe(gulp.symlink('../NDL-VuFind2/themes/finna2/js/'));
+};
+
+const symLinkTheme = gulp.series(symLinkPatterns, symLinkStyles, symLinkScripts);
 
 const defaultTask = gulp.series(
   cleanPublic,
-  gulp.parallel(patternLab, styles, scripts, vendorScripts)
+  gulp.parallel(patternLab, styles, scripts, vendorScripts),
+  buildTheme
 );
 
 defaultTask.description = "Clear public directory and build patterns, CSS and Javascript from the source directory"
+
 
 const watchTask = () => {
   browserSync.init({
@@ -137,12 +166,15 @@ const watchTask = () => {
     }
   });
 
-  gulp.watch(`${config.paths.source.styles}/**/*.less`, styles);
-  gulp.watch(`${config.paths.source.patterns}**/*.less`, styles);
+  gulp.watch(`${config.paths.source.styles}/**/*.less`, gulp.series(styles, buildTheme));
 
-  gulp.watch(`${config.paths.source.js}/**/*.js`, scripts);
+  gulp.watch(`${config.paths.source.patterns}**/*.less`, gulp.series(styles, buildTheme));
 
-  gulp.watch(`${config.paths.source.patterns}**/*.phtml`, patternLab);
+  gulp.watch(`${config.paths.source.js}/**/*.js`, gulp.series(scripts, buildTheme));
+
+  gulp.watch(`${config.paths.source.patterns}**/*.js`, gulp.series(scripts, buildTheme));
+
+  gulp.watch(`${config.paths.source.patterns}**/*.phtml`, gulp.series(patternLab, buildTheme));
 };
 
 watchTask.description = "Initialize BrowserSync instance and watch for changes";
@@ -151,9 +183,10 @@ gulp.task(watchTask);
 const watch = gulp.series(defaultTask, watchTask);
 watch.description = 'Build PatternLab from source files and watch for changes.'
 
-const buildTheme = gulp.series(copyPatterns, copyStyles, copyScripts);
-buildTheme.description = 'Copy patterns, Less and Javascript from source directory to dedicated theme directories'
 
 exports.watch = watch;
+
 exports.buildTheme = buildTheme;
+
+exports.symLinkTheme = symLinkTheme;
 

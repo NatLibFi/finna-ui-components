@@ -1,5 +1,6 @@
 node_modules/
 public/*
+dist/*
 pattern_exports/
 yarn.lock
 package-lock.json

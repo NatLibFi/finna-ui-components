@@ -9,7 +9,7 @@ Create `.env` file from the provided example `.env.example` file. Fill in the pa
 
 ## Installation
 
-Running the script installs development dependencies, Pattern Lab and finally creates symbolic links between distributable components and your working theme directory.
+Running the script installs development dependencies, Pattern Lab and finally creates distributable components in `dist` directory.
 
 ```
 yarn

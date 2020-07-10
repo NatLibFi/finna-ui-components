@@ -91,6 +91,7 @@ const watchTask = () => {
   gulp.watch(`${config.paths.source.patterns}**/*.js`, scripts);
 
   gulp.watch(`${config.paths.source.patterns}**/*.phtml`, patternLab);
+  gulp.watch(`${config.paths.source.patterns}**/*.json`, patternLab);
 };
 gulp.task(watchTask);
 
@@ -112,7 +113,6 @@ const distStyles = () => {
 
   return gulp
     .src(`${source}/**/*.less`)
-    .pipe(rename({ dirname: '' }))
     .pipe(gulp.dest(dest));
 };
 gulp.task(distStyles);
@@ -122,7 +122,7 @@ const distScripts = () => {
   const dest = './dist/js';
 
   return gulp.src(`${source}/**/*.js`)
-    .pipe(rename({ prefix: 'finna-', dirname: '' }))
+    .pipe(rename({ prefix: 'finna-' }))
     .pipe(gulp.dest(dest));
 };
 gulp.task(distScripts);
@@ -136,22 +136,22 @@ const buildTheme = gulp.series(
 
 const symLinkPatterns = () => {
   return gulp
-    .src('dist/_patterns')
-    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/templates/`));
+    .src('dist/_patterns/')
+    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/templates/components/`));
 };
 gulp.task(symLinkPatterns);
 
 const symLinkStyles = () => {
   return gulp
-    .src('dist/less/*.less')
-    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/less/finna`));
+    .src('dist/less/')
+    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/less/components/`));
 };
 gulp.task(symLinkStyles);
 
 const symLinkScripts = () => {
   return gulp
-    .src('dist/js/*.js')
-    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/js/`));
+    .src('dist/js/')
+    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/js/components/`));
 };
 gulp.task(symLinkScripts);
 

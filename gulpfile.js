@@ -161,6 +161,29 @@ const symLinkTheme = gulp.series(
   symLinkScripts
 );
 
+const copyPatterns = () => {
+  return gulp
+    .src('dist/_patterns/**/*.phtml',)
+    .pipe(gulp.dest(`${process.env.THEME_DIRECTORY}/templates/components/`));
+};
+gulp.task(copyPatterns);
+
+const copyStyles = () => {
+  return gulp
+    .src('dist/less/**/*.less')
+    .pipe(gulp.dest(`${process.env.THEME_DIRECTORY}/less/components/`));
+};
+gulp.task(copyStyles);
+
+const copyScripts = () => {
+  return gulp
+    .src('dist/js/**/*.js')
+    .pipe(gulp.dest(`${process.env.THEME_DIRECTORY}/js/components/`));
+};
+gulp.task(copyScripts);
+
+const copyTheme = gulp.series(copyPatterns, copyStyles, copyScripts);
+
 const defaultTask = gulp.series(
   cleanPublic,
   gulp.parallel(patternLab, styles, scripts, vendorScripts)
@@ -197,14 +220,23 @@ symLinkStyles.description = "Create styles symbolic link";
 
 symLinkScripts.description = "Create scripts symbolic link";
 
+copyPatterns.description = "Create patterns copy";
+
+copyStyles.description = "Create styles copy";
+
+copyScripts.description = "Create Javascript scripts copy";
+
 defaultTask.description = "Clear public directory and build patterns, CSS and Javascript from the source directory";
 
 watch.description = 'Build PatternLab from source files and watch for changes.';
 
 symLinkTheme.description = "Create symbolic link to working theme";
 
+copyTheme.description = "Create distributable copy to working theme"
+
 // Exports
 exports.watch = watch;
 exports.buildTheme = buildTheme;
 exports.symLinkTheme = symLinkTheme;
+exports.copyTheme = copyTheme;
 

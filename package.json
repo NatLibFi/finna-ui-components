@@ -16,6 +16,7 @@
     "dev": "gulp watch",
     "build:theme": "gulp buildTheme",
     "link:theme": "gulp symLinkTheme",
+    "copy:theme": "gulp copyTheme",
     "list:tasks": "gulp --tasks"
   },
   "keywords": [],

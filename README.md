@@ -60,5 +60,15 @@ or
 npm run link:theme
 ```
 
+### Copy theme
+Alternative to linking theme, copy distributable components to working theme.
+```
+yarn copy:theme
+```
+or
+```
+npm run copy:theme
+```
+
 ## engine-phtml
 [https://github.com/aleksip/engine-phtml](https://github.com/aleksip/engine-phtml)

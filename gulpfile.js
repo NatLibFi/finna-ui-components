@@ -136,22 +136,22 @@ const buildTheme = gulp.series(
 
 const symLinkPatterns = () => {
   return gulp
-    .src('dist/_patterns/')
-    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/templates/components/`));
+    .src('dist/_patterns/**/*.phtml',)
+    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/templates/components/`, { overwrite: true }));
 };
 gulp.task(symLinkPatterns);
 
 const symLinkStyles = () => {
   return gulp
-    .src('dist/less/')
-    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/less/components/`));
+    .src('dist/less/**/*.less')
+    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/less/components/`, { overwrite: true }));
 };
 gulp.task(symLinkStyles);
 
 const symLinkScripts = () => {
   return gulp
-    .src('dist/js/')
-    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/js/components/`));
+    .src('dist/js/**/*.js')
+    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/js/components/`, { overwrite: true }));
 };
 gulp.task(symLinkScripts);
 

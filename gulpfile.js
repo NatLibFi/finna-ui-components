@@ -1,6 +1,5 @@
+require('dotenv').config();
 const config = require('./patternlab-config.json');
-
-const fs = require('fs');
 
 const gulp = require('gulp');
 const less = require('gulp-less');
@@ -13,7 +12,6 @@ const minify = require('gulp-clean-css');
 const uglify = require('gulp-uglify');
 const rename = require('gulp-rename');
 const concat = require('gulp-concat');
-const inject = require('gulp-inject');
 
 const cleanPublic = () => {
   return gulp.src(`${config.paths.public.root}/*`).pipe(clean({ force: true }));
@@ -128,19 +126,19 @@ buildTheme.description = 'Distribute patterns, Less and Javascript from source d
 const symLinkPatterns = () => {
   return gulp
     .src('dist/_patterns')
-    .pipe(gulp.symlink('../NDL-VuFind2/themes/finna2/templates/'));
+    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/templates/`));
 };
 
 const symLinkStyles = () => {
   return gulp
     .src('dist/less/*.less')
-    .pipe(gulp.symlink('../NDL-VuFind2/themes/finna2/less/finna/'))
+    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/less/finna`))
 };
 
 const symLinkScripts = () => {
   return gulp
     .src('dist/js/*.js')
-    .pipe(gulp.symlink('../NDL-VuFind2/themes/finna2/js/'));
+    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/js/`));
 };
 
 const symLinkTheme = gulp.series(symLinkPatterns, symLinkStyles, symLinkScripts);

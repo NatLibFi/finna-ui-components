@@ -12,6 +12,7 @@ const minify = require('gulp-clean-css');
 const uglify = require('gulp-uglify');
 const rename = require('gulp-rename');
 const concat = require('gulp-concat');
+const inject = require('gulp-inject');
 
 // Helpers
 const cleanDir = (dir) => gulp.src(`${dir}/*`).pipe(clean({ force: true }));;
@@ -95,6 +96,23 @@ const watchTask = () => {
 };
 gulp.task(watchTask);
 
+const componentImports = () => {
+  const less = `${process.env.THEME_DIRECTORY}/less`
+
+  return gulp.src(`${less}/custom.less`)
+    .pipe(inject(gulp.src(`${less}/components/**/*.less`, { read: false }), {
+      starttag: '/* All custom less-code here */',
+      endtag: '/* Custom less-code ends */',
+      ignorePath: '/../NDL-VuFind2/themes/finna2/less/',
+      addRootSlash: false,
+      transform: (filePath) => {
+        return `@import "${filePath}";`
+      }
+    }))
+    .pipe(gulp.dest(less))
+};
+gulp.task(componentImports);
+
 const symLinkPatterns = () => {
   const source = config.paths.source.patterns;
 
@@ -125,7 +143,8 @@ gulp.task(symLinkScripts);
 const symLinkTheme = gulp.series(
   symLinkPatterns,
   symLinkStyles,
-  symLinkScripts
+  symLinkScripts,
+  componentImports
 );
 
 const copyPatterns = () => {
@@ -155,7 +174,7 @@ const copyScripts = () => {
 };
 gulp.task(copyScripts);
 
-const copyTheme = gulp.series(copyPatterns, copyStyles, copyScripts);
+const copyTheme = gulp.series(copyPatterns, copyStyles, copyScripts, componentImports);
 
 const defaultTask = gulp.series(
   cleanPublic,
@@ -176,6 +195,8 @@ scripts.description = "Build and uglify Javascript into main.js";
 vendorScripts.description = "Build and uglify vendor Javascript";
 
 watchTask.description = "Initialize BrowserSync instance and watch for changes";
+
+componentImports.description = "Inject component imports to dedicated files";
 
 symLinkPatterns.description = "Create patterns symbolic link";
 

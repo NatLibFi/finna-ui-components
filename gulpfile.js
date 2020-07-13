@@ -137,21 +137,21 @@ const buildTheme = gulp.series(
 const symLinkPatterns = () => {
   return gulp
     .src('dist/_patterns/**/*.phtml',)
-    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/templates/components/`, { overwrite: true }));
+    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/templates/_patterns`, { overwrite: true }));
 };
 gulp.task(symLinkPatterns);
 
 const symLinkStyles = () => {
   return gulp
     .src('dist/less/**/*.less')
-    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/less/components/`, { overwrite: true }));
+    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/less/components`, { overwrite: true }));
 };
 gulp.task(symLinkStyles);
 
 const symLinkScripts = () => {
   return gulp
     .src('dist/js/**/*.js')
-    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/js/components/`, { overwrite: true }));
+    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/js/components`, { overwrite: true }));
 };
 gulp.task(symLinkScripts);
 
@@ -164,21 +164,21 @@ const symLinkTheme = gulp.series(
 const copyPatterns = () => {
   return gulp
     .src('dist/_patterns/**/*.phtml',)
-    .pipe(gulp.dest(`${process.env.THEME_DIRECTORY}/templates/components/`));
+    .pipe(gulp.dest(`${process.env.THEME_DIRECTORY}/templates/_patterns`));
 };
 gulp.task(copyPatterns);
 
 const copyStyles = () => {
   return gulp
     .src('dist/less/**/*.less')
-    .pipe(gulp.dest(`${process.env.THEME_DIRECTORY}/less/components/`));
+    .pipe(gulp.dest(`${process.env.THEME_DIRECTORY}/less/components`));
 };
 gulp.task(copyStyles);
 
 const copyScripts = () => {
   return gulp
     .src('dist/js/**/*.js')
-    .pipe(gulp.dest(`${process.env.THEME_DIRECTORY}/js/components/`));
+    .pipe(gulp.dest(`${process.env.THEME_DIRECTORY}/js/components`));
 };
 gulp.task(copyScripts);
 

@@ -6,7 +6,7 @@ git clone git@github.com:mikkojamG/ui-component-library-proto.git
 
 ## Installation
 
-Running the script installs development dependencies, Pattern Lab and as a default creates symbolic link from the component library source to your working theme directory.
+Running the script installs development dependencies, Pattern Lab and as a default creates symbolic link from the library source components to your working theme directory.
 
 ```
 yarn
@@ -34,21 +34,8 @@ or
 npm run dev
 ```
 
-### Build theme
-Create a distributable components from the source directory.
-
-```
-yarn build:theme
-```
-
-or
-
-```
-npm run build:theme
-```
-
 ### Link theme
-Create a symbolic links between distributable components and working theme directory.
+Create a symbolic links between source components and working theme directory.
 ```
 yarn link:theme
 ```
@@ -58,7 +45,7 @@ npm run link:theme
 ```
 
 ### Copy theme
-Alternative to linking theme, copy distributable components to working theme.
+Alternative to linking theme, copy source components to working theme.
 ```
 yarn copy:theme
 ```

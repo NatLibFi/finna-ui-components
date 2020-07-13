@@ -103,7 +103,7 @@ const componentImports = () => {
     .pipe(inject(gulp.src(`${less}/components/**/*.less`, { read: false }), {
       starttag: '/* All custom less-code here */',
       endtag: '/* Custom less-code ends */',
-      ignorePath: '/../NDL-VuFind2/themes/finna2/less/',
+      ignorePath: `/${process.env.THEME_DIRECTORY}/less/`,
       addRootSlash: false,
       transform: (filePath) => {
         return `@import "${filePath}";`

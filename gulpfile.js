@@ -100,7 +100,7 @@ const symLinkPatterns = () => {
 
   return gulp
     .src(source)
-    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/templates/_patterns/`, { overwrite: true }));
+    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/templates/_patterns/`));
 };
 gulp.task(symLinkPatterns);
 
@@ -109,7 +109,7 @@ const symLinkStyles = () => {
 
   return gulp
     .src(source)
-    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/less/components/`, { overwrite: true }));
+    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/less/components/`));
 };
 gulp.task(symLinkStyles);
 
@@ -118,7 +118,7 @@ const symLinkScripts = () => {
 
   return gulp
     .src(source)
-    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/js/components/`, { overwrite: true }));
+    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/js/components/`));
 };
 gulp.task(symLinkScripts);
 

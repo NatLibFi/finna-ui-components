@@ -95,63 +95,30 @@ const watchTask = () => {
 };
 gulp.task(watchTask);
 
-const cleanDist = () => cleanDir('dist/*');
-gulp.task(cleanDist);
-
-const distPatterns = () => {
-  const source = `${config.paths.source.patterns}`;
-  const dest = './dist/_patterns';
-
-  return gulp.src(`${source}/**/*.phtml`).pipe(gulp.dest(dest));
-};
-
-gulp.task(distPatterns);
-
-const distStyles = () => {
-  const source = config.paths.source.patterns;
-  const dest = './dist/less';
-
-  return gulp
-    .src(`${source}/**/*.less`)
-    .pipe(gulp.dest(dest));
-};
-gulp.task(distStyles);
-
-const distScripts = () => {
-  const source = config.paths.source.patterns;
-  const dest = './dist/js';
-
-  return gulp.src(`${source}/**/*.js`)
-    .pipe(rename({ prefix: 'finna-' }))
-    .pipe(gulp.dest(dest));
-};
-gulp.task(distScripts);
-
-const buildTheme = gulp.series(
-  cleanDist,
-  distPatterns,
-  distStyles,
-  distScripts
-);
-
 const symLinkPatterns = () => {
+  const source = config.paths.source.patterns;
+
   return gulp
-    .src('dist/_patterns/**/*.phtml',)
-    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/templates/_patterns`, { overwrite: true }));
+    .src(source)
+    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/templates/_patterns/`, { overwrite: true }));
 };
 gulp.task(symLinkPatterns);
 
 const symLinkStyles = () => {
+  const source = config.paths.source.patterns;
+
   return gulp
-    .src('dist/less/**/*.less')
-    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/less/components`, { overwrite: true }));
+    .src(source)
+    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/less/components/`, { overwrite: true }));
 };
 gulp.task(symLinkStyles);
 
 const symLinkScripts = () => {
+  const source = config.paths.source.patterns;
+
   return gulp
-    .src('dist/js/**/*.js')
-    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/js/components`, { overwrite: true }));
+    .src(source)
+    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/js/components/`, { overwrite: true }));
 };
 gulp.task(symLinkScripts);
 
@@ -162,22 +129,28 @@ const symLinkTheme = gulp.series(
 );
 
 const copyPatterns = () => {
+  const source = config.paths.source.patterns;
+
   return gulp
-    .src('dist/_patterns/**/*.phtml',)
+    .src(`${source}**/*.phtml`)
     .pipe(gulp.dest(`${process.env.THEME_DIRECTORY}/templates/_patterns`));
 };
 gulp.task(copyPatterns);
 
 const copyStyles = () => {
+  const source = config.paths.source.patterns;
+
   return gulp
-    .src('dist/less/**/*.less')
+    .src(`${source}**/*.less`)
     .pipe(gulp.dest(`${process.env.THEME_DIRECTORY}/less/components`));
 };
 gulp.task(copyStyles);
 
 const copyScripts = () => {
+  const source = config.paths.source.patterns;
+
   return gulp
-    .src('dist/js/**/*.js')
+    .src(`${source}**/*.js`)
     .pipe(gulp.dest(`${process.env.THEME_DIRECTORY}/js/components`));
 };
 gulp.task(copyScripts);
@@ -204,16 +177,6 @@ vendorScripts.description = "Build and uglify vendor Javascript";
 
 watchTask.description = "Initialize BrowserSync instance and watch for changes";
 
-cleanDist.description = "Clear all files under dist directory";
-
-distPatterns.description = "Distribute patterns";
-
-distStyles.description = "Distribute Less components";
-
-distScripts.description = "Distribute Javascript components";
-
-buildTheme.description = 'Distribute patterns, Less and Javascript from source directory'
-
 symLinkPatterns.description = "Create patterns symbolic link";
 
 symLinkStyles.description = "Create styles symbolic link";
@@ -236,7 +199,6 @@ copyTheme.description = "Create distributable copy to working theme"
 
 // Exports
 exports.watch = watch;
-exports.buildTheme = buildTheme;
 exports.symLinkTheme = symLinkTheme;
 exports.copyTheme = copyTheme;
 

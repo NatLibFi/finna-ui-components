@@ -4,12 +4,9 @@
 git clone git@github.com:mikkojamG/ui-component-library-proto.git
 ```
 
-## Pre-installation
-Create `.env` file from the provided example `.env.example` file. Fill in the path to your working theme directory.
-
 ## Installation
 
-Running the script installs development dependencies, Pattern Lab and finally creates distributable components in `dist` directory.
+Running the script installs development dependencies, Pattern Lab and as a default creates symbolic link from the component library source to your working theme directory.
 
 ```
 yarn

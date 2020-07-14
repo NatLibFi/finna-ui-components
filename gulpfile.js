@@ -5,7 +5,6 @@ const gulp = require('gulp');
 const less = require('gulp-less');
 const shell = require('gulp-shell');
 const browserSync = require('browser-sync');
-const path = require('path');
 
 const autoprefixer = require('gulp-autoprefixer');
 const clean = require('gulp-clean');

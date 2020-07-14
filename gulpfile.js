@@ -91,7 +91,11 @@ gulp.task(vendorScripts);
 const watchTask = () => {
   browserSync.init({
     server: {
-      baseDir: config.paths.public.root
+      baseDir: config.paths.public.root,
+      routes: {
+        '/fonts': '../NDL-VuFind2/themes/bootstrap3/css/fonts',
+        '/themes/finna2/css/fonts': `${process.env.THEME_DIRECTORY}/css/fonts`
+      }
     },
     ghostMode: true,
     open: 'external',

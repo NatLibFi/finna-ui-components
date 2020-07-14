@@ -15,6 +15,7 @@
     "pl:version": "patternlab --version",
     "dev": "gulp watch",
     "link:theme": "gulp symLinkTheme",
+    "unlink:theme": "gulp unlinkTheme",
     "copy:theme": "gulp copyTheme",
     "bootstrap": "gulp bootstrap",
     "list:tasks": "gulp --tasks"

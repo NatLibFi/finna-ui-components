@@ -162,6 +162,29 @@ const symLinkTheme = gulp.series(
   componentImports
 );
 
+const unlinkPatterns = () => {
+  return gulp
+    .src('.', { allowEmpty: true })
+    .pipe(shell([`cd ${process.env.THEME_DIRECTORY}/templates && rm components`]))
+};
+gulp.task(unlinkPatterns);
+
+const unlinkStyles = () => {
+  return gulp
+    .src('.', { allowEmpty: true })
+    .pipe(shell([`cd ${process.env.THEME_DIRECTORY}/less && rm components`]))
+};
+gulp.task(unlinkStyles);
+
+const unlinkScripts = () => {
+  return gulp
+    .src('.', { allowEmpty: true })
+    .pipe(shell([`cd ${process.env.THEME_DIRECTORY}/js && rm components`]))
+};
+gulp.task(unlinkScripts);
+
+const unlinkTheme = gulp.series(unlinkPatterns, unlinkStyles, unlinkScripts);
+
 const copyPatterns = () => {
   const source = config.paths.source.patterns;
 
@@ -219,6 +242,12 @@ symLinkStyles.description = "Create styles symbolic link";
 
 symLinkScripts.description = "Create scripts symbolic link";
 
+unlinkPatterns.description = "Remove symbolic link from working patterns";
+
+unlinkStyles.description = "Remove symbolic link from working styles";
+
+unlinkScripts.description = "Remove symbolic link from working scripts";
+
 copyPatterns.description = "Create patterns copy";
 
 copyStyles.description = "Create styles copy";
@@ -231,6 +260,8 @@ watch.description = 'Build PatternLab from source files and watch for changes.';
 
 symLinkTheme.description = "Create symbolic link to working theme";
 
+unlinkTheme.description = "Remove symbolic link to working theme";
+
 copyTheme.description = "Create distributable copy to working theme";
 
 bootstrap.description = "Bootstrap Finna Less extensions";
@@ -240,4 +271,5 @@ exports.watch = watch;
 exports.symLinkTheme = symLinkTheme;
 exports.copyTheme = copyTheme;
 exports.bootstrap = bootstrap;
+exports.unlinkTheme = unlinkTheme;
 

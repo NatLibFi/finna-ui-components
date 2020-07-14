@@ -44,23 +44,6 @@ const styles = () => {
 };
 gulp.task(styles);
 
-const bootstrap = () => {
-  const stylesheet = config.paths.source.styles;
-
-  return gulp.src(`${stylesheet}/vendor/finna.less`)
-    .pipe(inject(
-      gulp.src(process.env.THEMES_ROOT, { read: false }),
-      {
-        starttag: '/* Theme path starts */',
-        endtag: '/* Theme path ends */',
-        transform: (filePath) => {
-          return `@themePath: "../../..${filePath}";`
-        }
-      }
-    ))
-    .pipe(gulp.dest(`${stylesheet}/vendor`));
-};
-
 const scripts = () => {
   const source = config.paths.source.root;
   const dest = config.paths.public.js;
@@ -237,5 +220,4 @@ bootstrap.description = "Bootstrap Finna variables and fonts";
 exports.watch = watch;
 exports.symLinkTheme = symLinkTheme;
 exports.copyTheme = copyTheme;
-exports.bootstrap = bootstrap;
 

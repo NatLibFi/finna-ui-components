@@ -44,6 +44,21 @@ const styles = () => {
 };
 gulp.task(styles);
 
+const bootstrap = () => {
+  const stylesheet = `${config.paths.source.styles}/vendor`;
+
+  return gulp.src(`${stylesheet}/bootstrap.less`)
+    .pipe(inject(gulp.src(`${process.env.THEME_DIRECTORY}/less/finna/*.less`, { read: false }), {
+      starttag: '/* Finna extensions start */',
+      endtag: '/* Finna extensions end */',
+      ignorePath: '/../NDL-VuFind2/themes',
+      transform: (filePath) => {
+        return `@import "@{themePath}${filePath}";`
+      }
+    }))
+    .pipe(gulp.dest(stylesheet));
+};
+
 const scripts = () => {
   const source = config.paths.source.root;
   const dest = config.paths.public.js;
@@ -214,8 +229,11 @@ symLinkTheme.description = "Create symbolic link to working theme";
 
 copyTheme.description = "Create distributable copy to working theme";
 
+bootstrap.description = "Bootstrap Finna Less extensions";
+
 // Exports
 exports.watch = watch;
 exports.symLinkTheme = symLinkTheme;
 exports.copyTheme = copyTheme;
+exports.bootstrap = bootstrap;
 

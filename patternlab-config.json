@@ -43,7 +43,7 @@
   "paths": {
     "source": {
       "root": "./source/",
-      "patterns": "./source/_patterns/",
+      "patterns": "./source/components/",
       "data": "./source/_data/",
       "meta": "./source/_meta/",
       "annotations": "./source/_annotations/",

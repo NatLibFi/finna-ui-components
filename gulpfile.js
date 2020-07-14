@@ -49,7 +49,7 @@ const scripts = () => {
   const dest = config.paths.public.js;
 
   return gulp
-    .src([`${source}/js/finna.js`, `!${source}/js/vendor/*.js`, `${source}/_patterns/**/*.js`])
+    .src([`${source}/js/finna.js`, `!${source}/js/vendor/*.js`, `${source}/components/**/*.js`])
     .pipe(concat('main.js'))
     .pipe(gulp.dest(dest))
     .pipe(uglify())
@@ -114,29 +114,25 @@ const componentImports = () => {
 gulp.task(componentImports);
 
 const symLinkPatterns = () => {
-  const source = config.paths.source.patterns;
-
   return gulp
-    .src(source)
-    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/templates/_patterns/`));
+    .src('.', { allowEmpty: true })
+    .pipe(shell([
+      `cd ${process.env.THEME_DIRECTORY}/templates && ln -fs ../../../../ui-component-library-proto/source/components`
+    ]));
 };
 gulp.task(symLinkPatterns);
 
 const symLinkStyles = () => {
-  const source = config.paths.source.patterns;
-
   return gulp
-    .src(source)
-    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/less/components/`));
+    .src('.', { allowEmpty: true })
+    .pipe(shell([`cd ${process.env.THEME_DIRECTORY}/less && ln -fs ../../../../ui-component-library-proto/source/components`]));
 };
 gulp.task(symLinkStyles);
 
 const symLinkScripts = () => {
-  const source = config.paths.source.patterns;
-
   return gulp
-    .src(source)
-    .pipe(gulp.symlink(`${process.env.THEME_DIRECTORY}/js/components/`));
+    .src('.', { allowEmpty: true })
+    .pipe(shell([`cd ${process.env.THEME_DIRECTORY}/js && ln -fs ../../../../ui-component-library-proto/source/components`]));
 };
 gulp.task(symLinkScripts);
 
@@ -152,7 +148,7 @@ const copyPatterns = () => {
 
   return gulp
     .src(`${source}**/*.phtml`)
-    .pipe(gulp.dest(`${process.env.THEME_DIRECTORY}/templates/_patterns`));
+    .pipe(gulp.dest(`${process.env.THEME_DIRECTORY}/templates/components`));
 };
 gulp.task(copyPatterns);
 

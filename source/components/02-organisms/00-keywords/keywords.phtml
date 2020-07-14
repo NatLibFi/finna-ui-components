@@ -10,10 +10,10 @@
       </button>
       <div class="keywords-controls js-controls">
         <?php $this->render(
-          '_patterns/00-atoms/02-alerts/in-testing-alert.phtml',
+          'components/00-atoms/02-alerts/in-testing-alert.phtml',
           ['alert' => $alert]
         ); ?>
-        <?php $this->render('_patterns/01-molecules/00-forms/add-keyword.phtml', ['form'
+        <?php $this->render('components/01-molecules/00-forms/add-keyword.phtml', ['form'
         => $form]); ?>
       </div>
     <?php endif; ?>

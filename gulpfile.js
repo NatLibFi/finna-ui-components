@@ -214,8 +214,6 @@ symLinkTheme.description = "Create symbolic link to working theme";
 
 copyTheme.description = "Create distributable copy to working theme";
 
-bootstrap.description = "Bootstrap Finna variables and fonts";
-
 // Exports
 exports.watch = watch;
 exports.symLinkTheme = symLinkTheme;

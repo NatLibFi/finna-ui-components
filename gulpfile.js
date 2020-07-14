@@ -93,7 +93,7 @@ const watchTask = () => {
     server: {
       baseDir: config.paths.public.root,
       routes: {
-        '/fonts': '../NDL-VuFind2/themes/bootstrap3/css/fonts',
+        '/fonts': `${process.env.THEMES_ROOT}/bootstrap3/css/fonts`,
         '/themes/finna2/css/fonts': `${process.env.THEME_DIRECTORY}/css/fonts`
       }
     },

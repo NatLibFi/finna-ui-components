@@ -14,9 +14,9 @@
     "pl:start": "npm run pl:serve",
     "pl:version": "patternlab --version",
     "dev": "gulp watch",
-    "link:theme": "npm run unlink:theme && gulp symLinkTheme",
+    "link:theme": "gulp symLinkTheme",
     "unlink:theme": "gulp unlinkTheme",
-    "copy:theme": "npm run unlink:theme && gulp copyTheme",
+    "copy:theme": "gulp copyTheme",
     "bootstrap": "gulp bootstrap",
     "list:tasks": "gulp --tasks"
   },

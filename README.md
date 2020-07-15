@@ -1,20 +1,12 @@
 # Finna UI Component Library Proto
 ## Cloning the repository
-For working with just the component library, clone the repository as you normally would
-
 ```
 git clone git@github.com:mikkojamG/ui-component-library-proto.git
 ```
 
-To include it to your code base, navigate to your working directory and include component library as a submodule.
-
-```
-git submodule add git@github.com:mikkojamG/ui-component-library-proto.git
-```
-
 ## Installation
 
-Install development dependencies and Pattern Lab.
+Running the script installs development dependencies, Pattern Lab and as a default creates symbolic link from the library source components to your working theme directory.
 
 ```
 yarn
@@ -42,17 +34,24 @@ or
 npm run dev
 ```
 
-### Build theme
-Copy relevant patterns, scripts and styles from the component library to dedicated directories in your working theme.
-
+### Link theme
+Create a symbolic links between source components and working theme directory.
 ```
-yarn build:theme
+yarn link:theme
 ```
-
 or
-
 ```
-npm run build:theme
+npm run link:theme
+```
+
+### Copy theme
+Alternative to linking theme, copy source components to working theme.
+```
+yarn copy:theme
+```
+or
+```
+npm run copy:theme
 ```
 
 ## engine-phtml

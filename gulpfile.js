@@ -1,82 +1,21 @@
 require('dotenv').config();
 const config = require('./patternlab-config.json');
+const helpers = require('./gulp-helpers');
 
 const gulp = require('gulp');
 const less = require('gulp-less');
 const shell = require('gulp-shell');
 const browserSync = require('browser-sync');
-const fs = require('fs');
-const prompts = require('prompts');
 
 const autoprefixer = require('gulp-autoprefixer');
-const clean = require('gulp-clean');
 const minify = require('gulp-clean-css');
 const uglify = require('gulp-uglify');
 const rename = require('gulp-rename');
 const concat = require('gulp-concat');
 const inject = require('gulp-inject');
 
-// Helpers
-const cleanDir = (dir) => gulp.src(`${dir}/*`).pipe(clean({ force: true }));;
-
-const componentsExist = (paths) => {
-  return paths.filter((path) => {
-    return fs.existsSync(path);
-  }).length > 0;
-};
-
-const symlinksExist = (paths) => {
-  return paths.filter((path) => {
-    const stats = fs.lstatSync(path);
-
-    return stats.isSymbolicLink();
-  }).length > 0;
-}
-
-const checkForComponents = async () => {
-  const sources = [
-    `${process.env.THEME_DIRECTORY}/templates/components`,
-    `${process.env.THEME_DIRECTORY}/less/components`,
-    `${process.env.THEME_DIRECTORY}/js/components`
-  ];
-
-  if (componentsExist(sources) && !symlinksExist(sources)) {
-    const response = await prompts({
-      type: 'confirm',
-      name: 'remove',
-      message: 'The working theme has pre-existing components. Would you like to remove the components and link instead?',
-      initial: false
-    })
-
-    return response.remove;
-  }
-
-  return false;
-};
-
-const checkForSymlinks = async () => {
-  const sources = [
-    `${process.env.THEME_DIRECTORY}/templates/components`,
-    `${process.env.THEME_DIRECTORY}/less/components`,
-    `${process.env.THEME_DIRECTORY}/js/components`
-  ];
-
-  if (componentsExist(sources) && symlinksExist(sources)) {
-    const response = await prompts({
-      type: 'confirm',
-      name: 'unlink',
-      message: 'The working theme has pre-existing linked components. Would you like to unlink the components?',
-      initial: false
-    })
-
-    return response.unlink;
-  }
-
-  return false;
-};
-
 // Tasks
-const cleanPublic = () => cleanDir(config.paths.public.root);
+const cleanPublic = () => helpers.cleanDir(config.paths.public.root);
 gulp.task(cleanPublic);
 
 const patternLab = () => {
@@ -243,7 +182,7 @@ const symLinkScripts = () => {
 gulp.task(symLinkScripts);
 
 const shouldRemoveComponents = async (callback) => {
-  const shouldRemove = await checkForComponents();
+  const shouldRemove = await helpers.checkForComponents();
 
   if (shouldRemove) {
     return unlinkTheme();
@@ -289,7 +228,7 @@ const copyScripts = () => {
 gulp.task(copyScripts);
 
 const shouldUnlinkTheme = async (callback) => {
-  const shouldUnlink = await checkForSymlinks();
+  const shouldUnlink = await helpers.checkForSymlinks();
 
   if (shouldUnlink) {
     return unlinkTheme();

@@ -1,3 +1,4 @@
 gulpfile.js
+gulp-helpers.js
 public/
 source/js/vendor/

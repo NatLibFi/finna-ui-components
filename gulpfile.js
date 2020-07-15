@@ -114,7 +114,7 @@ const bootstrap = () => {
       {
         starttag: '/* Finna extensions start */',
         endtag: '/* Finna extensions end */',
-        ignorePath: `/${THEMES_ROOT}`,
+        ignorePath: `/${process.env.THEMES_ROOT}`,
         transform: (filePath) => `@import "@{themePath}${filePath}";`
       }))
     .pipe(gulp.dest(vendor));

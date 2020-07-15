@@ -19,7 +19,9 @@ npm install
 ```
 
 ### Vagrant
-When working with symlinked components, you need to make adjustment to `Vagrantfile` in your local [NDL-VuFind2-Vagrant](https://github.com/NatLibFi/NDL-VuFind2-Vagrant) repository. Add path to your local component library repository where NFS paths are defined:
+When working with symlinked components, you need to make adjustment to `Vagrantfile` in your local [NDL-VuFind2-Vagrant](https://github.com/NatLibFi/NDL-VuFind2-Vagrant) repository.
+
+Add path to your local component library repository where NFS paths are defined:
 
 ```
 ubuntu.vm.synced_folder VufindPath, MountPath, type: "nfs"

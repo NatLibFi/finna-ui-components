@@ -16,7 +16,6 @@ const rename = require('gulp-rename');
 const concat = require('gulp-concat');
 const inject = require('gulp-inject');
 
-
 // Helpers
 const cleanDir = (dir) => gulp.src(`${dir}/*`).pipe(clean({ force: true }));;
 
@@ -247,10 +246,10 @@ const shouldRemoveComponents = async (callback) => {
   const shouldRemove = await checkForComponents();
 
   if (shouldRemove) {
-    unlinkTheme();
+    return unlinkTheme();
   }
 
-  callback();
+  return callback();
 };
 gulp.task(shouldRemoveComponents);
 
@@ -293,10 +292,10 @@ const shouldUnlinkTheme = async (callback) => {
   const shouldUnlink = await checkForSymlinks();
 
   if (shouldUnlink) {
-    unlinkTheme();
+    return unlinkTheme();
   }
 
-  callback();
+  return callback();
 };
 gulp.task(shouldUnlinkTheme);
 

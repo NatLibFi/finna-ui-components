@@ -5,6 +5,7 @@ const gulp = require('gulp');
 const less = require('gulp-less');
 const shell = require('gulp-shell');
 const browserSync = require('browser-sync');
+const fs = require('fs');
 
 const autoprefixer = require('gulp-autoprefixer');
 const clean = require('gulp-clean');
@@ -17,6 +18,47 @@ const inject = require('gulp-inject');
 // Helpers
 const cleanDir = (dir) => gulp.src(`${dir}/*`).pipe(clean({ force: true }));;
 
+const componentsExist = (paths) => {
+  return paths.filter((path) => {
+    return fs.existsSync(path);
+  }).length > 0;
+};
+
+const symlinksExist = (paths) => {
+  return paths.filter((path) => {
+    const stats = fs.lstatSync(path);
+
+    return stats.isSymbolicLink();
+  }).length > 0;
+}
+
+const hasCopies = () => {
+  const sources = [
+    `${process.env.THEME_DIRECTORY}/templates/components`,
+    `${process.env.THEME_DIRECTORY}/less/components`,
+    `${process.env.THEME_DIRECTORY}/js/components`
+  ];
+
+  if (componentsExist(sources)) {
+    return !symlinksExist(sources);
+  }
+
+  return false;
+};
+
+const hasSymlinks = () => {
+  const sources = [
+    `${process.env.THEME_DIRECTORY}/templates/components`,
+    `${process.env.THEME_DIRECTORY}/less/components`,
+    `${process.env.THEME_DIRECTORY}/js/components`
+  ];
+
+  if (componentsExist(sources)) {
+    return symlinksExist(sources);
+  }
+
+  return false;
+};
 // Tasks
 const cleanPublic = () => cleanDir(config.paths.public.root);
 gulp.task(cleanPublic);
@@ -178,12 +220,20 @@ const symLinkScripts = () => {
 };
 gulp.task(symLinkScripts);
 
-const symLinkTheme = gulp.series(
-  symLinkPatterns,
-  symLinkStyles,
-  symLinkScripts,
-  componentImports
-);
+const symLinkTheme = hasCopies() ?
+  gulp.series(
+    unlinkTheme,
+    symLinkPatterns,
+    symLinkStyles,
+    symLinkScripts,
+    componentImports
+  ) :
+  gulp.series(
+    symLinkPatterns,
+    symLinkStyles,
+    symLinkScripts,
+    componentImports
+  );
 
 const copyPatterns = () => {
   const source = config.paths.source.patterns;
@@ -212,12 +262,21 @@ const copyScripts = () => {
 };
 gulp.task(copyScripts);
 
-const copyTheme = gulp.series(
-  copyPatterns,
-  copyStyles,
-  copyScripts,
-  componentImports
-);
+const copyTheme = hasSymlinks() ?
+  gulp.series(
+    unlinkTheme,
+    copyPatterns,
+    copyStyles,
+    copyScripts,
+    componentImports
+
+  ) :
+  gulp.series(
+    copyPatterns,
+    copyStyles,
+    copyScripts,
+    componentImports
+  );
 
 const defaultTask = gulp.series(
   cleanPublic,

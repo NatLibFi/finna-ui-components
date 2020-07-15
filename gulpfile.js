@@ -165,21 +165,21 @@ const symLinkTheme = gulp.series(
 const unlinkPatterns = () => {
   return gulp
     .src('.', { allowEmpty: true })
-    .pipe(shell([`cd ${process.env.THEME_DIRECTORY}/templates && rm components`]))
+    .pipe(shell([`rm -rf ${process.env.THEME_DIRECTORY}/templates/components`]))
 };
 gulp.task(unlinkPatterns);
 
 const unlinkStyles = () => {
   return gulp
     .src('.', { allowEmpty: true })
-    .pipe(shell([`cd ${process.env.THEME_DIRECTORY}/less && rm components`]))
+    .pipe(shell([`rm -rf ${process.env.THEME_DIRECTORY}/less/components`]))
 };
 gulp.task(unlinkStyles);
 
 const unlinkScripts = () => {
   return gulp
     .src('.', { allowEmpty: true })
-    .pipe(shell([`cd ${process.env.THEME_DIRECTORY}/js && rm components`]))
+    .pipe(shell([`rm -rf ${process.env.THEME_DIRECTORY}/js/components`]))
 };
 gulp.task(unlinkScripts);
 
@@ -260,7 +260,7 @@ watch.description = 'Build PatternLab from source files and watch for changes.';
 
 symLinkTheme.description = "Create symbolic link to working theme";
 
-unlinkTheme.description = "Remove symbolic link to working theme";
+unlinkTheme.description = "Unlink/remove components from theme";
 
 copyTheme.description = "Create distributable copy to working theme";
 

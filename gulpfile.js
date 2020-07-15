@@ -6,6 +6,7 @@ const less = require('gulp-less');
 const shell = require('gulp-shell');
 const browserSync = require('browser-sync');
 const fs = require('fs');
+const prompts = require('prompts');
 
 const autoprefixer = require('gulp-autoprefixer');
 const clean = require('gulp-clean');
@@ -14,6 +15,7 @@ const uglify = require('gulp-uglify');
 const rename = require('gulp-rename');
 const concat = require('gulp-concat');
 const inject = require('gulp-inject');
+
 
 // Helpers
 const cleanDir = (dir) => gulp.src(`${dir}/*`).pipe(clean({ force: true }));;
@@ -32,33 +34,48 @@ const symlinksExist = (paths) => {
   }).length > 0;
 }
 
-const hasCopies = () => {
+const checkForCopies = async () => {
   const sources = [
     `${process.env.THEME_DIRECTORY}/templates/components`,
     `${process.env.THEME_DIRECTORY}/less/components`,
     `${process.env.THEME_DIRECTORY}/js/components`
   ];
 
-  if (componentsExist(sources)) {
-    return !symlinksExist(sources);
+  if (componentsExist(sources) && !symlinksExist(sources)) {
+    const response = await prompts({
+      type: 'confirm',
+      name: 'remove',
+      message: 'Looks like working theme has pre-existing components. Would you like to remove and link instead?',
+      initial: true
+    })
+
+    return response.remove;
   }
 
   return false;
 };
 
-const hasSymlinks = () => {
+const checkForSymlinks = async () => {
   const sources = [
     `${process.env.THEME_DIRECTORY}/templates/components`,
     `${process.env.THEME_DIRECTORY}/less/components`,
     `${process.env.THEME_DIRECTORY}/js/components`
   ];
 
-  if (componentsExist(sources)) {
-    return symlinksExist(sources);
+  if (componentsExist(sources) && symlinksExist(sources)) {
+    const response = await prompts({
+      type: 'confirm',
+      name: 'unlink',
+      message: 'Looks like working theme has pre-existing symbolic links. Would you like to unlink?',
+      initial: true
+    })
+
+    return response.unlink;
   }
 
   return false;
 };
+
 // Tasks
 const cleanPublic = () => cleanDir(config.paths.public.root);
 gulp.task(cleanPublic);
@@ -220,20 +237,24 @@ const symLinkScripts = () => {
 };
 gulp.task(symLinkScripts);
 
-const symLinkTheme = hasCopies() ?
-  gulp.series(
-    unlinkTheme,
-    symLinkPatterns,
-    symLinkStyles,
-    symLinkScripts,
-    componentImports
-  ) :
-  gulp.series(
-    symLinkPatterns,
-    symLinkStyles,
-    symLinkScripts,
-    componentImports
-  );
+const shouldRemoveComponents = async (callback) => {
+  const shouldRemove = await checkForCopies();
+
+  if (shouldRemove) {
+    unlinkTheme();
+  }
+
+  callback();
+};
+gulp.task(shouldRemoveComponents);
+
+const symLinkTheme = gulp.series(
+  shouldRemoveComponents,
+  symLinkPatterns,
+  symLinkStyles,
+  symLinkScripts,
+  componentImports
+);
 
 const copyPatterns = () => {
   const source = config.paths.source.patterns;
@@ -262,21 +283,24 @@ const copyScripts = () => {
 };
 gulp.task(copyScripts);
 
-const copyTheme = hasSymlinks() ?
-  gulp.series(
-    unlinkTheme,
-    copyPatterns,
-    copyStyles,
-    copyScripts,
-    componentImports
+const shouldUnlinkTheme = async (callback) => {
+  const shouldUnlink = await checkForSymlinks();
 
-  ) :
-  gulp.series(
-    copyPatterns,
-    copyStyles,
-    copyScripts,
-    componentImports
-  );
+  if (shouldUnlink) {
+    unlinkTheme();
+  }
+
+  callback();
+};
+gulp.task(shouldUnlinkTheme);
+
+const copyTheme = gulp.series(
+  shouldUnlinkTheme,
+  copyPatterns,
+  copyStyles,
+  copyScripts,
+  componentImports
+);
 
 const defaultTask = gulp.series(
   cleanPublic,
@@ -300,6 +324,8 @@ watchTask.description = "Initialize BrowserSync instance and watch for changes";
 
 componentImports.description = "Inject component imports to dedicated files";
 
+shouldUnlinkTheme.description = "Ask if linked components in theme directory should be unlinked";
+
 symLinkPatterns.description = "Create patterns symbolic link";
 
 symLinkStyles.description = "Create styles symbolic link";
@@ -311,6 +337,8 @@ unlinkPatterns.description = "Remove symbolic link from working patterns";
 unlinkStyles.description = "Remove symbolic link from working styles";
 
 unlinkScripts.description = "Remove symbolic link from working scripts";
+
+shouldRemoveComponents.description = "Ask if existing components in theme directory should be removed";
 
 copyPatterns.description = "Create patterns copy";
 

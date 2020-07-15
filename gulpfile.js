@@ -34,7 +34,7 @@ const symlinksExist = (paths) => {
   }).length > 0;
 }
 
-const checkForCopies = async () => {
+const checkForComponents = async () => {
   const sources = [
     `${process.env.THEME_DIRECTORY}/templates/components`,
     `${process.env.THEME_DIRECTORY}/less/components`,
@@ -45,8 +45,8 @@ const checkForCopies = async () => {
     const response = await prompts({
       type: 'confirm',
       name: 'remove',
-      message: 'Looks like working theme has pre-existing components. Would you like to remove and link instead?',
-      initial: true
+      message: 'The working theme has pre-existing components. Would you like to remove the components and link instead?',
+      initial: false
     })
 
     return response.remove;
@@ -66,8 +66,8 @@ const checkForSymlinks = async () => {
     const response = await prompts({
       type: 'confirm',
       name: 'unlink',
-      message: 'Looks like working theme has pre-existing symbolic links. Would you like to unlink?',
-      initial: true
+      message: 'The working theme has pre-existing linked components. Would you like to unlink the components?',
+      initial: false
     })
 
     return response.unlink;
@@ -104,18 +104,20 @@ const styles = () => {
 gulp.task(styles);
 
 const bootstrap = () => {
-  const stylesheet = `${config.paths.source.styles}/vendor`;
+  const vendor = `${config.paths.source.styles}/vendor`;
 
-  return gulp.src(`${stylesheet}/bootstrap.less`)
-    .pipe(inject(gulp.src(`${process.env.THEME_DIRECTORY}/less/finna/*.less`, { read: false }), {
-      starttag: '/* Finna extensions start */',
-      endtag: '/* Finna extensions end */',
-      ignorePath: '/../NDL-VuFind2/themes',
-      transform: (filePath) => {
-        return `@import "@{themePath}${filePath}";`
-      }
-    }))
-    .pipe(gulp.dest(stylesheet));
+  return gulp.src(`${vendor}/bootstrap.less`)
+    .pipe(inject(
+      gulp.src(`${process.env.THEME_DIRECTORY}/less/finna/*.less`,
+        { read: false }
+      ),
+      {
+        starttag: '/* Finna extensions start */',
+        endtag: '/* Finna extensions end */',
+        ignorePath: `/${THEMES_ROOT}`,
+        transform: (filePath) => `@import "@{themePath}${filePath}";`
+      }))
+    .pipe(gulp.dest(vendor));
 };
 
 const scripts = () => {
@@ -123,7 +125,11 @@ const scripts = () => {
   const dest = config.paths.public.js;
 
   return gulp
-    .src([`${source}/js/finna.js`, `!${source}/js/vendor/*.js`, `${source}/components/**/*.js`])
+    .src([
+      `${source}/js/finna.js`,
+      `!${source}/js/vendor/*.js`,
+      `${source}/components/**/*.js`
+    ])
     .pipe(concat('main.js'))
     .pipe(gulp.dest(dest))
     .pipe(uglify())
@@ -134,11 +140,11 @@ const scripts = () => {
 gulp.task(scripts);
 
 const vendorScripts = () => {
-  const source = config.paths.source.js;
+  const vendor = `${config.paths.source.js}/vendor`;
   const dest = `${config.paths.public.js}/vendor`;
 
   return gulp
-    .src(`${source}/vendor/*.js`)
+    .src(`${vendor}/*.js`)
     .pipe(gulp.dest(dest))
     .pipe(uglify())
     .pipe(rename({ suffix: '.min' }))
@@ -178,15 +184,15 @@ const componentImports = () => {
   const less = `${process.env.THEME_DIRECTORY}/less`
 
   return gulp.src(`${less}/custom.less`)
-    .pipe(inject(gulp.src(`${less}/components/**/*.less`, { read: false }), {
-      starttag: '/* All custom less-code here */',
-      endtag: '/* Custom less-code ends */',
-      ignorePath: `/${process.env.THEME_DIRECTORY}/less/`,
-      addRootSlash: false,
-      transform: (filePath) => {
-        return `@import "${filePath}";`
-      }
-    }))
+    .pipe(inject(
+      gulp.src(`${less}/components/**/*.less`, { read: false }),
+      {
+        starttag: '/* All custom less-code here */',
+        endtag: '/* Custom less-code ends */',
+        ignorePath: `/${process.env.THEME_DIRECTORY}/less/`,
+        addRootSlash: false,
+        transform: (filePath) => `@import "${filePath}";`
+      }))
     .pipe(gulp.dest(less))
 };
 gulp.task(componentImports);
@@ -238,7 +244,7 @@ const symLinkScripts = () => {
 gulp.task(symLinkScripts);
 
 const shouldRemoveComponents = async (callback) => {
-  const shouldRemove = await checkForCopies();
+  const shouldRemove = await checkForComponents();
 
   if (shouldRemove) {
     unlinkTheme();
@@ -324,7 +330,7 @@ watchTask.description = "Initialize BrowserSync instance and watch for changes";
 
 componentImports.description = "Inject component imports to dedicated files";
 
-shouldUnlinkTheme.description = "Ask if linked components in theme directory should be unlinked";
+shouldUnlinkTheme.description = "Ask if linked components should be unlinked";
 
 symLinkPatterns.description = "Create patterns symbolic link";
 
@@ -350,11 +356,11 @@ defaultTask.description = "Clear public directory and build patterns, CSS and Ja
 
 watch.description = 'Build PatternLab from source files and watch for changes.';
 
-symLinkTheme.description = "Create symbolic link to working theme";
+symLinkTheme.description = "Create symbolic links to working theme";
 
-unlinkTheme.description = "Unlink/remove components from theme";
+unlinkTheme.description = "Unlink/remove components from working theme";
 
-copyTheme.description = "Create distributable copy to working theme";
+copyTheme.description = "Copy components to working theme";
 
 bootstrap.description = "Bootstrap Finna Less extensions";
 
@@ -364,4 +370,3 @@ exports.symLinkTheme = symLinkTheme;
 exports.copyTheme = copyTheme;
 exports.bootstrap = bootstrap;
 exports.unlinkTheme = unlinkTheme;
-

@@ -54,5 +54,16 @@ or
 npm run copy:theme
 ```
 
+### Unlink theme
+Unlink or remove components from working theme directory.
+
+```
+yarn unlink:theme
+```
+or
+```
+npm run unlink:theme
+```
+
 ## engine-phtml
 [https://github.com/aleksip/engine-phtml](https://github.com/aleksip/engine-phtml)

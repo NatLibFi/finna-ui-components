@@ -41,23 +41,6 @@ const styles = () => {
 };
 gulp.task(styles);
 
-const bootstrap = () => {
-  const vendor = `${config.paths.source.styles}/vendor`;
-
-  return gulp.src(`${vendor}/bootstrap.less`)
-    .pipe(inject(
-      gulp.src(`${process.env.THEME_DIRECTORY}/less/finna/*.less`,
-        { read: false }
-      ),
-      {
-        starttag: '/* Finna extensions start */',
-        endtag: '/* Finna extensions end */',
-        ignorePath: `/${process.env.THEMES_ROOT}`,
-        transform: (filePath) => `@import "@{themePath}${filePath}";`
-      }))
-    .pipe(gulp.dest(vendor));
-};
-
 const scripts = () => {
   const source = config.paths.source.root;
   const dest = config.paths.public.js;
@@ -300,11 +283,8 @@ unlinkTheme.description = "Unlink/remove components from working theme";
 
 copyTheme.description = "Copy components to working theme";
 
-bootstrap.description = "Bootstrap Finna Less extensions";
-
 // Exports
 exports.watch = watch;
 exports.symLinkTheme = symLinkTheme;
 exports.copyTheme = copyTheme;
-exports.bootstrap = bootstrap;
 exports.unlinkTheme = unlinkTheme;

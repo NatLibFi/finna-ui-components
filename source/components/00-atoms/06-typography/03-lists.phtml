@@ -1,0 +1,64 @@
+<div>
+  <ul class="list-bullets">
+    <?php foreach ($unorderedList['items'] as $item) : ?>
+      <li><?= $item; ?></li>
+    <?php endforeach; ?>
+  </ul>
+</div>
+<div>
+  <dl class="row">
+    <?php foreach ($descriptionList['items'] as $item) : ?>
+      <dt class="col-sm-3"><?= $item['key']; ?></dt>
+      <dd class="col-sm-9"><?= $item['value']; ?></dd>
+    <?php endforeach; ?>
+  </dl>
+</div>
+<br>
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <?php foreach ($table['head'] as $item) : ?>
+          <th scope="col"><?= $item; ?></th>
+        <?php endforeach; ?>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach ($table['body'] as $item) : ?>
+        <tr>
+          <th scope="row"><?= $item['index']; ?></th>
+          <td><?= $item['firstName']; ?></td>
+          <td><?= $item['lastName']; ?></td>
+          <td><?= $item['userName']; ?></td>
+        </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
+</div>
+<br>
+<div>
+  <div class="record-container">
+    <div class="holding-details">
+      <div class="callnumAndLocation">
+        <div class="clearfix">
+          <?php foreach ($holdings as $index => $item) : ?>
+            <div class="holdings" data-rows="<?= $index; ?>">
+              <div<?= ($index % 2) ? "" : " class='odd'"; ?>>
+                <div class="no-branches">
+                  <div class="groupLocation">
+                    <i class="fa<?= ($index % 2) ? " fa-ok text-success" : " fa-remove text-error"; ?>"></i> <span class="text-ok"><span class="branch"><?= $item['location']; ?></span></span>
+                  </div>
+                  <div class="groupCallnumber">
+                    <div class="location-link-text">
+                      <?= $item['callnumber']; ?>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+      <?php endforeach; ?>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

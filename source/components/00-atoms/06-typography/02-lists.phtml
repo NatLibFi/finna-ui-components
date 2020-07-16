@@ -6,42 +6,51 @@
   </ul>
 </div>
 <div>
-  <table class="table table-finna-record record-details record-details-more">
+  <dl class="row">
+    <dt class="col-sm-3">Description lists</dt>
+    <dd class="col-sm-9">A description list is perfect for defining terms.</dd>
+
+    <dt class="col-sm-3">Euismod</dt>
+    <dd class="col-sm-9">
+      <p>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</p>
+      <p>Donec id elit non mi porta gravida at eget metus.</p>
+    </dd>
+
+    <dt class="col-sm-3">Malesuada porta</dt>
+    <dd class="col-sm-9">Etiam porta sem malesuada magna mollis euismod.</dd>
+
+    <dt class="col-sm-3 text-truncate">Truncated term is truncated</dt>
+    <dd class="col-sm-9">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
+  </dl>
+</div>
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">User Name</th>
+      </tr>
+    </thead>
     <tbody>
       <tr>
-        <th>Description lists</th>
-        <td>
-          <div class="truncate-field truncate-done" data-rows="5">
-            A description list if perfect for defining terms
-          </div>
-        </td>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
       </tr>
       <tr>
-        <th>Euismod</th>
-        <td>
-          <div class="truncate-field truncate-done" data-rows="5">
-            Vestibulum lorem ex, feugiat id posuere nec, mattis vel metus.
-            <br>
-            Donec consequat auctor nunc, eget congue velit sagittis eget.
-
-          </div>
-        </td>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
       </tr>
       <tr>
-        <th>Malesuada porta</th>
-        <td>
-          <div class="truncate-field truncate-done" data-rows="5">
-            Etiam ut diam faucibus, hendrerit sapien sed, fringilla leo.
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <th>Truncated term is a...</th>
-        <td>
-          <div class="truncate-field truncate-done" data-rows="5">
-            Fusce sapien libero, ornare vitae interdum vitae, elementum eget enim. Duis commodo consectetur massa, sit amet lobortis felis feugiat ut.
-          </div>
-        </td>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
       </tr>
     </tbody>
   </table>

@@ -2,19 +2,16 @@
   "head": ["#", "First Name", "Last Name", "User Name"],
   "body": [
     {
-      "index": "1",
       "firstName": "Mark",
       "lastName": "Otto",
       "userName": "@mdo"
     },
     {
-      "index": "2",
       "firstName": "Jacob",
       "lastName": "Thornton",
       "userName": "@fat"
     },
     {
-      "index": "3",
       "firstName": "Larry",
       "lastName": "the Bird",
       "userName": "@twitter"

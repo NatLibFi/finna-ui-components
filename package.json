@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "postinstall": "npm run pl:install && npm run bootstrap && npm run link:theme",
+    "postinstall": "npm run pl:install && npm run link:theme",
     "pl:build": "patternlab build --config ./patternlab-config.json",
     "pl:build-uikit": "cross-env-shell PL_CONFIG_PATH='${INIT_CWD}/.patternlabrc.js' npm run pl:build --prefix node_modules/@pattern-lab/uikit-workshop -- --patternlabrc '$PL_CONFIG_PATH'",
     "pl:dev": "node ./node_modules/@pattern-lab/uikit-workshop/build-tools.js",
@@ -15,8 +15,8 @@
     "pl:version": "patternlab --version",
     "dev": "gulp watch",
     "link:theme": "gulp symLinkTheme",
+    "unlink:theme": "gulp unlinkTheme",
     "copy:theme": "gulp copyTheme",
-    "bootstrap": "gulp bootstrap",
     "list:tasks": "gulp --tasks"
   },
   "keywords": [],
@@ -43,7 +43,8 @@
     "gulp-rename": "^2.0.0",
     "gulp-shell": "^0.8.0",
     "gulp-uglify": "^3.0.2",
-    "husky": "^4.2.5"
+    "husky": "^4.2.5",
+    "prompts": "^2.3.2"
   },
   "husky": {
     "hooks": {

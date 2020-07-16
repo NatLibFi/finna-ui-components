@@ -18,6 +18,18 @@ or
 npm install
 ```
 
+### Vagrant
+When working with symlinked components, you need to make adjustment to `Vagrantfile` in your local [NDL-VuFind2-Vagrant](https://github.com/NatLibFi/NDL-VuFind2-Vagrant) repository.
+
+Add path to your local component library repository where NFS paths are defined:
+
+```
+ubuntu.vm.synced_folder VufindPath, MountPath, type: "nfs"
+ubuntu.vm.synced_folder "../YOUR_LOCAL_COMPONENT_LIBRARY_NAME", "/YOUR_LOCAL_COMPONENT_LIBRARY_NAME", type: "nfs"
+```
+
+Make sure to reload your Vagrant instance if already running.
+
 ## Scripts
 
 ### Development
@@ -52,6 +64,17 @@ yarn copy:theme
 or
 ```
 npm run copy:theme
+```
+
+### Unlink theme
+Unlink or remove components from working theme directory.
+
+```
+yarn unlink:theme
+```
+or
+```
+npm run unlink:theme
 ```
 
 ## engine-phtml

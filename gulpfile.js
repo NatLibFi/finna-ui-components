@@ -1,5 +1,6 @@
 require('dotenv').config();
 const config = require('./patternlab-config.json');
+const helpers = require('./gulp-helpers');
 
 const gulp = require('gulp');
 const less = require('gulp-less');
@@ -7,18 +8,14 @@ const shell = require('gulp-shell');
 const browserSync = require('browser-sync');
 
 const autoprefixer = require('gulp-autoprefixer');
-const clean = require('gulp-clean');
 const minify = require('gulp-clean-css');
 const uglify = require('gulp-uglify');
 const rename = require('gulp-rename');
 const concat = require('gulp-concat');
 const inject = require('gulp-inject');
 
-// Helpers
-const cleanDir = (dir) => gulp.src(`${dir}/*`).pipe(clean({ force: true }));;
-
 // Tasks
-const cleanPublic = () => cleanDir(config.paths.public.root);
+const cleanPublic = () => helpers.cleanDir(config.paths.public.root);
 gulp.task(cleanPublic);
 
 const patternLab = () => {
@@ -44,27 +41,16 @@ const styles = () => {
 };
 gulp.task(styles);
 
-const bootstrap = () => {
-  const stylesheet = `${config.paths.source.styles}/vendor`;
-
-  return gulp.src(`${stylesheet}/bootstrap.less`)
-    .pipe(inject(gulp.src(`${process.env.THEME_DIRECTORY}/less/finna/*.less`, { read: false }), {
-      starttag: '/* Finna extensions start */',
-      endtag: '/* Finna extensions end */',
-      ignorePath: '/../NDL-VuFind2/themes',
-      transform: (filePath) => {
-        return `@import "@{themePath}${filePath}";`
-      }
-    }))
-    .pipe(gulp.dest(stylesheet));
-};
-
 const scripts = () => {
   const source = config.paths.source.root;
   const dest = config.paths.public.js;
 
   return gulp
-    .src([`${source}/js/finna.js`, `!${source}/js/vendor/*.js`, `${source}/components/**/*.js`])
+    .src([
+      `${source}/js/finna.js`,
+      `!${source}/js/vendor/*.js`,
+      `${source}/components/**/*.js`
+    ])
     .pipe(concat('main.js'))
     .pipe(gulp.dest(dest))
     .pipe(uglify())
@@ -75,11 +61,11 @@ const scripts = () => {
 gulp.task(scripts);
 
 const vendorScripts = () => {
-  const source = config.paths.source.js;
+  const vendor = `${config.paths.source.js}/vendor`;
   const dest = `${config.paths.public.js}/vendor`;
 
   return gulp
-    .src(`${source}/vendor/*.js`)
+    .src(`${vendor}/*.js`)
     .pipe(gulp.dest(dest))
     .pipe(uglify())
     .pipe(rename({ suffix: '.min' }))
@@ -119,18 +105,41 @@ const componentImports = () => {
   const less = `${process.env.THEME_DIRECTORY}/less`
 
   return gulp.src(`${less}/custom.less`)
-    .pipe(inject(gulp.src(`${less}/components/**/*.less`, { read: false }), {
-      starttag: '/* All custom less-code here */',
-      endtag: '/* Custom less-code ends */',
-      ignorePath: `/${process.env.THEME_DIRECTORY}/less/`,
-      addRootSlash: false,
-      transform: (filePath) => {
-        return `@import "${filePath}";`
-      }
-    }))
+    .pipe(inject(
+      gulp.src(`${less}/components/**/*.less`, { read: false }),
+      {
+        starttag: '/* All custom less-code here */',
+        endtag: '/* Custom less-code ends */',
+        ignorePath: `/${process.env.THEME_DIRECTORY}/less/`,
+        addRootSlash: false,
+        transform: (filePath) => `@import "${filePath}";`
+      }))
     .pipe(gulp.dest(less))
 };
 gulp.task(componentImports);
+
+const unlinkPatterns = () => {
+  return gulp
+    .src('.', { allowEmpty: true })
+    .pipe(shell([`rm -rf ${process.env.THEME_DIRECTORY}/templates/components`]))
+};
+gulp.task(unlinkPatterns);
+
+const unlinkStyles = () => {
+  return gulp
+    .src('.', { allowEmpty: true })
+    .pipe(shell([`rm -rf ${process.env.THEME_DIRECTORY}/less/components`]))
+};
+gulp.task(unlinkStyles);
+
+const unlinkScripts = () => {
+  return gulp
+    .src('.', { allowEmpty: true })
+    .pipe(shell([`rm -rf ${process.env.THEME_DIRECTORY}/js/components`]))
+};
+gulp.task(unlinkScripts);
+
+const unlinkTheme = gulp.series(unlinkPatterns, unlinkStyles, unlinkScripts);
 
 const symLinkPatterns = () => {
   return gulp
@@ -155,7 +164,19 @@ const symLinkScripts = () => {
 };
 gulp.task(symLinkScripts);
 
+const shouldRemoveComponents = async (callback) => {
+  const shouldRemove = await helpers.checkForComponents();
+
+  if (shouldRemove) {
+    return unlinkTheme();
+  }
+
+  return callback();
+};
+gulp.task(shouldRemoveComponents);
+
 const symLinkTheme = gulp.series(
+  shouldRemoveComponents,
   symLinkPatterns,
   symLinkStyles,
   symLinkScripts,
@@ -189,7 +210,24 @@ const copyScripts = () => {
 };
 gulp.task(copyScripts);
 
-const copyTheme = gulp.series(copyPatterns, copyStyles, copyScripts, componentImports);
+const shouldUnlinkTheme = async (callback) => {
+  const shouldUnlink = await helpers.checkForSymlinks();
+
+  if (shouldUnlink) {
+    return unlinkTheme();
+  }
+
+  return callback();
+};
+gulp.task(shouldUnlinkTheme);
+
+const copyTheme = gulp.series(
+  shouldUnlinkTheme,
+  copyPatterns,
+  copyStyles,
+  copyScripts,
+  componentImports
+);
 
 const defaultTask = gulp.series(
   cleanPublic,
@@ -213,11 +251,21 @@ watchTask.description = "Initialize BrowserSync instance and watch for changes";
 
 componentImports.description = "Inject component imports to dedicated files";
 
+shouldUnlinkTheme.description = "Ask if linked components should be unlinked";
+
 symLinkPatterns.description = "Create patterns symbolic link";
 
 symLinkStyles.description = "Create styles symbolic link";
 
 symLinkScripts.description = "Create scripts symbolic link";
+
+unlinkPatterns.description = "Remove symbolic link from working patterns";
+
+unlinkStyles.description = "Remove symbolic link from working styles";
+
+unlinkScripts.description = "Remove symbolic link from working scripts";
+
+shouldRemoveComponents.description = "Ask if existing components in theme directory should be removed";
 
 copyPatterns.description = "Create patterns copy";
 
@@ -229,15 +277,14 @@ defaultTask.description = "Clear public directory and build patterns, CSS and Ja
 
 watch.description = 'Build PatternLab from source files and watch for changes.';
 
-symLinkTheme.description = "Create symbolic link to working theme";
+symLinkTheme.description = "Create symbolic links to working theme";
 
-copyTheme.description = "Create distributable copy to working theme";
+unlinkTheme.description = "Unlink/remove components from working theme";
 
-bootstrap.description = "Bootstrap Finna Less extensions";
+copyTheme.description = "Copy components to working theme";
 
 // Exports
 exports.watch = watch;
 exports.symLinkTheme = symLinkTheme;
 exports.copyTheme = copyTheme;
-exports.bootstrap = bootstrap;
-
+exports.unlinkTheme = unlinkTheme;

@@ -1,0 +1,20 @@
+{
+  "items": [
+    {
+      "key": "Description lists",
+      "value": "A description list is perfect for defining terms."
+    },
+    {
+      "key": "Euismod",
+      "value": "<p>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</p><p>Donec id elit non mi porta gravida at eget metus.</p>"
+    },
+    {
+      "key": "Malesuada porta",
+      "value": "Etiam porta sem malesuada magna mollis euismod."
+    },
+    {
+      "key": "Truncated term is truncated",
+      "value": "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus."
+    }
+  ]
+}

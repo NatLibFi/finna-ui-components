@@ -1,1 +1,13 @@
-<?= $this->render('components/01-molecules/01-dropdowns/_sort-menu.phtml', ['buttonClass' => 'btn-primary', 'label' => $label, 'items' => $items, "submit" => $submit]); ?>
+<div class="dropdown">
+  <button href="#" class="btn dropdown-toggle btn-primary" data-toggle="dropdown">
+    <span><?= $label; ?></span> <i class="fa fa-arrow-down"></i>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <?php foreach ($items as $item) : ?>
+      <li role="menuitem">
+        <a href=""><?= $item; ?></a>
+      </li>
+    <?php endforeach; ?>
+  </ul>
+  <noscript><input type="submit" class="btn btn-default" value="<?= $submit; ?>" /></noscript>
+</div>

@@ -1,7 +1,7 @@
-<ul class="c-button-list">
+<ul>
   <?php foreach ($items as $button) : ?>
     <li class="c-button-list__item">
-      <button class="<?= $button['class']; ?>"<?= isset($disabled) && $disabled ? "disabled" : ""; ?>>
+      <button class="<?= $button['class']; ?>" <?= isset($disabled) && $disabled ? "disabled" : ""; ?>>
         <?= $button['name']; ?>
       </button>
     </li>

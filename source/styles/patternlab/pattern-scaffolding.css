@@ -82,6 +82,10 @@
   height: 5.5rem;
 }
 
+.icon-grid__item i.fa {
+  font-size: 2rem;
+}
+
 .icon-grid .c-icon {
   margin-bottom: 0.25rem;
 }

@@ -245,13 +245,8 @@
   height: 30rem !important;
 }
 
-.c-button-list {
-  display: flex;
-  flex-wrap: wrap;
-}
-
 .c-button-list__item {
-  margin-bottom: 1rem;
+  display: inline;
 }
 
 .c-button-list__item:not(:last-child) {

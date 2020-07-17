@@ -1,0 +1,6 @@
+{
+  "items": [
+    { "name": "Large Button", "class": "btn btn-primary btn-lg" },
+    { "name": "Large Button", "class": "btn btn-default btn-lg" }
+  ]
+}

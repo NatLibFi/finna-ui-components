@@ -1,0 +1,11 @@
+{
+  "items": [
+    { "name": "Primary", "class": "btn btn-primary" },
+    { "name": "Secondary", "class": "btn btn-secondary" },
+    { "name": "Success", "class": "btn btn-success" },
+    { "name": "Info", "class": "btn btn-info" },
+    { "name": "Warning", "class": "btn btn-warning" },
+    { "name": "Danger", "class": "btn btn-danger" },
+    { "name": "Link", "class": "btn btn-link" }
+  ]
+}

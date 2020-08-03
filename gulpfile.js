@@ -32,7 +32,11 @@ const styles = () => {
 
   return gulp
     .src(`${source}/*.less`)
-    .pipe(less())
+    .pipe(less({
+      modifyVars: {
+        '@themePath': `../../../${process.env.THEMES_ROOT}`
+      }
+    }))
     .pipe(autoprefixer())
     .pipe(minify())
     .pipe(rename({ suffix: '.min' }))

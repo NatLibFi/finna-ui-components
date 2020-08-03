@@ -3,6 +3,7 @@ public/*
 pattern_exports/
 yarn.lock
 package-lock.json
+.env
 
 #Pattern Lab
 dependencyGraph.json

@@ -82,6 +82,10 @@
   height: 5.5rem;
 }
 
+.icon-grid__item-wrapper {
+  position: relative;
+}
+
 .icon-grid__item i.fa {
   font-size: 2.6rem;
 }

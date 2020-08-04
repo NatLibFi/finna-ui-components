@@ -64,7 +64,6 @@
     "fa-handle-popup",
     "fa-handle-right",
     "fa-heart",
-    "fa-HierarchyTree",
     "fa-Holdings",
     "fa-home",
     "fa-info",
@@ -78,6 +77,8 @@
     "fa-journal",
     "fa-kit",
     "fa-last-page",
+    "fa-lg icon-adv-search",
+    "fa-lg icon-basic-search",
     "fa-link",
     "fa-list",
     "fa-list-alt",
@@ -166,17 +167,17 @@
     "fa-zoom-out"
   ],
   "iconlabelIcons": [
+    "finna-logo",
+    "format-0note",
     "format-1bookbook",
-    "format-1journalarticle",
-    "format-1imageimage",
-    "format-1physicalobjectother",
     "format-1document",
-    "format-1soundrecord",
-    "format-1videovideo",
-    "format-manuscript",
+    "format-1imageimage",
     "format-1journalarticle",
     "format-1mapmap",
-    "format-0note",
-    "format-1placeplace"
+    "format-1physicalobjectother",
+    "format-1placeplace",
+    "format-1soundrecord",
+    "format-1videovideo",
+    "format-manuscript"
   ]
 }

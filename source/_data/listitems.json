@@ -166,7 +166,7 @@
     "fa-zoom-in",
     "fa-zoom-out"
   ],
-  "iconlabelIcons": [
+  "customIcons": [
     "finna-logo",
     "format-0note",
     "format-1bookbook",

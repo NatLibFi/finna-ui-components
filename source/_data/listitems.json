@@ -1,5 +1,5 @@
 {
-  "icons": [
+  "fontAwesomeIcons": [
     "fa-arrow-alt-left",
     "fa-arrow-alt-right",
     "fa-arrow-down",
@@ -164,5 +164,19 @@
     "fa-zoom-100",
     "fa-zoom-in",
     "fa-zoom-out"
+  ],
+  "iconlabelIcons": [
+    "format-1bookbook",
+    "format-1journalarticle",
+    "format-1imageimage",
+    "format-1physicalobjectother",
+    "format-1document",
+    "format-1soundrecord",
+    "format-1videovideo",
+    "format-manuscript",
+    "format-1journalarticle",
+    "format-1mapmap",
+    "format-0note",
+    "format-1placeplace"
   ]
 }

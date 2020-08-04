@@ -87,6 +87,11 @@
   font-size: 2.6rem;
 }
 
+.icon-grid__item i.iconlabel {
+  font-size: 2.6rem;
+  margin-right: 0;
+}
+
 .icon-grid .c-icon {
   margin-bottom: 0.25rem;
 }

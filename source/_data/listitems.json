@@ -134,17 +134,35 @@
     "fa-zoom-out"
   ],
   "customIcons": [
+    "cc-by",
+    "cc-license",
+    "cc-nd",
+    "cc-nd-eu",
+    "cc-sa",
+    "details-icon",
+    "download",
     "finna-logo",
+    "format-0database",
     "format-0note",
     "format-1bookbook",
     "format-1document",
     "format-1imageimage",
     "format-1journalarticle",
+    "format-1journaleserial",
     "format-1mapmap",
+    "format-1otherletter",
+    "format-1otherprint",
     "format-1physicalobjectother",
     "format-1placeplace",
+    "format-1soundcd",
     "format-1soundrecord",
+    "format-1soundsoundcassette",
     "format-1videovideo",
-    "format-manuscript"
+    "format-ebook",
+    "format-manuscript",
+    "full-text-available",
+    "open-access",
+    "other-records",
+    "peer-reviewed"
   ]
 }

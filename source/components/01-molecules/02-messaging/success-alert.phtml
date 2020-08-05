@@ -1,3 +1,1 @@
-<div class="alert alert-success" role="alert">
-  <?= $alert; ?>
-</div>
+<?php $this->render('components/01-molecules/02-messaging/_alert.phtml', ['alertClass' => 'alert-success', 'alert' => $alert]);

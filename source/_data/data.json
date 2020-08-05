@@ -2,7 +2,6 @@
   "title": "UI Component Library Proto",
   "htmlClass": "pl",
   "bodyClass": "body",
-  "alert": "This feature is still in testing",
   "form": {
     "label": "This is a label",
     "inputPlaceholder":"This is an input",

@@ -1,6 +1,8 @@
-<div class="alert alert-warning alert-dismissable show" role="alert">
+<div class="alert alert-warning<?= (isset($dismissable) && $dismissable) ? ' alert-dismissable show' : ''; ?>" role="alert">
   <?= $alert; ?>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
+  <?php if (isset($dismissable) && $dismissable): ?>
+    <button type="button" class="close" data-dismiss="alert" aria-label="<?= $closeLabel; ?>">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  <?php endif ?>
 </div>

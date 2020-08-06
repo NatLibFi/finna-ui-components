@@ -1,0 +1,11 @@
+<div class="form-group">
+  <label for="<?= $inputTextName ?>-text"><?= $label; ?></label>
+  <input class="form-control" id="<?= $inputTextName ?>-text" name="<?= $inputTextName ?>-text" placeholder="<?= $inputPlaceholder ?>" aria-placeholder="<?= $inputPlaceholder ?>" type="text" />
+</div>
+<div class="form-group">
+  <label for="<?= $inputTextName ?>-text-invalid"><?= $label; ?></label>
+  <input class="form-control invalid" id="<?= $inputTextName ?>-text-invalid" name="<?= $inputTextName ?>-text-invalid" placeholder="<?= $inputInvalidPlaceholder ?>" aria-placeholder="<?= $inputInvalidPlaceholder ?>" type="text" aria-required="true" required />
+  <div style="color: #a94442; margin-top: 0.5rem;">
+    <?= $inputError; ?>
+  </div>
+</div>

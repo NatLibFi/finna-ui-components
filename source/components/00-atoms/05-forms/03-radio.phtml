@@ -1,7 +1,7 @@
 <fieldset class="form-group">
   <legend class="hidden"><?= $inputRadioGroupLabel; ?></legend>
   <?php foreach ($inputRadioGroup as $index => $value) : ?>
-    <div class="form-check">
+    <div>
       <input type="radio" name="<?= $inputName ?>-radio" id="<?= $inputName ?>-radio<?= $index + 1; ?>" value="option<?= $index + 1; ?>" />
       <label for="<?= $inputName ?>-radio<?= $index + 1; ?>">
         <?= $value; ?>

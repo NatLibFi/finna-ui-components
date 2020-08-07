@@ -14,5 +14,7 @@
     "This is option 1",
     "This is option 2",
     "This is option 3"
-  ]
+  ],
+  "inputRadioGroupLabel": "Pattern Lab radio group",
+  "inputRadioGroup": ["Option 1", "Option 2", "Option 3"]
 }

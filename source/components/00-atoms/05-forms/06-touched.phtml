@@ -1,17 +1,20 @@
 <div class="c-input-container">
   <div class="form-group has-success has-feedback">
-    <label for="<?= $inputName ?>-text-success" class="control-label"><?= $label; ?></label>
-    <input style="width: 100%;" class="form-control" id="<?= $inputName ?>-text-success" name="<?= $inputName ?>-text-success" placeholder="<?= $inputPlaceholder ?>" aria-placeholder="<?= $inputPlaceholder ?>" type="text" />
+
+    <?= $this->render('components/00-atoms/05-forms/_input.phtml', ['inputName' => $inputTextSuccess, 'label' => $label, 'labelClass' => 'control-label', 'inputPlaceholder' => $inputPlaceholder, 'type' => 'text']) ?>
+
     <span class="fa fa-check form-control-feedback"></span>
   </div>
   <div class="form-group has-warning has-feedback">
-    <label for="<?= $inputName ?>-text-warning" class="control-label"><?= $label; ?></label>
-    <input style="width: 100%;" class="form-control" id="<?= $inputName ?>-text-warning" name="<?= $inputName ?>-text-warning" placeholder="<?= $inputPlaceholder ?>" aria-placeholder="<?= $inputPlaceholder ?>" type="text" />
+
+    <?= $this->render('components/00-atoms/05-forms/_input.phtml', ['inputName' => $inputTextWarning, 'label' => $label, 'labelClass' => 'control-label', 'inputPlaceholder' => $inputPlaceholder, 'type' => 'text']) ?>
+
     <span class="fa fa-exclamation-triangle form-control-feedback"></span>
   </div>
   <div class="form-group has-error has-feedback">
-    <label for="<?= $inputName ?>-text-error" class="control-label"><?= $label; ?></label>
-    <input style="width: 100%;" class="form-control" id="<?= $inputName ?>-text-error" name="<?= $inputName ?>-text-error" placeholder="<?= $inputPlaceholder ?>" aria-placeholder="<?= $inputPlaceholder ?>" type="text" />
+
+    <?= $this->render('components/00-atoms/05-forms/_input.phtml', ['inputName' => $inputTextError, 'label' => $label, 'labelClass' => 'control-label', 'inputPlaceholder' => $inputPlaceholder, 'type' => 'text']) ?>
+
     <span class="fa fa-times form-control-feedback"></span>
   </div>
   <div class="form-group checkbox has-success">

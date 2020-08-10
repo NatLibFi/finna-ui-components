@@ -1,4 +1,4 @@
 {
-  "textareaText": "pl-textarea",
-  "textareaInvalidText": "pl-textarea-invalid"
+  "textareaName": "pl-textarea",
+  "textareaInvalidName": "pl-textarea-invalid"
 }

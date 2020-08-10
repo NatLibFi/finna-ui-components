@@ -1,7 +1,7 @@
 {
-  "inputLargeText": "pl-input-styled-large",
+  "inputLargeName": "pl-input-styled-large",
   "inputLargePlaceholder": ".input-group-lg",
-  "inputText": "pl-input-styled",
-  "inputSmallText": "pl-input-styled-small",
+  "inputTextName": "pl-input-styled",
+  "inputSmallName": "pl-input-styled-small",
   "inputSmallPlaceholder": ".input-group-sm"
 }

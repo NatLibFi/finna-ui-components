@@ -1,5 +1,5 @@
 {
-  "selectText": "pl-select",
+  "inputSelectName": "pl-select",
   "inputSelectValues": [
     "This is option 1",
     "This is option 2",

@@ -1,4 +1,4 @@
 <label for="<?= $inputName; ?>" class="<?= isset($labelClass) ? $labelClass : ''; ?>">
   <?= $label; ?>
 </label>
-<input class=" form-control" id="<?= $inputName; ?>" name="<?= $inputName; ?>" placeholder="<?= $placeholder; ?>" aria-placeholder="<?= $placeholder; ?>" <?= (isset($required) && $required) ? 'aria-required="true" required="true"' : ''; ?> type="text" />
+<input class=" form-control" id="<?= $inputName; ?>" name="<?= $inputName; ?>" placeholder="<?= $placeholder; ?>" aria-placeholder="<?= $placeholder; ?>" <?= (isset($required) && $required) ? 'aria-required="true" required="true"' : ''; ?> type="<?= $type ?>" />

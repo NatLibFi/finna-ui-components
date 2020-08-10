@@ -14,16 +14,5 @@
     "This is option 1",
     "This is option 2",
     "This is option 3"
-  ],
-  "inputRadioGroupLabel": "Pattern Lab radio group",
-  "inputRadioGroupName": "pl-input-radio",
-  "inputRadioGroup": [
-    { "key": "pl-input-radio-1", "value": "This is option 1", "checked": true },
-    {
-      "key": "pl-input-radio-2",
-      "value": "This is option 2",
-      "checked": false
-    },
-    { "key": "pl-input-radio-3", "value": "This is option 3", "checked": false }
   ]
 }

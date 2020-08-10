@@ -2,9 +2,9 @@
   <fieldset class="form-group">
     <legend class="hidden"><?= $inputRadioGroupLabel; ?></legend>
     <?php foreach ($inputRadioGroup as $input) : ?>
-
-      <?= $this->render('components/00-atoms/05-forms/_radio.phtml', ['inputName' => $input['key'], 'groupName' => $inputRadioGroupName, 'value' => $input['value'], 'checked' => $input['checked']]) ?>
-
+      <div class="radio">
+        <?= $this->render('components/00-atoms/05-forms/_radio.phtml', ['inputName' => $input['key'], 'groupName' => $inputRadioGroupName, 'value' => $input['value'], 'checked' => $input['checked']]) ?>
+      </div>
     <?php endforeach; ?>
   </fieldset>
 </div>

@@ -23,13 +23,13 @@
 
   </div>
   <div class="form-group checkbox has-warning">
-    <label for="<?= $inputName; ?>-checkbox-warning" s>
-      <input type="checkbox" value="" name="<?= $inputName; ?>-checkbox-warning" id="<?= $inputName; ?>-checkbox-warning" required aria-required="true" /> Checkbox
-    </label>
+
+    <?= $this->render('components/00-atoms/05-forms/_checkbox.phtml', ['inputName' => $inputCheckboxWarning, 'label' => $inputCheckbox]); ?>
+
   </div>
   <div class="form-group checkbox has-error">
-    <label for="<?= $inputName; ?>-checkbox-invalid" s>
-      <input type="checkbox" value="" name="<?= $inputName; ?>-checkbox-invalid" id="<?= $inputName; ?>-checkbox-invalid" required aria-required="true" /> Checkbox
-    </label>
+
+    <?= $this->render('components/00-atoms/05-forms/_checkbox.phtml', ['inputName' => $inputCheckboxError, 'label' => $inputCheckbox]); ?>
+
   </div>
 </div>

@@ -4,9 +4,7 @@
   "bodyClass": "body",
   "alert": "This feature is still in testing",
   "label": "This is a label",
-  "inputName": "pl-input",
   "inputPlaceholder": "This is an input",
-  "inputInvalidPlaceholder": "This is an invalid input",
   "inputError": "Please fill out this field",
   "submit": "Submit",
   "error": "This is an error"

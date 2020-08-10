@@ -1,4 +1,5 @@
 {
   "inputText": "pl-input-text",
-  "inputInvalidText": "pl-input-text-invalid"
+  "inputInvalidText": "pl-input-text-invalid",
+  "inputInvalidPlaceholder": "This is an invalid input"
 }

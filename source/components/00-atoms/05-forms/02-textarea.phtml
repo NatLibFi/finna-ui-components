@@ -1,9 +1,11 @@
-<div class="form-group">
-  <label for="<?= $inputName; ?>-textarea"><?= $label; ?></label>
-  <textarea id="<?= $inputName; ?>-textarea" name="<?= $inputName; ?>-textarea" class="form-control" rows="3" cols="20"></textarea>
-</div>
-<div class="form-group has-error">
-  <label for="<?= $inputName; ?>-textarea-invalid"><?= $label; ?></label>
-  <textarea id="<?= $inputName; ?>-textarea-invalid" name="<?= $inputName; ?>-textarea-invalid" class="form-control" rows="3" cols="20" required aria-required="true"></textarea>
-  <span class="help-block"><?= $inputError; ?></span>
+<div class="c-input-container">
+  <div class="form-group">
+    <label for="<?= $inputName; ?>-textarea"><?= $label; ?></label>
+    <textarea id="<?= $inputName; ?>-textarea" name="<?= $inputName; ?>-textarea" class="form-control" rows="3" cols="20"></textarea>
+  </div>
+  <div class="form-group has-error">
+    <label for="<?= $inputName; ?>-textarea-invalid"><?= $label; ?></label>
+    <textarea id="<?= $inputName; ?>-textarea-invalid" name="<?= $inputName; ?>-textarea-invalid" class="form-control" rows="3" cols="20" required aria-required="true"></textarea>
+    <span class="help-block"><?= $inputError; ?></span>
+  </div>
 </div>

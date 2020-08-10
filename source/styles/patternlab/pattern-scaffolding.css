@@ -264,3 +264,7 @@
 .c-button-list__item:not(:last-child) {
   margin-right: 1rem;
 }
+
+.c-input-container .form-control {
+  width: 100%;
+}

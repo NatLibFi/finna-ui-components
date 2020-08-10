@@ -1,13 +1,10 @@
 <div class="c-input-container">
   <fieldset class="form-group">
     <legend class="hidden"><?= $inputRadioGroupLabel; ?></legend>
-    <?php foreach ($inputRadioGroup as $index => $value) : ?>
-      <div class="radio">
-        <label for="<?= $inputName ?>-radio<?= $index + 1; ?>">
-          <input type="radio" name="<?= $inputName ?>-radio" id="<?= $inputName ?>-radio<?= $index + 1; ?>" value="option<?= $index + 1; ?>" />
-          <?= $value; ?>
-        </label>
-      </div>
+    <?php foreach ($inputRadioGroup as $input) : ?>
+
+      <?= $this->render('components/00-atoms/05-forms/_radio.phtml', ['inputName' => $input['key'], 'groupName' => $inputRadioGroupName, 'value' => $input['value'], 'checked' => $input['checked']]) ?>
+
     <?php endforeach; ?>
   </fieldset>
 </div>

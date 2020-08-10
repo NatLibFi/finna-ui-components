@@ -9,10 +9,5 @@
   "inputInvalidPlaceholder": "This is an invalid input",
   "inputError": "Please fill out this field",
   "submit": "Submit",
-  "error": "This is an error",
-  "inputSelectValues": [
-    "This is option 1",
-    "This is option 2",
-    "This is option 3"
-  ]
+  "error": "This is an error"
 }

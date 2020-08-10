@@ -1,10 +1,7 @@
 <div class="c-input-container">
   <div class="form-group">
-    <label for="<?= $inputName; ?>-select"><?= $label; ?></label>
-    <select id="<?= $inputName; ?>-select" name="<?= $inputName; ?>-select" class="form-control">
-      <?php foreach ($inputSelectValues as $option) : ?>
-        <option><?= $option; ?></option>
-      <?php endforeach; ?>
-    </select>
+
+    <?= $this->render('components/00-atoms/05-forms/_select.phtml', ['inputName' => $selectText, 'label' => $label, 'options' => $inputSelectValues]) ?>
+
   </div>
 </div>

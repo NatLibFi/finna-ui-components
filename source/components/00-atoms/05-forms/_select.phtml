@@ -1,5 +1,5 @@
 <label for="<?= $inputName; ?>"><?= $label; ?></label>
-<select id="<?= $inputName; ?>" name="<?= $inputName; ?>" class="form-control">
+<select id="<?= $inputName; ?>" name="<?= $inputName; ?>" class="form-control <?= isset($inputClass) ? $inputClass : ''; ?>">
   <?php foreach ($options as $option) : ?>
     <option><?= $option; ?></option>
   <?php endforeach; ?>

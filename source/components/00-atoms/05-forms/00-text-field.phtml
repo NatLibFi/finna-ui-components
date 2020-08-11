@@ -16,6 +16,10 @@
       } else {
         $form.removeClass('has-error');
       }
+    });
+
+    $form.on('submit', function onSubmit(event) {
+      event.preventDefault();
     })
   });
 </script>

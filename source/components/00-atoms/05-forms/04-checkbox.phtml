@@ -1,5 +1,25 @@
 <div class="c-input-container">
-  <div class="form-group checkbox">
-    <?= $this->render('components/00-atoms/05-forms/_checkbox.phtml', ['inputName' => $inputCheckboxName, 'label' => $inputCheckboxLabel]); ?>
-  </div>
+  <form class="js-pl-example-checkbox-form" novalidate>
+    <div class="form-group checkbox">
+      <?= $this->render('components/00-atoms/05-forms/_checkbox.phtml', ['inputName' => $inputCheckboxName, 'label' => $inputCheckboxLabel, 'required' => true, 'errorMessage' => $inputCheckboxError, 'inputClass' => 'js-pl-input-checkbox']); ?>
+    </div>
+  </form>
 </div>
+<script type="text/javascript">
+  $(document).ready(function onReady() {
+    var $form = $('.js-pl-example-checkbox-form');
+    var $input = $('.js-pl-input-checkbox');
+
+    $input.on('change', function onInputBlur() {
+      if (!$form[0].checkValidity()) {
+        $form.addClass('has-error');
+      } else {
+        $form.removeClass('has-error');
+      }
+    });
+
+    $form.on('submit', function onSubmit(event) {
+      event.preventDefault();
+    })
+  });
+</script>

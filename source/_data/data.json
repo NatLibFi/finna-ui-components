@@ -6,6 +6,7 @@
   "label": "This is a label",
   "inputPlaceholder": "This is an input",
   "inputError": "Please fill out this field",
+  "inputCheckboxError": "Please check this field",
   "submit": "Submit",
   "error": "This is an error"
 }

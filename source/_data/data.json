@@ -5,9 +5,18 @@
   "alert": "This feature is still in testing",
   "form": {
     "label": "This is a label",
-    "inputPlaceholder":"This is an input",
-    "inputPlaceholderInvalid":"This is an invalid input",
+    "inputPlaceholder": "This is an input",
+    "inputPlaceholderInvalid": "This is an invalid input",
     "submit": "Submit",
     "error": "This is an error"
-  }
+  },
+  "breakpoints": [
+    { "name": "Desktop (≥1200px)", "class": "c-breakpoint__item--desktop" },
+    { "name": "Macbook (≥992px)", "class": "c-breakpoint__item--macbook" },
+    { "name": "Small Devices (≥768px)", "class": "c-breakpoint__item--small" },
+    {
+      "name": "Extra Small Mobile (<768px)",
+      "class": "c-breakpoint__item--xsmall"
+    }
+  ]
 }

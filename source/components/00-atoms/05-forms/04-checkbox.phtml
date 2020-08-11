@@ -11,7 +11,7 @@
     var $form = $('.js-pl-example-checkbox-form');
     var $input = $('.js-pl-input-checkbox');
 
-    $input.on('change', function onInputBlur() {
+    $input.on('change', function onInputChange() {
       if (!$form[0].checkValidity()) {
         $form.addClass('has-error');
       } else {

@@ -13,9 +13,9 @@
 
     $input.on('change', function onInputChange() {
       if (!$form[0].checkValidity()) {
-        $form.addClass('has-error');
+        $input.closest('.form-group').addClass('has-error');
       } else {
-        $form.removeClass('has-error');
+        $input.closest('.form-group').removeClass('has-error');
       }
     });
 

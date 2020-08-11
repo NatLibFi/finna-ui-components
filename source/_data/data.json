@@ -4,6 +4,7 @@
   "bodyClass": "body",
   "alert": "This feature is still in testing",
   "label": "This is a label",
+  "labelRequired": "This is a label <span>(required)</span>",
   "inputPlaceholder": "This is an input",
   "inputError": "Please fill out this field",
   "inputCheckboxError": "Please check this field",

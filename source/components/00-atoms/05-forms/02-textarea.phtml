@@ -1,7 +1,7 @@
 <div class="c-input-container">
   <form class="js-pl-example-textarea-form" novalidate>
     <div class="form-group">
-      <?= $this->render('components/00-atoms/05-forms/_textarea.phtml', ['inputName' => $textareaName, 'label' => $label, 'cols' => '10', 'errorMessage' => $inputError, 'required' => true, 'inputClass' => 'js-pl-input-textarea']) ?>
+      <?= $this->render('components/00-atoms/05-forms/_textarea.phtml', ['inputName' => $textareaName, 'label' => $labelRequired, 'cols' => '10', 'errorMessage' => $inputError, 'required' => true, 'inputClass' => 'js-pl-input-textarea']) ?>
     </div>
   </form>
 </div>
@@ -9,9 +9,6 @@
   $(document).ready(function onReady() {
     var $form = $('.js-pl-example-textarea-form');
     var $input = $('.js-pl-input-textarea');
-
-    console.log($form);
-    console.log($input);
 
     $input.on('blur', function onInputBlur() {
       if (!$form[0].checkValidity()) {

@@ -1,8 +1,9 @@
 <div class="c-input-container">
   <form class="js-pl-example-checkbox-form" novalidate>
-    <div class="form-group checkbox">
-      <?= $this->render('components/00-atoms/05-forms/_checkbox.phtml', ['inputName' => $inputCheckboxName, 'label' => $inputCheckboxLabel, 'required' => true, 'errorMessage' => $inputCheckboxError, 'inputClass' => 'js-pl-input-checkbox']); ?>
-    </div>
+    <fieldset class="form-group checkbox">
+      <legend class="hidden"><?= $inputCheckboxLabel; ?></legend>
+      <?= $this->render('components/00-atoms/05-forms/_checkbox.phtml', ['inputName' => $inputCheckboxName, 'label' => $labelRequired, 'required' => true, 'errorMessage' => $inputCheckboxError, 'inputClass' => 'js-pl-input-checkbox']); ?>
+    </fieldset>
   </form>
 </div>
 <script type="text/javascript">

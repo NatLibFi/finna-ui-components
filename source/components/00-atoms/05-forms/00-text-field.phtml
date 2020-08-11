@@ -1,9 +1,25 @@
 <div class="c-input-container">
-  <div class="form-group">
-    <?= $this->render('components/00-atoms/05-forms/_input.phtml', ['inputName' => $inputTextName, 'label' => $label, 'placeholder' => $inputPlaceholder, 'type' => 'text']) ?>
-  </div>
-  <div class="form-group has-error">
+  <form class="js-pl-example-form" novalidate>
+    <div class="form-group">
+      <?= $this->render('components/00-atoms/05-forms/_input.phtml', ['inputName' => $inputTextName, 'label' => $label, 'placeholder' => $inputPlaceholder, 'type' => 'text', 'inputClass' => 'js-pl-input-text', 'errorMessage' => $inputError, 'required' => true]) ?>
+    </div>
+    <!-- <div class="form-group has-error">
     <?= $this->render('components/00-atoms/05-forms/_input.phtml', ['inputName' => $inputInvalidTextName, 'label' => $label, 'placeholder' => $inputInvalidPlaceholder, 'required' => true, 'type' => 'text']) ?>
     <span class="help-block"><?= $inputError; ?></span>
-  </div>
+  </div> -->
+  </form>
 </div>
+<script type="text/javascript">
+  $(document).ready(function onReady() {
+    var $form = $('.js-pl-example-form');
+    var $input = $('.js-pl-input-text');
+
+    $input.on('blur', function onInputBlur() {
+      if (!$form[0].checkValidity()) {
+        $form.addClass('has-error');
+      } else {
+        $form.removeClass('has-error');
+      }
+    })
+  });
+</script>

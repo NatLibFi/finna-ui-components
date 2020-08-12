@@ -272,7 +272,7 @@
   color: white;
   background-color: #007c90;
   text-align: center;
-  transition: background-color 1s;
+  transition: background-color 0.5s;
 }
 
 @media all and (max-width: 1200px) {

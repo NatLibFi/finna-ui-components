@@ -265,11 +265,10 @@
   margin-right: 1rem;
 }
 
-.c-tooltip-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 30rem;
+.c-tooltip-container .c-tooltip-button {
+  background: none;
+  color: #007c90;
+  font-size: 1.4rem;
 }
 
 .pl-c-pattern-info__description.pl-c-text-passage p {

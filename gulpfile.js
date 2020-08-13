@@ -53,7 +53,8 @@ const scripts = () => {
     .src([
       `${source}/js/finna.js`,
       `!${source}/js/vendor/*.js`,
-      `${source}/components/**/*.js`
+      `${source}/components/**/*.js`,
+      `${source}/js/patternlab/*.js`,
     ])
     .pipe(concat('main.js'))
     .pipe(gulp.dest(dest))

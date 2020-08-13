@@ -9,8 +9,5 @@
     "inputPlaceholderInvalid": "This is an invalid input",
     "submit": "Submit",
     "error": "This is an error"
-  },
-  "figureImgSrc": "https://via.placeholder.com/400x300",
-  "figureImgAlt": "A generic square placeholder image in a figure.",
-  "figureCaption": "A caption for the above image."
+  }
 }

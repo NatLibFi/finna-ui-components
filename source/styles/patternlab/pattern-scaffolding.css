@@ -269,8 +269,5 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.c-tooltip-container .tooltip {
-  position: relative;
+  min-height: 30rem;
 }

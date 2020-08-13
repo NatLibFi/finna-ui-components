@@ -1,13 +1,3 @@
 <div class="container c-tooltip-container">
-  <div class="tooltip fade top in" role="tooltip" id="tooltip705811" style="display: block;">
-    <div class="tooltip-arrow" style="left: 50%;"></div>
-    <div class="tooltip-inner">
-      <h4>Tooltip top</h4>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed convallis
-        tempor suscipit. Mauris tellus enim, auctor et mi in, ultrices vehicula
-        purus. Phasellus cursus velit et euismod pharetra.
-      </p>
-    </div>
-  </div>
+  <?= $this->render('components/01-molecules/05-tooltip/_tooltip.phtml', ['buttonClasses' => ['btn btn-primary'], 'position' => 'top', 'content' => '<h4>Tooltip top</h4><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed convallis tempor suscipit. Mauris tellus enim, auctor et mi in, ultrices vehicula purus. Phasellus cursus velit et euismod pharetra.</p>', 'buttonText' => 'Show tooltip']) ?>
 </div>

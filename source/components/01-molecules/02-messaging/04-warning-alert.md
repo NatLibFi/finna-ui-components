@@ -8,3 +8,4 @@ An alert used for warning users that certain actions can cause unexpected behavi
 | alertClass    | `String`   | Yes      |
 | dismissable   | `Boolean`  | No       |
 | alert         | `String`   | Yes      |
+| closeLabel    | `String`   | No       |

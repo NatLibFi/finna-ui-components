@@ -11,7 +11,7 @@ A keywords component, used for both displaying and editing keywords/tags related
 
 | Prop       | Type      | Required |
 | ---------- | --------- | -------- |
-| editable   | `Boolean` | Yes      |
+| editable   | `Boolean` | No       |
 | addKeyword | `String`  | Yes      |
 | alert      | `String`  | Yes      |
 | form       | `Object`  | Yes      |

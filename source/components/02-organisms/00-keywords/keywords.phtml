@@ -3,7 +3,7 @@
     <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
   </div>
   <div class="keywords-wrapper js-keywords-wrapper">
-    <?php if ($editable) : ?>
+    <?php if (isset($editable) && $editable) : ?>
       <button class="keywords-toggle__button btn js-toggle-keywords">
         <span class="keywords-toggle__label"><?= $addKeyword ?></span>
         <i class="fa fa-tag keywords-toggle__icon" aria-hidden="true"></i>

@@ -17,7 +17,7 @@
       </div>
     <?php endif; ?>
     <div class="keywords-current js-current">
-      <?php if ($editable) : ?>
+      <?php if (isset($editable) && $editable) : ?>
         <p class="keywords-current__text">
           <?= $currentKeywords ?>
           (<span class="js-keywords-counter">0</span>):

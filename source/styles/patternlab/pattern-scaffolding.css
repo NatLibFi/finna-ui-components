@@ -277,3 +277,7 @@
   width: 100%;
   font-size: 1rem;
 }
+
+.pl-c-pattern-info__description.pl-c-text-passage code {
+  font-size: 1rem;
+}

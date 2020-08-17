@@ -12,7 +12,7 @@ git clone git@github.com:mikkojamG/ui-component-library-proto.git
 
 Create `.env` file from the provided `.env.example` file. Fill in paths for environment variables `THEMES_ROOT` and `THEME_DIRECTORY`.
 
-_Make sure that paths are relative and not absolute._
+_Make sure that paths are relative, not absolute._
 
 ### Imports
 

@@ -28,6 +28,7 @@
     "@pattern-lab/engine-phtml": "git://github.com/aleksip/engine-phtml.git",
     "@pattern-lab/starterkit-twig-demo": "^5.10.1",
     "@pattern-lab/uikit-workshop": "^5.10.2",
+    "chalk": "^4.1.0",
     "dotenv": "^8.2.0"
   },
   "devDependencies": {

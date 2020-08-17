@@ -7,6 +7,7 @@ const less = require('gulp-less');
 const shell = require('gulp-shell');
 const browserSync = require('browser-sync');
 const fs = require('fs');
+const chalk = require('chalk');
 
 const autoprefixer = require('gulp-autoprefixer');
 const minify = require('gulp-clean-css');
@@ -106,52 +107,38 @@ const watchTask = () => {
 };
 gulp.task(watchTask);
 
-const validateTargetFile = (file) =>
-  new Promise((resolve, reject) => {
-    return fs.readFile(file, (error, data) => {
-      if (error) {
-        reject(error);
-      }
+const checkImportTargetFile = (file) => {
+  return fs.readFile(file, (error, data) => {
+    if (error) {
+      throw error;
+    }
 
-      if (data.indexOf('Custom less-code ends') != -1) {
-        resolve(true);
-      } else {
+    if (data.indexOf('Custom less-code ends') == -1) {
+      const errorMessage = `Not able to import to target file: ${file}. Make sure that file has required starting tag /* All custom less-code here */ and ending tag /* Custom less-code ends */`;
 
-        return fs.appendFile(file, '/* Custom less-code ends */', (err) => {
-          if (err) {
-            reject(err);
-          }
+      console.log(chalk.red(errorMessage));
 
-          resolve(true);
-        })
-      }
+      throw Error(errorMessage);
+    }
+  })
+};
 
-    })
-  });
+const componentImports = () => {
+  const less = `${process.env.THEME_DIRECTORY}/less`
 
-const componentImports = async () => {
-  try {
-    const less = `${process.env.THEME_DIRECTORY}/less`
+  checkImportTargetFile(`${less}/custom.less`);
 
-    await validateTargetFile(`${less}/custom.less`);
-
-    return gulp.src(`${less}/custom.less`)
-      .pipe(inject(
-        gulp.src(`${less}/components/**/*.less`, { read: false }),
-        {
-          starttag: '/* All custom less-code here */',
-          endtag: '/* Custom less-code ends */',
-          ignorePath: `/${process.env.THEME_DIRECTORY}/less/`,
-          addRootSlash: false,
-          transform: (filePath) => `@import "${filePath}";`
-        }))
-      .pipe(gulp.dest(less));
-  } catch (error) {
-    console.log(error);
-
-    return error;
-  }
-
+  return gulp.src(`${less}/custom.less`)
+    .pipe(inject(
+      gulp.src(`${less}/components/**/*.less`, { read: false }),
+      {
+        starttag: '/* All custom less-code here */',
+        endtag: '/* Custom less-code ends */',
+        ignorePath: `/${process.env.THEME_DIRECTORY}/less/`,
+        addRootSlash: false,
+        transform: (filePath) => `@import "${filePath}";`
+      }))
+    .pipe(gulp.dest(less));
 };
 gulp.task(componentImports);
 

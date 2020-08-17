@@ -1,8 +1,16 @@
 # Finna UI Component Library Proto
+
 ## Cloning the repository
+
 ```
 git clone git@github.com:mikkojamG/ui-component-library-proto.git
 ```
+
+## Preinstallation
+
+Create `.env` file from the provided `.env.example` file. Fill in paths for environment variables `THEMES_ROOT` and `THEME_DIRECTORY`.
+
+_Make sure that paths are relative and not absolute._
 
 ## Installation
 
@@ -19,6 +27,7 @@ npm install
 ```
 
 ### Vagrant
+
 When working with symlinked components, you need to make adjustment to `Vagrantfile` in your local [NDL-VuFind2-Vagrant](https://github.com/NatLibFi/NDL-VuFind2-Vagrant) repository.
 
 Add path to your local component library repository where NFS paths are defined:
@@ -47,35 +56,47 @@ npm run dev
 ```
 
 ### Link theme
+
 Create a symbolic links between source components and working theme directory.
+
 ```
 yarn link:theme
 ```
+
 or
+
 ```
 npm run link:theme
 ```
 
 ### Copy theme
+
 Alternative to linking theme, copy source components to working theme.
+
 ```
 yarn copy:theme
 ```
+
 or
+
 ```
 npm run copy:theme
 ```
 
 ### Unlink theme
+
 Unlink or remove components from working theme directory.
 
 ```
 yarn unlink:theme
 ```
+
 or
+
 ```
 npm run unlink:theme
 ```
 
 ## engine-phtml
+
 [https://github.com/aleksip/engine-phtml](https://github.com/aleksip/engine-phtml)

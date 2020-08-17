@@ -8,9 +8,20 @@ git clone git@github.com:mikkojamG/ui-component-library-proto.git
 
 ## Preinstallation
 
+### Environment
+
 Create `.env` file from the provided `.env.example` file. Fill in paths for environment variables `THEMES_ROOT` and `THEME_DIRECTORY`.
 
 _Make sure that paths are relative and not absolute._
+
+### Imports
+
+Component Library looks for `custom.less` in order to import all the components to the working theme. For injecting imports successfully, make sure `custom.less` has the necessary starting and ending comments:
+```
+/* All custom less-code here */
+...
+/* Custom less-code ends */
+```
 
 ## Installation
 

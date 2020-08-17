@@ -114,7 +114,7 @@ const checkImportTargetFile = (file) => {
     }
 
     if (data.indexOf('Custom less-code ends') == -1) {
-      const errorMessage = `Not able to import to target file: ${file}. Make sure that file has required starting tag /* All custom less-code here */ and ending tag /* Custom less-code ends */`;
+      const errorMessage = `Not able to import to target file: ${file}. Make sure that file has required starting comment /* All custom less-code here */ and ending comment /* Custom less-code ends */`;
 
       console.log(chalk.red(errorMessage));
 

@@ -1,0 +1,25 @@
+<div class="c-input-container">
+  <form class="js-pl-example-form" novalidate>
+    <div class="form-group">
+      <?= $this->render('components/00-atoms/05-forms/_input.phtml', ['inputName' => $inputTextName, 'label' => $labelRequired, 'placeholder' => $inputPlaceholder, 'type' => 'text', 'inputClass' => 'js-pl-input-text', 'errorMessage' => $inputError, 'required' => true]) ?>
+    </div>
+  </form>
+</div>
+<script type="text/javascript">
+  $(document).ready(function onReady() {
+    var $form = $('.js-pl-example-form');
+    var $input = $('.js-pl-input-text');
+
+    $input.on('blur', function onInputBlur() {
+      if (!$form[0].checkValidity()) {
+        $input.closest('.form-group').addClass('has-error');
+      } else {
+        $input.closest('.form-group').removeClass('has-error');
+      }
+    });
+
+    $form.on('submit', function onSubmit(event) {
+      event.preventDefault();
+    })
+  });
+</script>

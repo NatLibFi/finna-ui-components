@@ -303,6 +303,10 @@
   }
 }
 
+.c-input-container .form-control {
+  width: 100%;
+}
+
 .pl-c-pattern-info__description.pl-c-text-passage p {
   font-size: 1.2rem;
 }
@@ -313,5 +317,9 @@
 
 .pl-c-pattern-info__description.pl-c-text-passage table {
   width: 100%;
+  font-size: 1rem;
+}
+
+.pl-c-pattern-info__description.pl-c-text-passage code {
   font-size: 1rem;
 }

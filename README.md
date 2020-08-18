@@ -16,12 +16,9 @@ _Make sure that paths are relative to working theme._
 
 ### Imports
 
-Component Library looks for `custom.less` in order to import all the components to the working theme. For injecting imports successfully, make sure `custom.less` has the necessary starting and ending comments:
-```
-/* All custom less-code here */
-...
-/* Custom less-code ends */
-```
+Component library imports components to `components.less` file under the working theme directory. If the file does not exist, it will be created on install.
+
+Make sure to import `components.less` to your main Less file, e.g. `finna.less`.
 
 ## Installation
 

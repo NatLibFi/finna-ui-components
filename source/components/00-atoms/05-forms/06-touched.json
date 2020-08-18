@@ -1,0 +1,9 @@
+{
+  "inputTextSuccess": "pl-input-text-success",
+  "inputTextWarning": "pl-input-text-warning",
+  "inputTextError": "pl-input-text-error",
+  "inputCheckbox": "Checkbox",
+  "inputCheckboxSuccess": "pl-input-checkbox-success",
+  "inputCheckboxWarning": "pl-input-checkbox-warning",
+  "inputCheckboxError": "pl-input-checkbox-error"
+}

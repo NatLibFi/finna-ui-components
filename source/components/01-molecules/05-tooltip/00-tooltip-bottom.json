@@ -1,0 +1,5 @@
+{
+  "position": "bottom",
+  "content": "<h4>Tooltip bottom</h4><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed convallis tempor suscipit. Mauris tellus enim, auctor et mi in, ultrices vehicula purus. Phasellus cursus velit et euismod pharetra.</p><p><a href='#'>Link</a></p>",
+  "buttonText": "<i class=\"fa fa-question-circle-big\" aria-hidden=\"true\"></i> <span>Show tooltip</span>"
+}

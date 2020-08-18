@@ -265,6 +265,48 @@
   margin-right: 1rem;
 }
 
+.c-breakpoint__item {
+  border: 1px solid #2b2b2b;
+  margin-bottom: 0.5rem;
+  padding: 1rem;
+  color: white;
+  background-color: #007c90;
+  text-align: center;
+  transition: background-color 0.5s;
+}
+
+@media all and (max-width: 1200px) {
+  .c-breakpoint__item--desktop {
+    background-color: #595959;
+  }
+}
+
+@media all and (max-width: 992px) {
+  .c-breakpoint__item--macbook {
+    background-color: #595959;
+  }
+}
+
+@media all and (max-width: 768px) {
+  .c-breakpoint__item--small {
+    background-color: #595959;
+  }
+}
+
+.c-breakpoint__item--xsmall {
+  background-color: #007c90;
+}
+
+@media all and (min-width: 768px) {
+  .c-breakpoint__item--xsmall {
+    background-color: #595959;
+  }
+}
+
+.c-input-container .form-control {
+  width: 100%;
+}
+
 .pl-c-pattern-info__description.pl-c-text-passage p {
   font-size: 1.2rem;
 }
@@ -275,5 +317,9 @@
 
 .pl-c-pattern-info__description.pl-c-text-passage table {
   width: 100%;
+  font-size: 1rem;
+}
+
+.pl-c-pattern-info__description.pl-c-text-passage code {
   font-size: 1rem;
 }

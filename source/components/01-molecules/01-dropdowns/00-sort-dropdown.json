@@ -1,0 +1,9 @@
+{
+  "label": "Submenu",
+  "items": [
+    { "value": "Item 1", "href": "#" },
+    { "value": "Item 2", "href": "#" },
+    { "value": "Item 3", "href": "#" }
+  ],
+  "submit": "Submit"
+}

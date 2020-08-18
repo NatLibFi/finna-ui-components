@@ -1,0 +1,23 @@
+<div class="c-input-container">
+  <div class="form-group has-success has-feedback">
+    <?= $this->render('components/00-atoms/05-forms/_input.phtml', ['inputName' => $inputTextSuccess, 'label' => $label, 'labelClass' => 'control-label', 'placeholder' => $inputPlaceholder, 'type' => 'text']) ?>
+    <span class="fa fa-check form-control-feedback"></span>
+  </div>
+  <div class="form-group has-warning has-feedback">
+    <?= $this->render('components/00-atoms/05-forms/_input.phtml', ['inputName' => $inputTextWarning, 'label' => $label, 'labelClass' => 'control-label', 'placeholder' => $inputPlaceholder, 'type' => 'text']) ?>
+    <span class="fa fa-exclamation-triangle form-control-feedback"></span>
+  </div>
+  <div class="form-group has-error has-feedback">
+    <?= $this->render('components/00-atoms/05-forms/_input.phtml', ['inputName' => $inputTextError, 'label' => $label, 'labelClass' => 'control-label', 'placeholder' => $inputPlaceholder, 'type' => 'text']) ?>
+    <span class="fa fa-times form-control-feedback"></span>
+  </div>
+  <div class="form-group checkbox has-success">
+    <?= $this->render('components/00-atoms/05-forms/_checkbox.phtml', ['inputName' => $inputCheckboxSuccess, 'label' => $inputCheckbox]); ?>
+  </div>
+  <div class="form-group checkbox has-warning">
+    <?= $this->render('components/00-atoms/05-forms/_checkbox.phtml', ['inputName' => $inputCheckboxWarning, 'label' => $inputCheckbox]); ?>
+  </div>
+  <div class="form-group checkbox has-error">
+    <?= $this->render('components/00-atoms/05-forms/_checkbox.phtml', ['inputName' => $inputCheckboxError, 'label' => $inputCheckbox]); ?>
+  </div>
+</div>

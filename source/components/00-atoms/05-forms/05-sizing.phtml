@@ -1,0 +1,11 @@
+<div class="c-input-container">
+  <div class="form-group">
+    <?= $this->render('components/00-atoms/05-forms/_input-styled.phtml', ['inputName' => $inputLargeName, 'label' => $label, 'placeholder' => $inputLargePlaceholder, 'type' => 'text', 'inputClass' => 'input-group-lg']) ?>
+  </div>
+  <div class="form-group">
+    <?= $this->render('components/00-atoms/05-forms/_input-styled.phtml', ['inputName' => $inputTextName, 'label' => $label, 'placeholder' => $inputPlaceholder, 'type' => 'text']) ?>
+  </div>
+  <div class="form-group">
+    <?= $this->render('components/00-atoms/05-forms/_input-styled.phtml', ['inputName' => $inputSmallName, 'label' => $label, 'placeholder' => $inputSmallPlaceholder, 'type' => 'text', 'inputClass' => 'input-group-sm']) ?>
+  </div>
+</div>

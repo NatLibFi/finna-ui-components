@@ -3,11 +3,11 @@
   "htmlClass": "pl",
   "bodyClass": "body",
   "alert": "This feature is still in testing",
-  "form": {
-    "label": "This is a label",
-    "inputPlaceholder":"This is an input",
-    "inputPlaceholderInvalid":"This is an invalid input",
-    "submit": "Submit",
-    "error": "This is an error"
-  }
+  "label": "This is a label",
+  "labelRequired": "This is a label <span>(required)</span>",
+  "inputPlaceholder": "This is an input",
+  "inputError": "Please fill out this field",
+  "inputCheckboxError": "Please check this field",
+  "submit": "Submit",
+  "error": "This is an error"
 }

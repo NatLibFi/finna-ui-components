@@ -9,11 +9,11 @@
         <i class="fa fa-tag keywords-toggle__icon" aria-hidden="true"></i>
       </button>
       <div class="keywords-controls js-controls">
-        <?php $this->render(
+        <?= $this->render(
           'components/01-molecules/02-messaging/02-in-testing-alert.phtml',
           ['alert' => $alert]
         ); ?>
-        <?php $this->render('components/01-molecules/00-forms/add-keyword.phtml', ['label' => $form['label'], 'submit' => $submit, 'errorMessage' => $form['error']]); ?>
+        <?= $this->render('components/01-molecules/00-forms/add-keyword.phtml', ['label' => $form['label'], 'submit' => $submit, 'errorMessage' => $form['error']]); ?>
       </div>
     <?php endif; ?>
     <div class="keywords-current js-current">

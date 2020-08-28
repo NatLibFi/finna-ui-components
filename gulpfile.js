@@ -15,6 +15,7 @@ const uglify = require('gulp-uglify');
 const rename = require('gulp-rename');
 const concat = require('gulp-concat');
 const inject = require('gulp-inject');
+const replace = require('gulp-replace');
 
 // Tasks
 const cleanPublic = () => helpers.cleanDir(config.paths.public.root);
@@ -28,6 +29,18 @@ const patternLab = () => {
 };
 gulp.task(patternLab);
 
+const fonts = () => {
+  const bootstrapFonts = `${process.env.THEMES_ROOT}/bootstrap3/css/fonts`;
+  const finnaFonts = `${process.env.THEME_DIRECTORY}/css/fonts`;
+
+  const dest = config.paths.public.fonts;
+
+  return gulp
+    .src([`${bootstrapFonts}/*`, `${finnaFonts}/*`])
+    .pipe(gulp.dest(dest));
+};
+gulp.task(fonts);
+
 const styles = () => {
   const source = config.paths.source.styles;
   const dest = config.paths.public.styles;
@@ -40,6 +53,7 @@ const styles = () => {
       }
     }))
     .pipe(autoprefixer())
+    .pipe(replace('../../../themes/finna2/css/fonts', '../fonts'))
     .pipe(minify())
     .pipe(rename({ suffix: '.min' }))
     .pipe(gulp.dest(dest))
@@ -84,11 +98,7 @@ gulp.task(vendorScripts);
 const watchTask = () => {
   browserSync.init({
     server: {
-      baseDir: config.paths.public.root,
-      routes: {
-        '/fonts': `${process.env.THEMES_ROOT}/bootstrap3/css/fonts`,
-        '/themes/finna2/css/fonts': `${process.env.THEME_DIRECTORY}/css/fonts`
-      }
+      baseDir: config.paths.public.root
     },
     ghostMode: true,
     open: 'external',
@@ -285,7 +295,7 @@ const copyTheme = gulp.series(
 
 const defaultTask = gulp.series(
   cleanPublic,
-  gulp.parallel(patternLab, styles, scripts, vendorScripts)
+  gulp.parallel(patternLab, fonts, styles, scripts, vendorScripts)
 );
 
 const watch = gulp.series(defaultTask, watchTask);
@@ -294,6 +304,8 @@ const watch = gulp.series(defaultTask, watchTask);
 cleanPublic.description = "Clear all files under public directory";
 
 patternLab.description = "Build PatternLab to public directory";
+
+fonts.description = "Copy font files from theme directory";
 
 styles.description = "Convert and minify Less to CSS";
 
@@ -338,6 +350,7 @@ unlinkTheme.description = "Unlink/remove components from working theme";
 copyTheme.description = "Copy components to working theme";
 
 // Exports
+exports.default = defaultTask;
 exports.watch = watch;
 exports.symLinkTheme = symLinkTheme;
 exports.copyTheme = copyTheme;

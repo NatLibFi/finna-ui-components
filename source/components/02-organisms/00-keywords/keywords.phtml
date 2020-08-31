@@ -4,7 +4,7 @@
   </div>
   <div class="keywords-wrapper js-keywords-wrapper">
     <?php if (isset($editable) && $editable) : ?>
-      <button class="keywords-toggle__button btn js-toggle-keywords">
+      <button class="keywords-toggle__button btn js-toggle-keywords" aria-label="<?= $toggleButtonLabel; ?>">
         <span class="keywords-toggle__label"><?= $addKeyword ?></span>
         <i class="fa fa-tag keywords-toggle__icon" aria-hidden="true"></i>
       </button>

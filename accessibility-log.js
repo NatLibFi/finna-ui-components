@@ -9,9 +9,9 @@ const patterns = [
 ]
 
 const pa11yConfig = {
-  runners: ['htmlcs'],
-  timeout: 10000,
-  rootElement: '.pl-c-main'
+  runners: ['htmlcs', 'axe'],
+  rootElement: '.pl-c-main',
+  ignore: ['region']
 };
 
 const logAccessibilityIssues = async () => {

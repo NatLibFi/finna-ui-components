@@ -2,6 +2,7 @@
   "editable": true,
   "addKeyword": "Add keyword",
   "currentKeywords": "Current keywords",
+  "toggleButtonLabel": "Toggle keywords form",
   "alert": "Adding keywords is in testing feature",
   "form": {
     "label": "Type a keyword and click \"Enter\"",

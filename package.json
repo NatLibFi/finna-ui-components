@@ -18,8 +18,7 @@
     "link:theme": "gulp symLinkTheme",
     "unlink:theme": "gulp unlinkTheme",
     "copy:theme": "gulp copyTheme",
-    "list:tasks": "gulp --tasks",
-    "test": "gulp testAccessibility"
+    "list:tasks": "gulp --tasks"
   },
   "keywords": [],
   "author": "",

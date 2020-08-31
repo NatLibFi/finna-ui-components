@@ -1,5 +1,5 @@
 gulpfile.js
 gulp-helpers.js
-accessibility-log.js
+accessibility-track.js
 public/
 source/js/vendor/

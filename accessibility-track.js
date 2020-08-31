@@ -14,7 +14,7 @@ const pa11yConfig = {
   ignore: ['region']
 };
 
-const logAccessibilityIssues = async () => {
+const trackIssues = async () => {
   try {
     const promises = patterns.map(async (path) => await pa11y(path, pa11yConfig));
 
@@ -29,4 +29,4 @@ const logAccessibilityIssues = async () => {
   }
 };
 
-logAccessibilityIssues();
+trackIssues();

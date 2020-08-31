@@ -18,7 +18,8 @@
     "link:theme": "gulp symLinkTheme",
     "unlink:theme": "gulp unlinkTheme",
     "copy:theme": "gulp copyTheme",
-    "list:tasks": "gulp --tasks"
+    "list:tasks": "gulp --tasks",
+    "accessibilityLog": "node accessibility-log.js"
   },
   "keywords": [],
   "author": "",
@@ -52,7 +53,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "./node_modules/.bin/eslint source && node accessibility-test.js"
+      "pre-commit": "./node_modules/.bin/eslint source"
     }
   }
 }

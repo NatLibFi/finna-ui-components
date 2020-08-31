@@ -4,6 +4,7 @@
       <legend class="hidden"><?= $inputCheckboxLabel; ?></legend>
       <?= $this->render('components/00-atoms/05-forms/_checkbox.phtml', ['inputName' => $inputCheckboxName, 'label' => $labelRequired, 'required' => true, 'errorMessage' => $inputCheckboxError, 'inputClass' => 'js-pl-input-checkbox']); ?>
     </fieldset>
+    <button type="submit" class="hidden"><?= $submit; ?></button>
   </form>
 </div>
 <script type="text/javascript">

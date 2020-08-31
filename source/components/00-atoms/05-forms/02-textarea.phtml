@@ -3,6 +3,7 @@
     <div class="form-group">
       <?= $this->render('components/00-atoms/05-forms/_textarea.phtml', ['inputName' => $textareaName, 'label' => $labelRequired, 'cols' => '10', 'errorMessage' => $inputError, 'required' => true, 'inputClass' => 'js-pl-input-textarea']) ?>
     </div>
+    <button type="submit" class="hidden"><?= $submit; ?></button>
   </form>
 </div>
 <script type="text/javascript">

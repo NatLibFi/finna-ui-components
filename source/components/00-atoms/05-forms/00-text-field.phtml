@@ -3,6 +3,7 @@
     <div class="form-group">
       <?= $this->render('components/00-atoms/05-forms/_input.phtml', ['inputName' => $inputTextName, 'label' => $labelRequired, 'placeholder' => $inputPlaceholder, 'type' => 'text', 'inputClass' => 'js-pl-input-text', 'errorMessage' => $inputError, 'required' => true]) ?>
     </div>
+    <button type="submit" class="hidden"><?= $submit; ?></button>
   </form>
 </div>
 <script type="text/javascript">

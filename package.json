@@ -18,7 +18,8 @@
     "link:theme": "gulp symLinkTheme",
     "unlink:theme": "gulp unlinkTheme",
     "copy:theme": "gulp copyTheme",
-    "list:tasks": "gulp --tasks"
+    "list:tasks": "gulp --tasks",
+    "test": "gulp testAccessibility"
   },
   "keywords": [],
   "author": "",
@@ -30,7 +31,8 @@
     "@pattern-lab/starterkit-twig-demo": "^5.10.1",
     "@pattern-lab/uikit-workshop": "^5.10.2",
     "chalk": "^4.1.0",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "pa11y": "^5.3.0"
   },
   "devDependencies": {
     "browser-sync": "^2.26.7",
@@ -51,7 +53,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "./node_modules/.bin/eslint source"
+      "pre-commit": "./node_modules/.bin/eslint source && node accessibility-test.js"
     }
   }
 }

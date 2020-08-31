@@ -1,4 +1,5 @@
 gulpfile.js
 gulp-helpers.js
+accessibility-test.js
 public/
 source/js/vendor/

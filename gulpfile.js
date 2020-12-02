@@ -351,7 +351,7 @@ const preCopyTheme = async () => {
   });
 
   // Clear JS imports
-  fs.writeFile(`${themeDirectoryPath}/components.config.php`, '<?php \n', (err) => {
+  fs.writeFile(`${themeDirectoryPath}/components.config.php`, '<?php\n', (err) => {
     if (err) {
       throw err;
     }

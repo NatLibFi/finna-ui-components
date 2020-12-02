@@ -71,7 +71,7 @@ const importScripts = async (files) => {
   try {
     const cleanPaths = files.map((file) => file.replace('./source/', ''));
 
-    const phpString = `<?php \n${cleanPaths.map((path) => {
+    const phpString = `<?php\n${cleanPaths.map((path) => {
       return `$config['js'][] = '${path}'`
     }).join(';\n')};`;
 

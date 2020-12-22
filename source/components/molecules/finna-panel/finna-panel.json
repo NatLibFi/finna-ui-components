@@ -1,0 +1,8 @@
+{
+  "attributes": {
+    "class": "finna-panel-default"
+  },
+  "heading": "Panel title",
+  "titleHeadingLevel": "2",
+  "content": "Panel content"
+}

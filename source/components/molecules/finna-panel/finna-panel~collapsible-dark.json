@@ -1,0 +1,9 @@
+{
+  "attributes": {
+    "class": "finna-panel-dark"
+  },
+  "collapsible": "true",
+  "headingId": "heading-two",
+  "collapseId": "collapse-two",
+  "collapsed": false
+}

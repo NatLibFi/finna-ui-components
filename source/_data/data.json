@@ -25,7 +25,7 @@
   "submit": "Submit",
   "error": "This is an error",
   "more": "More",
-  "header": {
+  "pageHeader": {
     "skipToSearchText": "Siirry hakuun",
     "skipToContentText": "Siirry sisältöön",
     "toggleNaviLabel": "Päänavigaatio",
@@ -81,7 +81,7 @@
     "languages": ["Sv", "En"],
     "loginText": "Kirjaudu"
   },
-  "footer": {
+  "pageFooter": {
     "columns": [
       {
         "name": "Tietoa",

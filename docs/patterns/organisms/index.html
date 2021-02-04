@@ -6,9 +6,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width" />
 
-  <link rel="stylesheet" href="../../styles/style.min.css?1611836860845" media="all" />
-  <link rel="stylesheet" href="../../styles/patternlab/pattern-scaffolding.css?1611836860845" media="all" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css?1611836860845" media="all" />
+  <link rel="stylesheet" href="../../styles/style.min.css?1612438616837" media="all" />
+  <link rel="stylesheet" href="../../styles/patternlab/pattern-scaffolding.css?1612438616837" media="all" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css?1612438616837" media="all" />
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
@@ -22,7 +22,7 @@
   <script type="text/javascript" src="../../js/vendor/mockjax.min.js"></script>
   <script type="text/javascript" src="../../js/main.min.js"></script>
   <!-- Begin Pattern Lab (Required for Pattern Lab to run properly) -->
-  <link rel="stylesheet" href="../../styleguide/css/pattern-lab.css?1611836860845" media="all">  <!-- End Pattern Lab -->
+  <link rel="stylesheet" href="../../styleguide/css/pattern-lab.css?1612438616837" media="all">  <!-- End Pattern Lab -->
 </head>
 
 <body class="body">
@@ -97,7 +97,7 @@
 				<div class="pl-js-pattern-example">
 				<div class="finna-multi-level-nav">
     <nav class="hidden-xs finna-tabs-nav clearfix" aria-label="Finna navigation">
-    <ul class="nav-tabs active-multi-level finna-nav nav">
+    <ul class="finna-nav-tabs nav-tabs active-multi-level finna-nav nav">
       <li class="active-trail">
     <a href="#">Primary item 1</a>
   
@@ -158,12 +158,12 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#finna-multi-level-nav-collapse" aria-expanded="false">
-                        <i class="fa fa-handle-open"></i>      </button>
+                        <i class="finna-navbar-icon-caret"></i>      </button>
               <span class="navbar-brand">
                               Secondary item 1.1                  </span>
           </div>
     <div class="collapse navbar-collapse" id="finna-multi-level-nav-collapse">
-      <ul class="navbar-nav active-multi-level finna-nav nav">
+      <ul class="finna-nav-navbar navbar-nav active-multi-level finna-nav nav">
       <li class="dropdown active-trail">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Primary item 1 <b class="caret"></b></a>
   
@@ -227,7 +227,7 @@
 				</div><!--end pl-js-pattern-example-->
 			
 				<script type="text/json" id="pl-pattern-data-organisms-finna-multi-level-nav" class="pl-js-pattern-data">
-				{"cssEnabled":false,"patternLineageExists":false,"patternLineages":[],"lineage":[],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":false,"patternDesc":"<h3>Description</h3>\n<p>Multi-level navigation. Tabbed navigation bar for large screens and a navbar for\nsmall screens.</p>\n<h3>Properties</h3>\n<table>\n<thead>\n<tr>\n<th>Property</th>\n<th>Type</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>ariaLabel</code></td>\n<td>string</td>\n</tr>\n<tr>\n<td><code>attributes</code></td>\n<td>array</td>\n</tr>\n<tr>\n<td><code>brandContent</code></td>\n<td>string</td>\n</tr>\n<tr>\n<td><code>brandLink</code></td>\n<td>string</td>\n</tr>\n<tr>\n<td><code>collapseId</code></td>\n<td>string</td>\n</tr>\n<tr>\n<td><code>items</code></td>\n<td>array</td>\n</tr>\n</tbody>\n</table>\n<p>Additionally all finna-navbar properties except <code>ariaLabel</code>, <code>attributes</code> (these\nare used for the parent multi-level component) and <code>collapseContent</code>.</p>\n<h3>Variations</h3>\n<p>Add the <code>finna-multi-level-nav-lg</code> class for a larger variation.</p>\n<p>Add the <code>finna-multi-level-nav-content</code> class for a content navigation\nvariation.</p>\n","patternBreadcrumb":{"patternType":"organisms","patternSubtype":"navigation"},"patternExtension":"phtml","patternName":"Multi-level navigation","patternPartial":"organisms-finna-multi-level-nav","patternState":"complete","patternEngineName":"phtml","extraOutput":{}}
+				{"cssEnabled":false,"patternLineageExists":false,"patternLineages":[],"lineage":[],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":false,"patternDesc":"<h3>Description</h3>\n<p>Multi-level navigation. Tabbed navigation bar for large screens and a navbar for\nsmall screens.</p>\n<h3>Properties</h3>\n<table>\n<thead>\n<tr>\n<th>Property</th>\n<th>Type</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>ariaLabel</code></td>\n<td>string</td>\n</tr>\n<tr>\n<td><code>attributes</code></td>\n<td>array</td>\n</tr>\n<tr>\n<td><code>brandContent</code></td>\n<td>string</td>\n</tr>\n<tr>\n<td><code>brandLink</code></td>\n<td>string</td>\n</tr>\n<tr>\n<td><code>collapseId</code></td>\n<td>string</td>\n</tr>\n<tr>\n<td><code>items</code></td>\n<td>array</td>\n</tr>\n</tbody>\n</table>\n<h3>Notes</h3>\n<p>Additionally all finna-navbar properties except <code>ariaLabel</code>, <code>attributes</code> (these\nare used for the parent multi-level component) and <code>collapseContent</code>.</p>\n<h3>Variations</h3>\n<table>\n<thead>\n<tr>\n<th>Class</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>finna-multi-level-nav-lg</code></td>\n<td>Larger variation</td>\n</tr>\n<tr>\n<td><code>finna-multi-level-nav-content</code></td>\n<td>Content navigation variation</td>\n</tr>\n</tbody>\n</table>\n","patternBreadcrumb":{"patternType":"organisms","patternSubtype":"navigation"},"patternExtension":"phtml","patternName":"Multi-level navigation","patternPartial":"organisms-finna-multi-level-nav","patternState":"complete","patternEngineName":"phtml","extraOutput":{}}
 				</script>
 			
 			</div><!--end pl-c-pattern-->			<div id="organisms-finna-multi-level-nav-content-large" class="pl-c-pattern">
@@ -270,7 +270,7 @@
 				<div class="pl-js-pattern-example">
 				<div class="finna-multi-level-nav-content finna-multi-level-nav-lg finna-multi-level-nav">
     <nav class="hidden-xs finna-tabs-nav-lg finna-tabs-nav clearfix" aria-label="Finna navigation">
-    <ul class="nav-tabs finna-nav-lg active-multi-level finna-nav nav">
+    <ul class="finna-nav-tabs finna-nav-lg nav-tabs active-multi-level finna-nav nav">
       <li class="active-trail">
     <a href="#">Primary item 1</a>
   
@@ -331,12 +331,12 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#finna-multi-level-nav-content-large-collapse" aria-expanded="false">
-                More        <i class="fa fa-handle-open"></i>      </button>
+                More        <i class="finna-navbar-icon-caret"></i>      </button>
               <span class="navbar-brand">
                               Secondary item 1.1                  </span>
           </div>
     <div class="collapse navbar-collapse" id="finna-multi-level-nav-content-large-collapse">
-      <ul class="navbar-nav active-multi-level finna-nav nav">
+      <ul class="finna-nav-navbar navbar-nav active-multi-level finna-nav nav">
       <li class="dropdown active-trail">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Primary item 1 <b class="caret"></b></a>
   
@@ -445,7 +445,7 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#finna-navbar-collapse" aria-expanded="false">
-                More        <i class="fa fa-handle-open"></i>      </button>
+                More        <i class="finna-navbar-icon-caret"></i>      </button>
               <span class="navbar-brand">
           <a href="#">                    Brand content          </a>        </span>
           </div>
@@ -457,7 +457,7 @@
 				</div><!--end pl-js-pattern-example-->
 			
 				<script type="text/json" id="pl-pattern-data-organisms-finna-navbar" class="pl-js-pattern-data">
-				{"cssEnabled":false,"patternLineageExists":false,"patternLineages":[],"lineage":[],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":false,"patternDesc":"<h3>Description</h3>\n<p>Navbars are responsive components that serve as navigation headers for your\napplication or site. They begin collapsed (and are toggleable) in mobile views\nand become horizontal as the available viewport width increases.</p>\n<h3>Properties</h3>\n<table>\n<thead>\n<tr>\n<th>Property</th>\n<th>Type</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>ariaLabel</code></td>\n<td>string</td>\n</tr>\n<tr>\n<td><code>attributes</code></td>\n<td>array</td>\n</tr>\n<tr>\n<td><code>brandContent</code></td>\n<td>string</td>\n</tr>\n<tr>\n<td><code>brandLink</code></td>\n<td>string</td>\n</tr>\n<tr>\n<td><code>brandSrOnly</code></td>\n<td>string</td>\n</tr>\n<tr>\n<td><code>collapseContent</code></td>\n<td>string</td>\n</tr>\n<tr>\n<td><code>collapseId</code></td>\n<td>string</td>\n</tr>\n<tr>\n<td><code>toggleBtnSrOnly</code></td>\n<td>string</td>\n</tr>\n<tr>\n<td><code>toggleBtnIconClass</code></td>\n<td>string</td>\n</tr>\n<tr>\n<td><code>toggleBtnLabel</code></td>\n<td>string</td>\n</tr>\n</tbody>\n</table>\n<h3>Variations</h3>\n<p>Add the <code>finna-navbar-content</code> class for a content navigation variation. This\nvariation has a prominent color for the navbar and styles the mobile collapse\ncontent to look similar to dropdown menus.</p>\n","patternBreadcrumb":{"patternType":"organisms","patternSubtype":"navigation"},"patternExtension":"phtml","patternName":"Navbar","patternPartial":"organisms-finna-navbar","patternState":"complete","patternEngineName":"phtml","extraOutput":{}}
+				{"cssEnabled":false,"patternLineageExists":false,"patternLineages":[],"lineage":[],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":false,"patternDesc":"<h3>Description</h3>\n<p>Navbars are responsive components that serve as navigation headers for your\napplication or site. They begin collapsed (and are toggleable) in mobile views\nand become horizontal as the available viewport width increases.</p>\n<h3>Properties</h3>\n<table>\n<thead>\n<tr>\n<th>Property</th>\n<th>Type</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>ariaLabel</code></td>\n<td>string</td>\n</tr>\n<tr>\n<td><code>attributes</code></td>\n<td>array</td>\n</tr>\n<tr>\n<td><code>brandContent</code></td>\n<td>string</td>\n</tr>\n<tr>\n<td><code>brandLink</code></td>\n<td>string</td>\n</tr>\n<tr>\n<td><code>brandSrOnly</code></td>\n<td>string</td>\n</tr>\n<tr>\n<td><code>collapseContent</code></td>\n<td>string</td>\n</tr>\n<tr>\n<td><code>collapseId</code></td>\n<td>string</td>\n</tr>\n<tr>\n<td><code>toggleBtnSrOnly</code></td>\n<td>string</td>\n</tr>\n<tr>\n<td><code>toggleBtnIconClass</code></td>\n<td>string</td>\n</tr>\n<tr>\n<td><code>toggleBtnLabel</code></td>\n<td>string</td>\n</tr>\n</tbody>\n</table>\n<h3>Notes</h3>\n<p>The component defines a <code>finna-navbar-icon-caret</code> class that can be used as a\nvalue for <code>toggleBtnIconClass</code>.</p>\n<h3>Variations</h3>\n<table>\n<thead>\n<tr>\n<th>Class</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>finna-navbar-content</code></td>\n<td>Content navigation variation. This variation has a prominent color for the navbar and the mobile collapse content is styled to look similar to dropdown menus.</td>\n</tr>\n</tbody>\n</table>\n","patternBreadcrumb":{"patternType":"organisms","patternSubtype":"navigation"},"patternExtension":"phtml","patternName":"Navbar","patternPartial":"organisms-finna-navbar","patternState":"complete","patternEngineName":"phtml","extraOutput":{}}
 				</script>
 			
 			</div><!--end pl-c-pattern-->			<div id="organisms-finna-navbar-demo" class="pl-c-pattern">
@@ -502,12 +502,12 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#finna-navbar-demo-collapse" aria-expanded="false">
-                More        <i class="fa fa-handle-open"></i>      </button>
+                More        <i class="finna-navbar-icon-caret"></i>      </button>
               <span class="navbar-brand">
           <a href="#">                    Brand          </a>        </span>
           </div>
     <div class="collapse navbar-collapse" id="finna-navbar-demo-collapse">
-      <ul class="navbar-nav finna-nav nav">
+      <ul class="finna-nav-navbar navbar-nav finna-nav nav">
       <li class="active" aria-current="page">
     <a href="#">Link</a>
   
@@ -587,12 +587,12 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#finna-navbar-demo-content-collapse" aria-expanded="false">
-                More        <i class="fa fa-handle-open"></i>      </button>
+                More        <i class="finna-navbar-icon-caret"></i>      </button>
               <span class="navbar-brand">
           <a href="#">                    Content navbar          </a>        </span>
           </div>
     <div class="collapse navbar-collapse" id="finna-navbar-demo-content-collapse">
-      <ul class="navbar-nav finna-nav nav">
+      <ul class="finna-nav-navbar navbar-nav finna-nav nav">
       <li class="active" aria-current="page">
     <a href="#">Link</a>
   
@@ -669,7 +669,7 @@
 			
 				<div class="pl-js-pattern-example">
 				<nav aria-label="Finna tabs nav" class="finna-tabs-nav clearfix">
-    <ul class="nav-tabs finna-nav nav">
+    <ul class="finna-nav-tabs nav-tabs finna-nav nav">
       <li class="active">
     <a href="#">Item 1</a>
   
@@ -688,7 +688,7 @@
 				</div><!--end pl-js-pattern-example-->
 			
 				<script type="text/json" id="pl-pattern-data-organisms-finna-tabs-nav" class="pl-js-pattern-data">
-				{"cssEnabled":false,"patternLineageExists":false,"patternLineages":[],"lineage":[],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":false,"patternDesc":"<h3>Description</h3>\n<p>Tabbed navigation bar that will also show the active tab's children.</p>\n<h3>Properties</h3>\n<table>\n<thead>\n<tr>\n<th>Property</th>\n<th>Type</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>ariaCurrent</code></td>\n<td>string</td>\n</tr>\n<tr>\n<td><code>ariaLabel</code></td>\n<td>string</td>\n</tr>\n<tr>\n<td><code>attributes</code></td>\n<td>array</td>\n</tr>\n<tr>\n<td><code>items</code></td>\n<td>array</td>\n</tr>\n</tbody>\n</table>\n<h3>Variations</h3>\n<p><code>ariaCurrent</code> is used for possible active items. If this property is set it will\noverride the same property in all items.</p>\n<p>Add the <code>finna-tabs-nav-lg</code> class for a larger variation.</p>\n","patternBreadcrumb":{"patternType":"organisms","patternSubtype":"navigation"},"patternExtension":"phtml","patternName":"Tabs nav","patternPartial":"organisms-finna-tabs-nav","patternState":"complete","patternEngineName":"phtml","extraOutput":{}}
+				{"cssEnabled":false,"patternLineageExists":false,"patternLineages":[],"lineage":[],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":false,"patternDesc":"<h3>Description</h3>\n<p>Tabbed navigation bar that will also show the active tab's children.</p>\n<h3>Properties</h3>\n<table>\n<thead>\n<tr>\n<th>Property</th>\n<th>Type</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>ariaCurrent</code></td>\n<td>string</td>\n</tr>\n<tr>\n<td><code>ariaLabel</code></td>\n<td>string</td>\n</tr>\n<tr>\n<td><code>attributes</code></td>\n<td>array</td>\n</tr>\n<tr>\n<td><code>items</code></td>\n<td>array</td>\n</tr>\n</tbody>\n</table>\n<h3>Notes</h3>\n<p><code>ariaCurrent</code> is used for possible active items. If this property is set it will\noverride the same property in all items.</p>\n<h3>Variations</h3>\n<table>\n<thead>\n<tr>\n<th>Class</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>finna-tabs-nav-lg</code></td>\n<td>Larger variation</td>\n</tr>\n</tbody>\n</table>\n","patternBreadcrumb":{"patternType":"organisms","patternSubtype":"navigation"},"patternExtension":"phtml","patternName":"Tabs nav","patternPartial":"organisms-finna-tabs-nav","patternState":"complete","patternEngineName":"phtml","extraOutput":{}}
 				</script>
 			
 			</div><!--end pl-c-pattern-->			<div id="organisms-finna-tabs-nav-demo" class="pl-c-pattern">
@@ -730,7 +730,7 @@
 			
 				<div class="pl-js-pattern-example">
 				<nav class="js-tablist-example finna-tabs-nav clearfix" aria-label="Finna tabs nav">
-    <ul class="nav-tabs finna-nav nav">
+    <ul class="finna-nav-tabs nav-tabs finna-nav nav">
       <li class="active">
     <a href="#">Item 1</a>
   
@@ -808,7 +808,7 @@
 			
 				<div class="pl-js-pattern-example">
 				<nav class="finna-tabs-nav-lg finna-tabs-nav clearfix" aria-label="Finna tabs nav">
-    <ul class="nav-tabs finna-nav-lg finna-nav nav">
+    <ul class="finna-nav-tabs finna-nav-lg nav-tabs finna-nav nav">
       <li class="active">
     <a href="#">Item 1</a>
   
@@ -886,7 +886,7 @@
 			
 				<div class="pl-js-pattern-example">
 				<nav class="js-tablist-example finna-tabs-nav clearfix" aria-label="Finna tabs nav">
-    <ul class="nav-tabs active-multi-level finna-nav nav">
+    <ul class="finna-nav-tabs nav-tabs active-multi-level finna-nav nav">
       <li class="active-trail">
     <a href="#">Primary item 1</a>
   
@@ -1006,7 +1006,7 @@
 			
 				<div class="pl-js-pattern-example">
 				<nav class="js-tablist-tooltip-example finna-tabs-nav clearfix" aria-label="Finna tabs nav">
-    <ul class="nav-tabs finna-nav nav">
+    <ul class="finna-nav-tabs nav-tabs finna-nav nav">
       <li class="active">
     <a href="#">Item 1</a>
       <button type="button" data-toggle="tooltip" data-html="true" data-placement="bottom" data-original-title="<h4>Tab 1 tooltip</h4><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pharetra erat sit amet ligula bibendum sodales.</p><p><a href='#'>Etiam eget est justo</a></p>" aria-label="Help - Item 1" class="finna-tooltip-btn">
@@ -1097,10 +1097,10 @@
   }
 </script>
 
-<script id="pl-js-polyfill-insert-1611836860845">
+<script id="pl-js-polyfill-insert-1612438616837">
   (function() {
     if (self != top) {
-      var cb = '1611836860845';
+      var cb = '1612438616837';
       var js = [];
       scriptLoader.run(js,cb,'pl-js-polyfill-insert');
     }
@@ -1113,7 +1113,7 @@
   import('../../styleguide/js/patternlab-pattern.modern.js');
 </script>
 
-<script id="pl-js-insert-1611836860845" nomodule>
+<script id="pl-js-insert-1612438616837" nomodule>
   /*! loadJS: load a JS file asynchronously. [c]2014 @scottjehl, Filament Group, Inc. (Based on http://goo.gl/REQGQ by Paul Irish). Licensed MIT */
   !function(e){var t=function(t,n){"use strict";var o=e.document.getElementsByTagName("script")[0],r=e.document.createElement("script");return r.src=t,r.async=!0,o.parentNode.insertBefore(r,o),n&&"function"==typeof n&&(r.onload=n),r};"undefined"!=typeof module?module.exports=t:e.loadJS=t}("undefined"!=typeof global?global:this);
 

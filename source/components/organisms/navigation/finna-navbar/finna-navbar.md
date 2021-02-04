@@ -24,8 +24,13 @@ and become horizontal as the available viewport width increases.
 | `toggleBtnIconClass` | string |
 | `toggleBtnLabel`     | string |
 
+### Notes
+
+The component defines a `finna-navbar-icon-caret` class that can be used as a
+value for `toggleBtnIconClass`.
+
 ### Variations
 
-Add the `finna-navbar-content` class for a content navigation variation. This
-variation has a prominent color for the navbar and styles the mobile collapse
-content to look similar to dropdown menus.
+| Class                  | Description |
+| ---------------------- | ----------- |
+| `finna-navbar-content` | Content navigation variation. This variation has a prominent color for the navbar and the mobile collapse content is styled to look similar to dropdown menus. |

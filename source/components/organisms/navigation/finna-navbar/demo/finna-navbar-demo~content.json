@@ -3,6 +3,5 @@
     "class": "finna-navbar-content"
   },
   "brandContent": "Content navbar",
-  "collapseId": "finna-navbar-demo-content-collapse",
-  "toggleBtnIconClass": "fa fa-handle-open"
+  "collapseId": "finna-navbar-demo-content-collapse"
 }

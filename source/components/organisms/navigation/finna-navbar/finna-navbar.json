@@ -7,6 +7,6 @@
   "brandLink": "#",
   "collapseContent": "<p>Collapse content</p>",
   "collapseId": "finna-navbar-collapse",
-  "toggleBtnIconClass": "fa fa-handle-open",
+  "toggleBtnIconClass": "finna-navbar-icon-caret",
   "toggleBtnLabel": "More"
 }

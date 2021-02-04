@@ -19,12 +19,14 @@ small screens.
 | `collapseId`         | string |
 | `items`              | array  |
 
+### Notes
+
 Additionally all finna-navbar properties except `ariaLabel`, `attributes` (these
 are used for the parent multi-level component) and `collapseContent`.
 
 ### Variations
 
-Add the `finna-multi-level-nav-lg` class for a larger variation.
-
-Add the `finna-multi-level-nav-content` class for a content navigation
-variation.
+| Class                           | Description                  |
+| ------------------------------- | ---------------------------- |
+| `finna-multi-level-nav-lg`      | Larger variation             |
+| `finna-multi-level-nav-content` | Content navigation variation |

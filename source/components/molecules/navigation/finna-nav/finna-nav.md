@@ -28,7 +28,8 @@ property is set it will override the same property in all items.
 
 ### Variations
 
-Since this component is based on Bootstrap's nav component it supports all 
-Bootstrap nav variations.
-
-Add the `finna-nav-lg` class for a larger variation.
+| Class              | Description                  |
+| ------------------ | ---------------------------- |
+| `finna-nav-lg`     | Larger variation             |
+| `finna-nav-navbar` | Variation for finna-navbar   |
+| `finna-nav-tabs`   | Variation for finna-tabs-nav |

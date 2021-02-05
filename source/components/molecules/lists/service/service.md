@@ -21,5 +21,5 @@ List component for static and dynamically generated organisation service data.
 
 #### Child components
 
-- `atoms/tooltips/tooltip/tooltip.phtml`
+- `molecules/tooltips/finna-tooltip-btn/finna-tooltip-btn.phtml`
 - `molecules/messaging/alert/alert.phtml`

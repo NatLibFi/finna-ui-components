@@ -14,8 +14,16 @@
       </a>
       <div class="details-wrapper">
         <div class="details-item">
-          <?= $this->render('components/atoms/tooltips/tooltip/tooltip.phtml', ['buttonClasses' => ['btn js-hide-onload hide js-email'], 'position' => 'bottom', 'buttonText' => "<i class='fa fa-at' aria-hidden='true'></i><span class='sr-only'>" . ($emailText ?? '') . "</span>", 'content' => ""]) ?>
-          <?= $this->render('components/atoms/tooltips/tooltip/tooltip.phtml', ['buttonClasses' => ['btn js-hide-onload hide js-phone'], 'position' => 'bottom', 'buttonText' => "<i class='fa fa-phone-square' aria-hidden='true'></i><span class='sr-only'>" . ($phoneText ?? '') . "</span>", 'content' => ""]) ?>
+          <?= $this->render('components/molecules/tooltips/finna-tooltip-btn/finna-tooltip-btn.phtml', [
+              'attributes' => ['class' => ['js-hide-onload', 'hide', 'js-email']],
+              'ariaLabel' => $emailText ?? '',
+              'iconClass' => 'fa fa-at'
+            ]); ?>
+          <?= $this->render('components/molecules/tooltips/finna-tooltip-btn/finna-tooltip-btn.phtml', [
+              'attributes' => ['class' => ['js-hide-onload', 'hide', 'js-phone']],
+              'ariaLabel' => $phoneText ?? '',
+              'iconClass' => 'fa fa-phone-square'
+            ]); ?>
           <a href="" target="_blank" class="js-route js-hide-onload hide btn">
             <i class="fa fa-bus" aria-hidden="true"></i>
             <span class="sr-only"><?= $directionsText ?? ''; ?> (<?= $externalLinkText ?? ''; ?>)</span>

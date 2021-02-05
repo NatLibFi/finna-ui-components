@@ -11,8 +11,10 @@
       <?php foreach ($items as $item) : ?>
         <li class="service-list-item">
           <?php if (isset($item['tooltip'])) : ?>
-            <?= $this->render('components/atoms/tooltips/tooltip/tooltip.phtml', ['buttonClasses' => ['btn', 'btn-link'], 'buttonText' => $item['name'], 'content' => $item['tooltip'], 'position' =>
-            'bottom']); ?>
+            <?= $this->render('components/molecules/tooltips/finna-tooltip-btn/finna-tooltip-btn.phtml', [
+                'label' => $item['name'],
+                'content' => $item['tooltip']
+              ]); ?>
           <?php else : ?>
             <span><?= $item['name']; ?></span>
           <?php endif; ?>

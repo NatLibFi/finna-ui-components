@@ -1,0 +1,10 @@
+{
+  "attributes": {
+    "class": [
+      "btn",
+      "btn-default"
+    ]
+  },
+  "iconClass": "fa fa-info-big",
+  "label": "Button"
+}

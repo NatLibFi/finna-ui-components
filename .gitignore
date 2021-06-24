@@ -8,5 +8,5 @@ package-lock.json
 
 #Pattern Lab
 dependencyGraph.json
-source/_meta/_00-head.mustache
-source/_meta/_01-foot.mustache
+source/_meta/_head.mustache
+source/_meta/_foot.mustache

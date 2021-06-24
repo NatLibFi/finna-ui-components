@@ -1,5 +1,6 @@
 <?php
   $__attributes = $this->htmlAttributes($attributes ?? []);
+  $__attributes->add('class', 'finna-tooltip-btn');
   $__attributes->set([
     'type' => 'button',
     'data-toggle' => 'tooltip',
@@ -7,10 +8,10 @@
     'data-placement' => $placement ?? 'bottom',
     'data-original-title' => $content ?? ''
   ]);
-  if (!isset($label) && isset($ariaLabel)) {
-    $__attributes['aria-label'] = $ariaLabel;
-  }
 ?>
-<button<?= $__attributes->add('class', 'finna-tooltip-btn') ?>>
-  <?php if (isset($iconClass)): ?><i class="<?= $iconClass ?>" aria-hidden="true"></i> <?php endif; ?><?= $label ?? '' ?>
-</button>
+<?= $this->render('components/molecules/buttons/finna-btn/finna-btn.phtml', [
+    'ariaLabel' => $ariaLabel ?? null,
+    'attributes' => $__attributes,
+    'iconClass' => $iconClass ?? null,
+    'label' => $label ?? null
+  ]); ?>

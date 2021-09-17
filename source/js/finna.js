@@ -1,7 +1,9 @@
 var finna = (function finnaModule() {
   return {
     init: function init() {
-      var modules = [];
+      var modules = [
+        'mdEditable',
+      ];
 
       $.each(modules, function initModule(index, module) {
         if (typeof finna[module] !== 'undefined') {

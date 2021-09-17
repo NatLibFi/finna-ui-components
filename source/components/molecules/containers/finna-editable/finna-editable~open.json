@@ -1,0 +1,6 @@
+{
+  "attributes": {
+    "class":  "finna-editable-open"
+  },
+  "editable": "<input type=\"text\" value=\"Editable content\">"
+}

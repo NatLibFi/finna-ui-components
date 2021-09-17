@@ -1,0 +1,6 @@
+{
+  "markdown": "Hello World",
+  "html": "<p>Hello World</p>",
+  "emptyHtml": "<p>This is <code>emptyHtml</code>, which is shown when there is no Markdown content.</p>",
+  "editLabel": "Edit Markdown"
+}

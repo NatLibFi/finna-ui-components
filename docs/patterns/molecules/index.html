@@ -6,11 +6,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width" />
 
-  <link rel="stylesheet" href="../../styles/style.min.css?1624539116249" media="all" />
-  <link rel="stylesheet" href="../../styles/patternlab/pattern-scaffolding.css?1624539116249" media="all" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css?1624539116249" media="all" />
+  <link rel="stylesheet" href="../../styles/style.min.css?1631876343988" media="all" />
+  <link rel="stylesheet" href="../../styles/patternlab/pattern-scaffolding.css?1631876343988" media="all" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css?1631876343988" media="all" />
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="../../js/vendor/jquery.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mockjax/2.5.1/jquery.mockjax.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"></script>
@@ -18,11 +18,12 @@
 
   <script src="../../js/vendor/bootstrap.min.js"></script>
   <script src="../../js/vendor/bootstrap-accessibility.min.js"></script>
+  <script src="../../js/vendor/easymde.min.js"></script>
   <script src="../../js/vendor/global-vufind-mock.min.js"></script>
   <script type="text/javascript" src="../../js/vendor/mockjax.min.js"></script>
   <script type="text/javascript" src="../../js/main.min.js"></script>
   <!-- Begin Pattern Lab (Required for Pattern Lab to run properly) -->
-  <link rel="stylesheet" href="../../styleguide/css/pattern-lab.css?1624539116249" media="all">  <!-- End Pattern Lab -->
+  <link rel="stylesheet" href="../../styleguide/css/pattern-lab.css?1631876343988" media="all">  <!-- End Pattern Lab -->
 </head>
 
 <body class="body">
@@ -37,9 +38,7 @@
       </div>
     </div>
   </div>
-</body>
 
-</html>
 <!-- View All Patterns in a Pattern Sub-Type -->
 <div class="pl-c-main">
 
@@ -206,7 +205,157 @@
 			</div><!--end pl-c-category__description-->
 			
 		</div><!--end pl-c-category-->
-					<div id="molecules-finna-panel" class="pl-c-pattern">
+					<div id="molecules-finna-editable" class="pl-c-pattern">
+		
+			<div class="pl-c-pattern__header">
+		
+				<h3 class="pl-c-pattern__title">
+		
+					<a href="../../patterns/molecules-containers-finna-editable&#x2F;molecules-containers-finna-editable.rendered.html" class="pl-c-pattern__title-link patternLink" data-patternpartial="molecules-finna-editable" title="Link to Pattern">
+						Editable
+		
+						<span class="pl-c-pattern-state pl-c-pattern-state--complete" title="complete"></span>
+		
+					</a><!--end pl-c-pattern__title-link-->
+		
+				</h3><!--end pl-c-pattern__title-->
+		
+				<button class="pl-c-pattern__extra-toggle pl-js-pattern-extra-toggle" id="pl-pattern-extra-toggle-molecules-finna-editable" data-patternpartial="molecules-finna-editable" title="View Pattern Info">
+					<span class="pl-c-pattern__extra-toggle-text pl-c-pattern__extra-toggle-text--expand">Expand</span>
+					<span class="pl-c-pattern__extra-toggle-text pl-c-pattern__extra-toggle-text--collapse">Collapse</span>
+					<div class="pl-c-pattern__toggle-icon-wrapper" aria-hidden="true">
+						<svg viewBox="0 0 16 16" width="20" height="20" class="pl-c-pattern__toggle-icon pl-c-pattern__toggle-icon--expand">
+							<path fill="currentColor" d="M9 11.5l1.5 1.5 5-5-5-5-1.5 1.5 3.5 3.5z"></path>
+							<path fill="currentColor" d="M7 4.5l-1.5-1.5-5 5 5 5 1.5-1.5-3.5-3.5z"></path>
+						</svg>
+		
+						<svg viewBox="0 0 20 16" width="20" height="20" class="pl-c-pattern__toggle-icon pl-c-pattern__toggle-icon--collapse">
+							<path fill="currentColor" d="M13 11.5l1.5 1.5 5-5-5-5-1.5 1.5 3.5 3.5z"></path>
+							<path fill="currentColor" d="M7 4.5l-1.5-1.5-5 5 5 5 1.5-1.5-3.5-3.5z"></path>
+							<path fill="currentColor" d="M10.958 2.352l1.085 0.296-3 11-1.085-0.296 3-11z"></path>
+						</svg>
+					</div>
+				</button>
+		
+			</div><!--end pl-c-pattern__header-->
+		
+			<div class="pl-c-pattern__extra pl-js-pattern-extra" id="pl-pattern-extra-molecules-finna-editable">
+		    </div><!--end pl-c-pattern__extra-->
+		
+			<div class="pl-js-pattern-example">
+			<div class="finna-editable clearfix">
+  <button class="finna-editable-btn finna-btn" type="button" aria-label="Edit"><i class="finna-editable-btn-icon" aria-hidden="true"></i></button>
+  <div class="finna-editable-container">
+    Editable content  </div>
+</div>
+
+			</div><!--end pl-js-pattern-example-->
+		
+			<script type="text/json" id="pl-pattern-data-molecules-finna-editable" class="pl-js-pattern-data">
+			{"cssEnabled":false,"patternLineageExists":false,"patternLineages":[],"lineage":[],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":false,"patternDesc":"<h3>Description</h3>\n<p>Container for editable components.</p>\n<p>Provides a consistent interface for activating edit mode and showing a busy state.</p>\n<h3>Properties</h3>\n<table>\n<thead>\n<tr>\n<th>Property</th>\n<th>Type</th>\n<th>Default value</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>attributes</code></td>\n<td>array</td>\n<td></td>\n</tr>\n<tr>\n<td><code>containerAttributes</code></td>\n<td>string</td>\n<td></td>\n</tr>\n<tr>\n<td><code>editable</code></td>\n<td>string</td>\n<td></td>\n</tr>\n<tr>\n<td><code>editLabel</code></td>\n<td>string</td>\n<td></td>\n</tr>\n</tbody>\n</table>\n<h3>Variations</h3>\n<table>\n<thead>\n<tr>\n<th>Class</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>finna-editable-state-busy</code></td>\n<td>Busy variation</td>\n</tr>\n<tr>\n<td><code>finna-editable-state-open</code></td>\n<td>Open variation</td>\n</tr>\n</tbody>\n</table>\n<p>These variations are designed to be added and removed via JavaScript.\nThey are not meant to be used together.</p>\n","patternBreadcrumb":{"patternGroup":"molecules","patternSubgroup":"containers"},"patternExtension":"phtml","patternName":"Editable","patternPartial":"molecules-finna-editable","patternState":"complete","patternEngineName":"phtml","extraOutput":{}}
+			</script>
+		
+		</div><!--end pl-c-pattern-->		<div id="molecules-finna-editable-busy" class="pl-c-pattern">
+		
+			<div class="pl-c-pattern__header">
+		
+				<h3 class="pl-c-pattern__title">
+		
+					<a href="../../patterns/molecules-containers-finna-editable-busy&#x2F;molecules-containers-finna-editable-busy.rendered.html" class="pl-c-pattern__title-link patternLink" data-patternpartial="molecules-finna-editable-busy" title="Link to Pattern">
+						Editable - Busy variation
+		
+						<span class="pl-c-pattern-state pl-c-pattern-state--complete" title="complete"></span>
+		
+					</a><!--end pl-c-pattern__title-link-->
+		
+				</h3><!--end pl-c-pattern__title-->
+		
+				<button class="pl-c-pattern__extra-toggle pl-js-pattern-extra-toggle" id="pl-pattern-extra-toggle-molecules-finna-editable-busy" data-patternpartial="molecules-finna-editable-busy" title="View Pattern Info">
+					<span class="pl-c-pattern__extra-toggle-text pl-c-pattern__extra-toggle-text--expand">Expand</span>
+					<span class="pl-c-pattern__extra-toggle-text pl-c-pattern__extra-toggle-text--collapse">Collapse</span>
+					<div class="pl-c-pattern__toggle-icon-wrapper" aria-hidden="true">
+						<svg viewBox="0 0 16 16" width="20" height="20" class="pl-c-pattern__toggle-icon pl-c-pattern__toggle-icon--expand">
+							<path fill="currentColor" d="M9 11.5l1.5 1.5 5-5-5-5-1.5 1.5 3.5 3.5z"></path>
+							<path fill="currentColor" d="M7 4.5l-1.5-1.5-5 5 5 5 1.5-1.5-3.5-3.5z"></path>
+						</svg>
+		
+						<svg viewBox="0 0 20 16" width="20" height="20" class="pl-c-pattern__toggle-icon pl-c-pattern__toggle-icon--collapse">
+							<path fill="currentColor" d="M13 11.5l1.5 1.5 5-5-5-5-1.5 1.5 3.5 3.5z"></path>
+							<path fill="currentColor" d="M7 4.5l-1.5-1.5-5 5 5 5 1.5-1.5-3.5-3.5z"></path>
+							<path fill="currentColor" d="M10.958 2.352l1.085 0.296-3 11-1.085-0.296 3-11z"></path>
+						</svg>
+					</div>
+				</button>
+		
+			</div><!--end pl-c-pattern__header-->
+		
+			<div class="pl-c-pattern__extra pl-js-pattern-extra" id="pl-pattern-extra-molecules-finna-editable-busy">
+		    </div><!--end pl-c-pattern__extra-->
+		
+			<div class="pl-js-pattern-example">
+			<div class="finna-editable-busy finna-editable clearfix">
+  <button class="finna-editable-btn finna-btn" type="button" aria-label="Edit"><i class="finna-editable-btn-icon" aria-hidden="true"></i></button>
+  <div class="finna-editable-container">
+    Editable content  </div>
+</div>
+
+			</div><!--end pl-js-pattern-example-->
+		
+			<script type="text/json" id="pl-pattern-data-molecules-finna-editable-busy" class="pl-js-pattern-data">
+			{"cssEnabled":false,"patternLineageExists":false,"patternLineages":[],"lineage":[],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":false,"patternDesc":"","patternBreadcrumb":{"patternGroup":"molecules","patternSubgroup":"containers"},"patternExtension":"phtml","patternName":"Editable - Busy variation","patternPartial":"molecules-finna-editable-busy","patternState":"complete","patternEngineName":"phtml","extraOutput":{}}
+			</script>
+		
+		</div><!--end pl-c-pattern-->		<div id="molecules-finna-editable-open" class="pl-c-pattern">
+		
+			<div class="pl-c-pattern__header">
+		
+				<h3 class="pl-c-pattern__title">
+		
+					<a href="../../patterns/molecules-containers-finna-editable-open&#x2F;molecules-containers-finna-editable-open.rendered.html" class="pl-c-pattern__title-link patternLink" data-patternpartial="molecules-finna-editable-open" title="Link to Pattern">
+						Editable - Open variation
+		
+						<span class="pl-c-pattern-state pl-c-pattern-state--complete" title="complete"></span>
+		
+					</a><!--end pl-c-pattern__title-link-->
+		
+				</h3><!--end pl-c-pattern__title-->
+		
+				<button class="pl-c-pattern__extra-toggle pl-js-pattern-extra-toggle" id="pl-pattern-extra-toggle-molecules-finna-editable-open" data-patternpartial="molecules-finna-editable-open" title="View Pattern Info">
+					<span class="pl-c-pattern__extra-toggle-text pl-c-pattern__extra-toggle-text--expand">Expand</span>
+					<span class="pl-c-pattern__extra-toggle-text pl-c-pattern__extra-toggle-text--collapse">Collapse</span>
+					<div class="pl-c-pattern__toggle-icon-wrapper" aria-hidden="true">
+						<svg viewBox="0 0 16 16" width="20" height="20" class="pl-c-pattern__toggle-icon pl-c-pattern__toggle-icon--expand">
+							<path fill="currentColor" d="M9 11.5l1.5 1.5 5-5-5-5-1.5 1.5 3.5 3.5z"></path>
+							<path fill="currentColor" d="M7 4.5l-1.5-1.5-5 5 5 5 1.5-1.5-3.5-3.5z"></path>
+						</svg>
+		
+						<svg viewBox="0 0 20 16" width="20" height="20" class="pl-c-pattern__toggle-icon pl-c-pattern__toggle-icon--collapse">
+							<path fill="currentColor" d="M13 11.5l1.5 1.5 5-5-5-5-1.5 1.5 3.5 3.5z"></path>
+							<path fill="currentColor" d="M7 4.5l-1.5-1.5-5 5 5 5 1.5-1.5-3.5-3.5z"></path>
+							<path fill="currentColor" d="M10.958 2.352l1.085 0.296-3 11-1.085-0.296 3-11z"></path>
+						</svg>
+					</div>
+				</button>
+		
+			</div><!--end pl-c-pattern__header-->
+		
+			<div class="pl-c-pattern__extra pl-js-pattern-extra" id="pl-pattern-extra-molecules-finna-editable-open">
+		    </div><!--end pl-c-pattern__extra-->
+		
+			<div class="pl-js-pattern-example">
+			<div class="finna-editable-open finna-editable clearfix">
+  <button class="finna-editable-btn finna-btn" type="button" aria-label="Edit"><i class="finna-editable-btn-icon" aria-hidden="true"></i></button>
+  <div class="finna-editable-container">
+    <input type="text" value="Editable content">  </div>
+</div>
+
+			</div><!--end pl-js-pattern-example-->
+		
+			<script type="text/json" id="pl-pattern-data-molecules-finna-editable-open" class="pl-js-pattern-data">
+			{"cssEnabled":false,"patternLineageExists":false,"patternLineages":[],"lineage":[],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":false,"patternDesc":"","patternBreadcrumb":{"patternGroup":"molecules","patternSubgroup":"containers"},"patternExtension":"phtml","patternName":"Editable - Open variation","patternPartial":"molecules-finna-editable-open","patternState":"complete","patternEngineName":"phtml","extraOutput":{}}
+			</script>
+		
+		</div><!--end pl-c-pattern-->		<div id="molecules-finna-panel" class="pl-c-pattern">
 		
 			<div class="pl-c-pattern__header">
 		
@@ -381,33 +530,22 @@
 			{"cssEnabled":false,"patternLineageExists":false,"patternLineages":[],"lineage":[],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":false,"patternDesc":"","patternBreadcrumb":{"patternGroup":"molecules","patternSubgroup":"containers"},"patternExtension":"phtml","patternName":"Panel - Collapsible, borderless variation","patternPartial":"molecules-finna-panel-collapsible-borderless","patternState":"complete","patternEngineName":"phtml","extraOutput":{}}
 			</script>
 		
-		</div><!--end pl-c-pattern-->		<div id="viewall-molecules-tooltips" class="pl-c-category">
-				
-			<h2 class="pl-c-category__title">
-				<a href="../../patterns/molecules-tooltips&#x2F;index.html" class="pl-c-category__title-link patternLink" data-patternpartial="viewall-molecules-tooltips">Tooltips</a>
-			</h2><!--end pl-c-category__title-->
-		
-			<div class="pl-c-category__description pl-c-text-passage">
-				
-			</div><!--end pl-c-category__description-->
-			
-		</div><!--end pl-c-category-->
-					<div id="molecules-finna-tooltip-btn" class="pl-c-pattern">
+		</div><!--end pl-c-pattern-->		<div id="molecules-finna-panel-element-demo" class="pl-c-pattern">
 		
 			<div class="pl-c-pattern__header">
 		
 				<h3 class="pl-c-pattern__title">
 		
-					<a href="../../patterns/molecules-tooltips-finna-tooltip-btn&#x2F;molecules-tooltips-finna-tooltip-btn.rendered.html" class="pl-c-pattern__title-link patternLink" data-patternpartial="molecules-finna-tooltip-btn" title="Link to Pattern">
-						Tooltip button
+					<a href="../../patterns/molecules-containers-finna-panel-element-demo&#x2F;molecules-containers-finna-panel-element-demo.rendered.html" class="pl-c-pattern__title-link patternLink" data-patternpartial="molecules-finna-panel-element-demo" title="Link to Pattern">
+						Panel custom element - Demo
 		
-						<span class="pl-c-pattern-state pl-c-pattern-state--complete" title="complete"></span>
+						<span class="pl-c-pattern-state pl-c-pattern-state--demo" title="demo"></span>
 		
 					</a><!--end pl-c-pattern__title-link-->
 		
 				</h3><!--end pl-c-pattern__title-->
 		
-				<button class="pl-c-pattern__extra-toggle pl-js-pattern-extra-toggle" id="pl-pattern-extra-toggle-molecules-finna-tooltip-btn" data-patternpartial="molecules-finna-tooltip-btn" title="View Pattern Info">
+				<button class="pl-c-pattern__extra-toggle pl-js-pattern-extra-toggle" id="pl-pattern-extra-toggle-molecules-finna-panel-element-demo" data-patternpartial="molecules-finna-panel-element-demo" title="View Pattern Info">
 					<span class="pl-c-pattern__extra-toggle-text pl-c-pattern__extra-toggle-text--expand">Expand</span>
 					<span class="pl-c-pattern__extra-toggle-text pl-c-pattern__extra-toggle-text--collapse">Collapse</span>
 					<div class="pl-c-pattern__toggle-icon-wrapper" aria-hidden="true">
@@ -426,16 +564,252 @@
 		
 			</div><!--end pl-c-pattern__header-->
 		
-			<div class="pl-c-pattern__extra pl-js-pattern-extra" id="pl-pattern-extra-molecules-finna-tooltip-btn">
+			<div class="pl-c-pattern__extra pl-js-pattern-extra" id="pl-pattern-extra-molecules-finna-panel-element-demo">
 		    </div><!--end pl-c-pattern__extra-->
 		
 			<div class="pl-js-pattern-example">
-			<button class="finna-tooltip-btn finna-btn" type="button" data-toggle="tooltip" data-html="true" data-placement="bottom" data-original-title="<h4>Tooltip heading</h4><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed convallis tempor suscipit. Mauris tellus enim, auctor et mi in, ultrices vehicula purus. Phasellus cursus velit et euismod pharetra.</p><p><a href='#'>Link</a></p>"><i class="fa fa-info-big" aria-hidden="true"></i> Tooltip button</button>
+			<finna-panel>
+  <span slot="heading">Heading</span>
+  Content
+</finna-panel>
 
 			</div><!--end pl-js-pattern-example-->
 		
-			<script type="text/json" id="pl-pattern-data-molecules-finna-tooltip-btn" class="pl-js-pattern-data">
-			{"cssEnabled":false,"patternLineageExists":false,"patternLineages":[],"lineage":[],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":false,"patternDesc":"<h3>Description</h3>\n<p>A tooltip button with an icon and/or label.</p>\n<h3>Properties</h3>\n<table>\n<thead>\n<tr>\n<th>Property</th>\n<th>Type</th>\n<th>Default Value</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>ariaLabel</code></td>\n<td>string</td>\n<td></td>\n</tr>\n<tr>\n<td><code>attributes</code></td>\n<td>array</td>\n<td></td>\n</tr>\n<tr>\n<td><code>content</code></td>\n<td>string</td>\n<td></td>\n</tr>\n<tr>\n<td><code>iconClass</code></td>\n<td>string</td>\n<td></td>\n</tr>\n<tr>\n<td><code>label</code></td>\n<td>string</td>\n<td></td>\n</tr>\n<tr>\n<td><code>placement</code></td>\n<td>string</td>\n<td><code>bottom</code></td>\n</tr>\n</tbody>\n</table>\n<h3>Notes</h3>\n<p><code>ariaLabel</code> is not used if there is a <code>label</code>.</p>\n","patternBreadcrumb":{"patternGroup":"molecules","patternSubgroup":"tooltips"},"patternExtension":"phtml","patternName":"Tooltip button","patternPartial":"molecules-finna-tooltip-btn","patternState":"complete","patternEngineName":"phtml","extraOutput":{}}
+			<script type="text/json" id="pl-pattern-data-molecules-finna-panel-element-demo" class="pl-js-pattern-data">
+			{"cssEnabled":false,"patternLineageExists":false,"patternLineages":[],"lineage":[],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":false,"patternDesc":"","patternBreadcrumb":{"patternGroup":"molecules","patternSubgroup":"containers"},"patternExtension":"phtml","patternName":"Panel custom element - Demo","patternPartial":"molecules-finna-panel-element-demo","patternState":"demo","patternEngineName":"phtml","extraOutput":{}}
+			</script>
+		
+		</div><!--end pl-c-pattern-->		<div id="molecules-finna-truncate" class="pl-c-pattern">
+		
+			<div class="pl-c-pattern__header">
+		
+				<h3 class="pl-c-pattern__title">
+		
+					<a href="../../patterns/molecules-containers-finna-truncate&#x2F;molecules-containers-finna-truncate.rendered.html" class="pl-c-pattern__title-link patternLink" data-patternpartial="molecules-finna-truncate" title="Link to Pattern">
+						Truncate
+		
+						<span class="pl-c-pattern-state pl-c-pattern-state--complete" title="complete"></span>
+		
+					</a><!--end pl-c-pattern__title-link-->
+		
+				</h3><!--end pl-c-pattern__title-->
+		
+				<button class="pl-c-pattern__extra-toggle pl-js-pattern-extra-toggle" id="pl-pattern-extra-toggle-molecules-finna-truncate" data-patternpartial="molecules-finna-truncate" title="View Pattern Info">
+					<span class="pl-c-pattern__extra-toggle-text pl-c-pattern__extra-toggle-text--expand">Expand</span>
+					<span class="pl-c-pattern__extra-toggle-text pl-c-pattern__extra-toggle-text--collapse">Collapse</span>
+					<div class="pl-c-pattern__toggle-icon-wrapper" aria-hidden="true">
+						<svg viewBox="0 0 16 16" width="20" height="20" class="pl-c-pattern__toggle-icon pl-c-pattern__toggle-icon--expand">
+							<path fill="currentColor" d="M9 11.5l1.5 1.5 5-5-5-5-1.5 1.5 3.5 3.5z"></path>
+							<path fill="currentColor" d="M7 4.5l-1.5-1.5-5 5 5 5 1.5-1.5-3.5-3.5z"></path>
+						</svg>
+		
+						<svg viewBox="0 0 20 16" width="20" height="20" class="pl-c-pattern__toggle-icon pl-c-pattern__toggle-icon--collapse">
+							<path fill="currentColor" d="M13 11.5l1.5 1.5 5-5-5-5-1.5 1.5 3.5 3.5z"></path>
+							<path fill="currentColor" d="M7 4.5l-1.5-1.5-5 5 5 5 1.5-1.5-3.5-3.5z"></path>
+							<path fill="currentColor" d="M10.958 2.352l1.085 0.296-3 11-1.085-0.296 3-11z"></path>
+						</svg>
+					</div>
+				</button>
+		
+			</div><!--end pl-c-pattern__header-->
+		
+			<div class="pl-c-pattern__extra pl-js-pattern-extra" id="pl-pattern-extra-molecules-finna-truncate">
+		    </div><!--end pl-c-pattern__extra-->
+		
+			<div class="pl-js-pattern-example">
+			<div class="height-based finna-truncate" data-truncate='{"label":"This is a label"}'>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p><p>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div>
+
+			</div><!--end pl-js-pattern-example-->
+		
+			<script type="text/json" id="pl-pattern-data-molecules-finna-truncate" class="pl-js-pattern-data">
+			{"cssEnabled":false,"patternLineageExists":false,"patternLineages":[],"lineage":[],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":false,"patternDesc":"<h3>Description</h3>\n<p>A truncation component that supports both element-based and height-based truncation.</p>\n<h3>Properties</h3>\n<table>\n<thead>\n<tr>\n<th>Property</th>\n<th>Type</th>\n<th>Default value</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>attributes</code></td>\n<td>array</td>\n<td></td>\n</tr>\n<tr>\n<td><code>btnClass</code></td>\n<td>string</td>\n<td></td>\n</tr>\n<tr>\n<td><code>content</code></td>\n<td>string</td>\n<td></td>\n</tr>\n<tr>\n<td><code>element</code></td>\n<td>string</td>\n<td></td>\n</tr>\n<tr>\n<td><code>inPlaceToggle</code></td>\n<td>boolean</td>\n<td><code>false</code></td>\n</tr>\n<tr>\n<td><code>label</code></td>\n<td>string</td>\n<td></td>\n</tr>\n<tr>\n<td><code>lessLabel</code></td>\n<td>string</td>\n<td><code>show_less</code></td>\n</tr>\n<tr>\n<td><code>moreLabel</code></td>\n<td>string</td>\n<td><code>show_more</code></td>\n</tr>\n<tr>\n<td><code>rows</code></td>\n<td>int</td>\n<td><code>3</code></td>\n</tr>\n<tr>\n<td><code>topToggle</code></td>\n<td>int</td>\n<td><code>Infinity</code></td>\n</tr>\n</tbody>\n</table>\n<h3>Notes</h3>\n<p><code>element</code> is used for element-based truncation.</p>\n<p><code>lessLabel</code> and <code>moreLabel</code> are not used if <code>label</code> is set.</p>\n<p><code>inPlaceToggle</code> is only used in element-based truncation.</p>\n<p><code>topToggle</code> only supports boolean values for height-based truncation.</p>\n<h3>Variations</h3>\n","patternBreadcrumb":{"patternGroup":"molecules","patternSubgroup":"containers"},"patternExtension":"phtml","patternName":"Truncate","patternPartial":"molecules-finna-truncate","patternState":"complete","patternEngineName":"phtml","extraOutput":{}}
+			</script>
+		
+		</div><!--end pl-c-pattern-->		<div id="molecules-finna-truncate-demos" class="pl-c-pattern">
+		
+			<div class="pl-c-pattern__header">
+		
+				<h3 class="pl-c-pattern__title">
+		
+					<a href="../../patterns/molecules-containers-finna-truncate-demos&#x2F;molecules-containers-finna-truncate-demos.rendered.html" class="pl-c-pattern__title-link patternLink" data-patternpartial="molecules-finna-truncate-demos" title="Link to Pattern">
+						Truncate - Demos
+		
+						<span class="pl-c-pattern-state pl-c-pattern-state--demo" title="demo"></span>
+		
+					</a><!--end pl-c-pattern__title-link-->
+		
+				</h3><!--end pl-c-pattern__title-->
+		
+				<button class="pl-c-pattern__extra-toggle pl-js-pattern-extra-toggle" id="pl-pattern-extra-toggle-molecules-finna-truncate-demos" data-patternpartial="molecules-finna-truncate-demos" title="View Pattern Info">
+					<span class="pl-c-pattern__extra-toggle-text pl-c-pattern__extra-toggle-text--expand">Expand</span>
+					<span class="pl-c-pattern__extra-toggle-text pl-c-pattern__extra-toggle-text--collapse">Collapse</span>
+					<div class="pl-c-pattern__toggle-icon-wrapper" aria-hidden="true">
+						<svg viewBox="0 0 16 16" width="20" height="20" class="pl-c-pattern__toggle-icon pl-c-pattern__toggle-icon--expand">
+							<path fill="currentColor" d="M9 11.5l1.5 1.5 5-5-5-5-1.5 1.5 3.5 3.5z"></path>
+							<path fill="currentColor" d="M7 4.5l-1.5-1.5-5 5 5 5 1.5-1.5-3.5-3.5z"></path>
+						</svg>
+		
+						<svg viewBox="0 0 20 16" width="20" height="20" class="pl-c-pattern__toggle-icon pl-c-pattern__toggle-icon--collapse">
+							<path fill="currentColor" d="M13 11.5l1.5 1.5 5-5-5-5-1.5 1.5 3.5 3.5z"></path>
+							<path fill="currentColor" d="M7 4.5l-1.5-1.5-5 5 5 5 1.5-1.5-3.5-3.5z"></path>
+							<path fill="currentColor" d="M10.958 2.352l1.085 0.296-3 11-1.085-0.296 3-11z"></path>
+						</svg>
+					</div>
+				</button>
+		
+			</div><!--end pl-c-pattern__header-->
+		
+			<div class="pl-c-pattern__extra pl-js-pattern-extra" id="pl-pattern-extra-molecules-finna-truncate-demos">
+		    </div><!--end pl-c-pattern__extra-->
+		
+			<div class="pl-js-pattern-example">
+			<p>These demos use the <code>finna-truncate</code> component template. The demos are wrapped in a truncated element to demostrate that truncated elements can be nested.</p>
+
+
+<h6><code>'lessLabel' => 'Hide demos', 'moreLabel' => 'Show demos', 'topToggle' => 1, 'rows' => 0</code></h6>
+
+<div class="height-based finna-truncate" data-truncate='{"less-label":"Hide demos","more-label":"Show demos","rows":0,"top-toggle":1}'>
+  
+<div>
+
+<hr>
+
+<h6>Defaults (height-based, 3 rows, default label)</h6>
+
+<div class="height-based finna-truncate">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div>
+
+<hr>
+
+<h6><code>'rows' => 0</code></h6>
+
+<div class="height-based finna-truncate" data-truncate='{"rows":0}'>
+  Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+
+<hr>
+
+<h6><code>'element' => 'li'</code></h6>
+
+<div class="element-based finna-truncate" data-truncate='{"element":"li"}'>
+  <ul>
+  <li><a>Link 1</a></li>
+  <li><a>Link 2</a></li>
+  <li><a>Link 3</a></li>
+  <li><a>Link 4</a></li>
+  <li><a>Link 5</a></li>
+  <li><a>Link 6</a></li>
+  <li><a>Link 7</a></li>
+  <li><a>Link 8</a></li>
+</ul></div>
+
+<hr>
+
+<h6><code>'element' => 'li', 'inPlaceToggle' => true, 'rows' => 5</code></h6>
+
+<div class="element-based finna-truncate" data-truncate='{"element":"li","in-place-toggle":true,"rows":5}'>
+  <ul>
+  <li><a>Link 1</a></li>
+  <li><a>Link 2</a></li>
+  <li><a>Link 3</a></li>
+  <li><a>Link 4</a></li>
+  <li><a>Link 5</a></li>
+  <li><a>Link 6</a></li>
+  <li><a>Link 7</a></li>
+  <li><a>Link 8</a></li>
+</ul></div>
+
+<hr>
+
+<h6><code>'element' => 'li', 'rows' => 0, 'topToggle' => 1</code></h6>
+
+<div class="element-based finna-truncate" data-truncate='{"element":"li","rows":0,"top-toggle":1}'>
+  <ul>
+  <li><a>Link 1</a></li>
+  <li><a>Link 2</a></li>
+  <li><a>Link 3</a></li>
+  <li><a>Link 4</a></li>
+  <li><a>Link 5</a></li>
+  <li><a>Link 6</a></li>
+  <li><a>Link 7</a></li>
+  <li><a>Link 8</a></li>
+</ul></div>
+
+<hr>
+
+<h6><code>'element' => 'li', 'inPlaceToggle' => true, 'rows' => 0</code></h6>
+
+<div class="element-based finna-truncate" data-truncate='{"element":"li","in-place-toggle":true,"rows":0}'>
+  <ul>
+  <li><a>Link 1</a></li>
+  <li><a>Link 2</a></li>
+  <li><a>Link 3</a></li>
+  <li><a>Link 4</a></li>
+  <li><a>Link 5</a></li>
+  <li><a>Link 6</a></li>
+  <li><a>Link 7</a></li>
+  <li><a>Link 8</a></li>
+</ul></div>
+
+<hr>
+
+</div>
+
+</div>
+
+			</div><!--end pl-js-pattern-example-->
+		
+			<script type="text/json" id="pl-pattern-data-molecules-finna-truncate-demos" class="pl-js-pattern-data">
+			{"cssEnabled":false,"patternLineageExists":false,"patternLineages":[],"lineage":[],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":false,"patternDesc":"","patternBreadcrumb":{"patternGroup":"molecules","patternSubgroup":"containers"},"patternExtension":"phtml","patternName":"Truncate - Demos","patternPartial":"molecules-finna-truncate-demos","patternState":"demo","patternEngineName":"phtml","extraOutput":{}}
+			</script>
+		
+		</div><!--end pl-c-pattern-->		<div id="molecules-finna-truncate-element-demo" class="pl-c-pattern">
+		
+			<div class="pl-c-pattern__header">
+		
+				<h3 class="pl-c-pattern__title">
+		
+					<a href="../../patterns/molecules-containers-finna-truncate-element-demo&#x2F;molecules-containers-finna-truncate-element-demo.rendered.html" class="pl-c-pattern__title-link patternLink" data-patternpartial="molecules-finna-truncate-element-demo" title="Link to Pattern">
+						Truncate custom element - Demo
+		
+						<span class="pl-c-pattern-state pl-c-pattern-state--demo" title="demo"></span>
+		
+					</a><!--end pl-c-pattern__title-link-->
+		
+				</h3><!--end pl-c-pattern__title-->
+		
+				<button class="pl-c-pattern__extra-toggle pl-js-pattern-extra-toggle" id="pl-pattern-extra-toggle-molecules-finna-truncate-element-demo" data-patternpartial="molecules-finna-truncate-element-demo" title="View Pattern Info">
+					<span class="pl-c-pattern__extra-toggle-text pl-c-pattern__extra-toggle-text--expand">Expand</span>
+					<span class="pl-c-pattern__extra-toggle-text pl-c-pattern__extra-toggle-text--collapse">Collapse</span>
+					<div class="pl-c-pattern__toggle-icon-wrapper" aria-hidden="true">
+						<svg viewBox="0 0 16 16" width="20" height="20" class="pl-c-pattern__toggle-icon pl-c-pattern__toggle-icon--expand">
+							<path fill="currentColor" d="M9 11.5l1.5 1.5 5-5-5-5-1.5 1.5 3.5 3.5z"></path>
+							<path fill="currentColor" d="M7 4.5l-1.5-1.5-5 5 5 5 1.5-1.5-3.5-3.5z"></path>
+						</svg>
+		
+						<svg viewBox="0 0 20 16" width="20" height="20" class="pl-c-pattern__toggle-icon pl-c-pattern__toggle-icon--collapse">
+							<path fill="currentColor" d="M13 11.5l1.5 1.5 5-5-5-5-1.5 1.5 3.5 3.5z"></path>
+							<path fill="currentColor" d="M7 4.5l-1.5-1.5-5 5 5 5 1.5-1.5-3.5-3.5z"></path>
+							<path fill="currentColor" d="M10.958 2.352l1.085 0.296-3 11-1.085-0.296 3-11z"></path>
+						</svg>
+					</div>
+				</button>
+		
+			</div><!--end pl-c-pattern__header-->
+		
+			<div class="pl-c-pattern__extra pl-js-pattern-extra" id="pl-pattern-extra-molecules-finna-truncate-element-demo">
+		    </div><!--end pl-c-pattern__extra-->
+		
+			<div class="pl-js-pattern-example">
+			<finna-truncate>
+  <span slot="label">Label</span>
+  Content
+</finna-truncate>
+
+			</div><!--end pl-js-pattern-example-->
+		
+			<script type="text/json" id="pl-pattern-data-molecules-finna-truncate-element-demo" class="pl-js-pattern-data">
+			{"cssEnabled":false,"patternLineageExists":false,"patternLineages":[],"lineage":[],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":false,"patternDesc":"","patternBreadcrumb":{"patternGroup":"molecules","patternSubgroup":"containers"},"patternExtension":"phtml","patternName":"Truncate custom element - Demo","patternPartial":"molecules-finna-truncate-element-demo","patternState":"demo","patternEngineName":"phtml","extraOutput":{}}
 			</script>
 		
 		</div><!--end pl-c-pattern-->		<div id="viewall-molecules-navigation" class="pl-c-category">
@@ -554,6 +928,63 @@
 			{"cssEnabled":false,"patternLineageExists":false,"patternLineages":[],"lineage":[],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":false,"patternDesc":"<h3>Description</h3>\n<p>Navigation item with optional tooltip button and children.</p>\n<h3>Properties</h3>\n<table>\n<thead>\n<tr>\n<th>Property</th>\n<th>Type</th>\n<th>Default Value</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>active</code></td>\n<td>boolean</td>\n<td><code>false</code></td>\n</tr>\n<tr>\n<td><code>ariaCurrent</code></td>\n<td>string</td>\n<td></td>\n</tr>\n<tr>\n<td><code>attributes</code></td>\n<td>array</td>\n<td></td>\n</tr>\n<tr>\n<td><code>children</code></td>\n<td>array</td>\n<td></td>\n</tr>\n<tr>\n<td><code>description</code></td>\n<td>string</td>\n<td></td>\n</tr>\n<tr>\n<td><code>label</code></td>\n<td>string</td>\n<td></td>\n</tr>\n<tr>\n<td><code>link</code></td>\n<td>string</td>\n<td></td>\n</tr>\n<tr>\n<td><code>linkAttributes</code></td>\n<td>array</td>\n<td></td>\n</tr>\n<tr>\n<td><code>renderChildren</code></td>\n<td>string</td>\n<td><code>dropdown</code></td>\n</tr>\n<tr>\n<td><code>tooltipBtn</code></td>\n<td>array</td>\n<td></td>\n</tr>\n</tbody>\n</table>\n<h3>Notes</h3>\n<p><code>renderChildren</code> can be used to control how possible child items are rendered.\nCurrently supported values are <code>false</code>, <code>simple</code> and <code>dropdown</code>.</p>\n<p><code>link</code> is not used if the item has children and the value of <code>renderChildren</code>\nis <code>dropdown</code>.</p>\n<p><code>tooltipBtn</code> should contain properties for a finna-tooltip-btn. Tooltip buttons\nare only rendered for first level items that do not have a dropdown.</p>\n<p>Descriptions are only rendered for child items.</p>\n<p>This component currently only supports one level of children.</p>\n","patternBreadcrumb":{"patternGroup":"molecules","patternSubgroup":"navigation"},"patternExtension":"phtml","patternName":"Nav item","patternPartial":"molecules-finna-nav-item","patternState":"complete","patternEngineName":"phtml","extraOutput":{}}
 			</script>
 		
+		</div><!--end pl-c-pattern-->		<div id="viewall-molecules-tooltips" class="pl-c-category">
+				
+			<h2 class="pl-c-category__title">
+				<a href="../../patterns/molecules-tooltips&#x2F;index.html" class="pl-c-category__title-link patternLink" data-patternpartial="viewall-molecules-tooltips">Tooltips</a>
+			</h2><!--end pl-c-category__title-->
+		
+			<div class="pl-c-category__description pl-c-text-passage">
+				
+			</div><!--end pl-c-category__description-->
+			
+		</div><!--end pl-c-category-->
+					<div id="molecules-finna-tooltip-btn" class="pl-c-pattern">
+		
+			<div class="pl-c-pattern__header">
+		
+				<h3 class="pl-c-pattern__title">
+		
+					<a href="../../patterns/molecules-tooltips-finna-tooltip-btn&#x2F;molecules-tooltips-finna-tooltip-btn.rendered.html" class="pl-c-pattern__title-link patternLink" data-patternpartial="molecules-finna-tooltip-btn" title="Link to Pattern">
+						Tooltip button
+		
+						<span class="pl-c-pattern-state pl-c-pattern-state--complete" title="complete"></span>
+		
+					</a><!--end pl-c-pattern__title-link-->
+		
+				</h3><!--end pl-c-pattern__title-->
+		
+				<button class="pl-c-pattern__extra-toggle pl-js-pattern-extra-toggle" id="pl-pattern-extra-toggle-molecules-finna-tooltip-btn" data-patternpartial="molecules-finna-tooltip-btn" title="View Pattern Info">
+					<span class="pl-c-pattern__extra-toggle-text pl-c-pattern__extra-toggle-text--expand">Expand</span>
+					<span class="pl-c-pattern__extra-toggle-text pl-c-pattern__extra-toggle-text--collapse">Collapse</span>
+					<div class="pl-c-pattern__toggle-icon-wrapper" aria-hidden="true">
+						<svg viewBox="0 0 16 16" width="20" height="20" class="pl-c-pattern__toggle-icon pl-c-pattern__toggle-icon--expand">
+							<path fill="currentColor" d="M9 11.5l1.5 1.5 5-5-5-5-1.5 1.5 3.5 3.5z"></path>
+							<path fill="currentColor" d="M7 4.5l-1.5-1.5-5 5 5 5 1.5-1.5-3.5-3.5z"></path>
+						</svg>
+		
+						<svg viewBox="0 0 20 16" width="20" height="20" class="pl-c-pattern__toggle-icon pl-c-pattern__toggle-icon--collapse">
+							<path fill="currentColor" d="M13 11.5l1.5 1.5 5-5-5-5-1.5 1.5 3.5 3.5z"></path>
+							<path fill="currentColor" d="M7 4.5l-1.5-1.5-5 5 5 5 1.5-1.5-3.5-3.5z"></path>
+							<path fill="currentColor" d="M10.958 2.352l1.085 0.296-3 11-1.085-0.296 3-11z"></path>
+						</svg>
+					</div>
+				</button>
+		
+			</div><!--end pl-c-pattern__header-->
+		
+			<div class="pl-c-pattern__extra pl-js-pattern-extra" id="pl-pattern-extra-molecules-finna-tooltip-btn">
+		    </div><!--end pl-c-pattern__extra-->
+		
+			<div class="pl-js-pattern-example">
+			<button class="finna-tooltip-btn finna-btn" type="button" data-toggle="tooltip" data-html="true" data-placement="bottom" data-original-title="<h4>Tooltip heading</h4><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed convallis tempor suscipit. Mauris tellus enim, auctor et mi in, ultrices vehicula purus. Phasellus cursus velit et euismod pharetra.</p><p><a href='#'>Link</a></p>"><i class="fa fa-info-big" aria-hidden="true"></i> Tooltip button</button>
+
+			</div><!--end pl-js-pattern-example-->
+		
+			<script type="text/json" id="pl-pattern-data-molecules-finna-tooltip-btn" class="pl-js-pattern-data">
+			{"cssEnabled":false,"patternLineageExists":false,"patternLineages":[],"lineage":[],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":false,"patternDesc":"<h3>Description</h3>\n<p>A tooltip button with an icon and/or label.</p>\n<h3>Properties</h3>\n<table>\n<thead>\n<tr>\n<th>Property</th>\n<th>Type</th>\n<th>Default Value</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>ariaLabel</code></td>\n<td>string</td>\n<td></td>\n</tr>\n<tr>\n<td><code>attributes</code></td>\n<td>array</td>\n<td></td>\n</tr>\n<tr>\n<td><code>content</code></td>\n<td>string</td>\n<td></td>\n</tr>\n<tr>\n<td><code>iconClass</code></td>\n<td>string</td>\n<td></td>\n</tr>\n<tr>\n<td><code>label</code></td>\n<td>string</td>\n<td></td>\n</tr>\n<tr>\n<td><code>placement</code></td>\n<td>string</td>\n<td><code>bottom</code></td>\n</tr>\n</tbody>\n</table>\n<h3>Notes</h3>\n<p><code>ariaLabel</code> is not used if there is a <code>label</code>.</p>\n","patternBreadcrumb":{"patternGroup":"molecules","patternSubgroup":"tooltips"},"patternExtension":"phtml","patternName":"Tooltip button","patternPartial":"molecules-finna-tooltip-btn","patternState":"complete","patternEngineName":"phtml","extraOutput":{}}
+			</script>
+		
 		</div><!--end pl-c-pattern-->
 	</div>
 	<!--end pl-c-pattern-index-->
@@ -601,10 +1032,10 @@
   }
 </script>
 
-<script id="pl-js-polyfill-insert-1624539116249">
+<script id="pl-js-polyfill-insert-1631876343988">
   (function() {
     if (self != top) {
-      var cb = '1624539116249';
+      var cb = '1631876343988';
       var js = [];
       scriptLoader.run(js,cb,'pl-js-polyfill-insert');
     }
@@ -617,7 +1048,7 @@
   import('../../styleguide/js/patternlab-pattern.modern.js');
 </script>
 
-<script id="pl-js-insert-1624539116249" nomodule>
+<script id="pl-js-insert-1631876343988" nomodule>
   /*! loadJS: load a JS file asynchronously. [c]2014 @scottjehl, Filament Group, Inc. (Based on http://goo.gl/REQGQ by Paul Irish). Licensed MIT */
   !function(e){var t=function(t,n){"use strict";var o=e.document.getElementsByTagName("script")[0],r=e.document.createElement("script");return r.src=t,r.async=!0,o.parentNode.insertBefore(r,o),n&&"function"==typeof n&&(r.onload=n),r};"undefined"!=typeof module?module.exports=t:e.loadJS=t}("undefined"!=typeof global?global:this);
 

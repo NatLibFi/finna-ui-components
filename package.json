@@ -22,13 +22,15 @@
     "less": "3.13.1",
     "onchange": "7.1.0",
     "stylelint": "14.3.0",
-    "stylelint-config-twbs-bootstrap": "3.0.1"
+    "stylelint-config-twbs-bootstrap": "3.0.1",
+    "terser": "5.12.1"
   },
   "scripts": {
     "build": "npm run vendor-update && npm run build:css && npm run build:pl",
     "build:css": "npm run build:less",
     "build:less": "node scripts/less-build.js",
     "build:pl": "patternlab build --config ./patternlab-config.json",
+    "build:js-components": "node scripts/build-components.js",
     "eslint": "eslint --ignore-pattern public/js/vendor --ignore-pattern public/js/styleguide/vendor public/js",
     "eslint-fix": "eslint --fix --ignore-pattern public/js/vendor --ignore-pattern public/js/styleguide/vendor public/js",
     "fix": "npm run fix:js",

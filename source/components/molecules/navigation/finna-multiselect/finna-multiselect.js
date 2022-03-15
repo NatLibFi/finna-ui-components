@@ -1,28 +1,33 @@
+/**
+ * Multiselect component.
+ *
+ * ES6
+ *
+ * Copyright (C) The National Library of Finland 2022.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2,
+ * as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ *
+ * @author   Juha Luoma <juha.luoma@helsinki.fi>
+ * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
+ * @link     https://github.com/NatLibFi/finna-ui-components Github
+ */
 class MultiSelect extends HTMLElement {
+
   /**
-   * Constructor for multiselect component.
+   * MultiSelect constructor.
    * 
-   * Required data attributes are:
-   * data-clear-text: Translation for clear button text.
-   * data-label-id: Identifier for label, must be unique.
-   * data-label-text: Translation for the label element.
-   * data-label: Aria-label for the UL element.
-   * data-placeholder: Placeholder text for search input.
-   * data-entries: Array of objects.
-   * data-name: Name for the select element.
-   * use htmlspecialchars(json_encode($list), ENT_QUOTES, 'UTF-8'); to convert into
-   * proper object in php
-   * Objects must have the next values:
-   * {
-   *  displayText: Text to display for the option,
-   *  value:       Option value.
-   *  selected:    Should the option be selected when created.
-   *  
-   *  (optional):
-   *  level: Used to create hierarchy.
-   *  Level 0 is root. Level 1 is immediate child option. 
-   *  Level 2 is child option for level 1 etc.
-   * }
+   * @returns {MultiSelect}
    */
   constructor()
   {
@@ -92,52 +97,12 @@ class MultiSelect extends HTMLElement {
   }
 
   /**
-   * Sets the entries used to create multiselect.
-   *
-   * @param {object} entries 
-   */
-  setEntries(entries)
-  {
-    this.entries = entries;
-  }
-
-  /**
-   * Sets the label used for describing.
-   *
-   * @param {HTMLLabelElement} label 
-   */
-  setLabel(label)
-  {
-    this.label = label;
-  }
-
-  /**
-   * Sets the input used as a search input.
-   *
-   * @param {HTMLInputElement} input 
-   */
-  setSearch(input)
-  {
-    this.input = input;
-  }
-
-  /**
-   * Sets the input used as a clear button.
-   *
-   * @param {HTMLButtonElement} clear 
-   */
-  setClear(clear)
-  {
-    this.clear = clear;
-  }
-
-  /**
    * Create select and multiselect elements.
    */
   createSelect()
   {
     let index = 0;
-    let levelCache = 0;
+    let previousLevel = 0;
     let previousElement;
     let currentParent;
     this.entries.forEach((entry) => {
@@ -145,7 +110,6 @@ class MultiSelect extends HTMLElement {
       const option = document.createElement('option');
       option.value = document.createTextNode(entry.value).nodeValue;
       option.textContent = innerValue;
-      const isSelected = entry.selected;
       this.select.append(option);
 
       const multiOption = document.createElement('li');
@@ -155,23 +119,24 @@ class MultiSelect extends HTMLElement {
 
       multiOption.textContent = innerValue;
       multiOption.dataset.formatted = innerValue;
-      if (isSelected) {
+      if (entry.selected) {
         option.setAttribute('selected', 'selected');
         multiOption.classList.add('selected');
       }
-      multiOption.setAttribute('aria-selected', option.getAttribute('selected') === 'selected');
-      if (entry.level) {
+      multiOption.setAttribute(
+        'aria-selected',
+        option.getAttribute('selected') === 'selected'
+      );
+      if ('level' in entry) {
         const level = parseInt(entry.level);
-        if (levelCache < level) {
-          const group = document.createElement('ul');
-          group.classList.add('parent-holder');
-          group.setAttribute('role', 'group');
-
-          const previousClone = previousElement.cloneNode();
-
+        if (level === 0) {
+          this.multiSelect.append(multiOption);
+          currentParent = multiOption;
+        }
+        if (level > previousLevel) {
+          const previousClone = previousElement.cloneNode(true);
           previousClone.textContent = previousElement.innerHTML;
           previousClone.reference = previousElement.reference;
-
           previousElement.textContent = '';
           previousElement.removeAttribute('aria-selected');
           previousElement.removeAttribute('id');
@@ -181,29 +146,31 @@ class MultiSelect extends HTMLElement {
 
           this.words.pop();
           this.words.push(previousClone);
-          previousElement.insertAdjacentElement('beforeend', group);
-          currentParent = group;
-        } else if (levelCache > level && level !== 0) {
+        } else if (level < previousLevel && level !== 0) {
           currentParent = currentParent.closest('ul.parent-holder');
         }
-        if (level === 0) {
-          this.multiSelect.append(multiOption);
-        } else {
-          if (levelCache !== level) {
-            if (levelCache === 0) {
+        if (level !== 0) {
+          if (previousLevel !== level) {
+            if (previousLevel === 0) {
               previousElement.classList.add('root');
             }
             previousElement.classList.add('option-parent');
             previousElement.setAttribute('aria-expanded', 'true');
+            const group = document.createElement('ul');
+            group.classList.add('parent-holder');
+            group.setAttribute('role', 'group');
+            previousElement.insertAdjacentElement('beforeend', group);
+            currentParent = group;
           }
           multiOption.classList.add('option-child');
           multiOption.classList.add('child-width-' + level);
           currentParent.insertAdjacentElement('beforeend', multiOption);
         }
-        levelCache = level;
+        previousLevel = level;
       } else {
         this.multiSelect.append(multiOption);
       }
+      
       this.words.push(multiOption);
       previousElement = multiOption;
     });
@@ -266,13 +233,17 @@ class MultiSelect extends HTMLElement {
         this.clearCaches();
       }
 
-      const hasActive = this.active ? this.active.dataset.formatted[0].toLowerCase() === keyLower : false;
+      const hasActive = this.active
+        ? this.active.dataset.formatted[0].toLowerCase() === keyLower
+        : false;
 
       if (this.wordCache.length === 0) {
         this.words.forEach((option) => {
-          const char = option.dataset.formatted[0].toLowerCase();
-          if (char === keyLower && !option.classList.contains('hidden')) {
-            this.wordCache.push(option);
+          if (!option.classList.contains('hidden')) {
+            const char = option.dataset.formatted[0].toLowerCase();
+            if (char === keyLower) {
+              this.wordCache.push(option);
+            }
           }
         });
       }
@@ -374,11 +345,14 @@ class MultiSelect extends HTMLElement {
             if (element.classList.contains('root')) {
               return;
             }
-            if (element.parentNode && this.multiSelect.contains(element.parentNode)) {
+            if (element.parentNode
+                && this.multiSelect.contains(element.parentNode)
+            ) {
               showParent(element.parentNode);
             }
           };
-          const parents = this.multiSelect.querySelectorAll('.option-parent[aria-expanded]');
+          const parents
+            = this.multiSelect.querySelectorAll('.option-parent[aria-expanded]');
           if (parents.length) {
             parents.forEach((parent) => {
               parent.setAttribute('aria-expanded', 'false');

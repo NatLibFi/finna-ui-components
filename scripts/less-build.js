@@ -3,9 +3,14 @@
 const fs = require('fs-extra');
 const less = require('less');
 const path = require('path');
+const config = require('../compile-config.json');
 
+if (!config.lessBuild) {
+  console.log(`Compile-config missing lessBuild`);
+  return;
+}
 function renderLess(source, destination) {
-  let options = {
+  const options = {
     filename: path.resolve(source),
     paths: [
       path.resolve(__dirname, '../source'),
@@ -16,18 +21,15 @@ function renderLess(source, destination) {
   less.render(
     fs.readFileSync(source).toString(),
     options,
-    function callback(error, output) {
-      let sourceMappingUrl = '/*# sourceMappingURL=' + path.basename(destination) + '.map' + ' */';
-      fs.writeFileSync(destination, output.css + "\n" + sourceMappingUrl);
+    (error, output) => {
+      const mapUrl = `/*# sourceMappingURL=${path.basename(destination)}.map */`;
+      fs.writeFileSync(destination, `${output.css}\n${mapUrl}`);
       if (output.map) {
-        fs.writeFileSync(destination + '.map', output.map);
+        fs.writeFileSync(`${destination}.map`, output.map);
       }
     }
   );
 }
 
 fs.ensureDirSync('public/css/styleguide');
-
-renderLess('source/less/theme.less', 'public/css/styleguide/theme.css');
-renderLess('source/less/styleguide.less', 'public/css/styleguide/styleguide.css');
-renderLess('source/less/components.less', 'public/css/components.css');
+config.lessBuild.forEach((file) => renderLess(...file));

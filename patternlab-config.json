@@ -8,8 +8,8 @@
     "m": false,
     "l": false,
     "full": false,
-    "random": true,
-    "disco": true,
+    "random": false,
+    "disco": false,
     "hay": true,
     "mqs": false,
     "find": false,
@@ -22,19 +22,19 @@
   },
   "ishViewportRange": {
     "s": [
-      320,
-      320
+      240,
+      500
     ],
     "m": [
-      768,
-      992
+      500,
+      800
     ],
     "l": [
-      1200,
+      800,
       2600
     ]
   },
-  "logLevel": "info",
+  "logLevel": "error",
   "outputFileSuffixes": {
     "rendered": ".rendered",
     "rawTemplate": "",
@@ -42,11 +42,11 @@
   },
   "paths": {
     "source": {
-      "root": "./source/",
-      "patterns": "./source/components/",
-      "data": "./source/_data/",
-      "meta": "./source/_meta/",
-      "annotations": "./source/_annotations/",
+      "root": "source/",
+      "patterns": "source/components/",
+      "data": "source/_data/",
+      "meta": "source/_meta/",
+      "annotations": "source/_annotations/",
       "styleguide": "dist/",
       "patternlabFiles": {
         "general-header": "views/partials/general-header.mustache",
@@ -55,10 +55,9 @@
         "patternSectionSubgroup": "views/partials/patternSectionSubgroup.mustache",
         "viewall": "views/viewall.mustache"
       },
-      "js": "./source/js",
-      "images": "./source/images",
-      "fonts": "./source/fonts",
-      "styles": "./source/styles"
+      "js": "source/js",
+      "fonts": "source/fonts",
+      "css": "source/css"
     },
     "public": {
       "root": "public/",
@@ -67,9 +66,8 @@
       "annotations": "public/annotations/",
       "styleguide": "public/styleguide/",
       "js": "public/js",
-      "images": "public/images",
       "fonts": "public/fonts",
-      "styles": "public/styles"
+      "css": "public/css"
     }
   },
   "patternExtension": "phtml",
@@ -80,28 +78,30 @@
     "demo"
   ],
   "patternExportAll": false,
-  "patternExportDirectory": "pattern_exports",
+  "patternExportDirectory": "public/pattern_exports",
   "patternExportPatternPartials": [],
   "patternExportPreserveDirectoryStructure": true,
   "patternExportRaw": false,
+  "patternMergeVariantArrays": true,
+  "renderFlatPatternsOnViewAllPages": false,
   "serverOptions": {
     "wait": 1000
   },
   "starterkitSubDir": "dist",
   "styleGuideExcludes": [],
   "theme": {
-    "color": "light",
+    "color": "dark",
     "density": "compact",
     "layout": "horizontal"
   },
   "uikits": [
     {
+      "name": "uikit-workshop",
       "package": "@pattern-lab/uikit-workshop",
       "outputDir": "",
       "enabled": true,
       "excludedPatternStates": [],
       "excludedTags": []
     }
-  ],
-  "patternMergeVariantArrays": false
+  ]
 }

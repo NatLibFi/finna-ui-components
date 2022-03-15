@@ -1,9 +1,0 @@
-{
-  "wrapperClass": "js-service-list-hardware",
-  "listWrapperClass": "js-services-hardware",
-  "listDataKey": "hardware",
-  "title": "Service List",
-  "organisation": "Vaski",
-  "servicePointId": 85141,
-  "informationNotAvailableText": "Information not available at the moment."
-}

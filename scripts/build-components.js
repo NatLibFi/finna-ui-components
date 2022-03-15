@@ -12,7 +12,7 @@ if (!config.buildComponents) {
   return;
 }
 
-async function minifyJs(sources, destination) {
+async function minifyJs(sources) {
   let files = {};
   sources.forEach((source) => files[source] = fs.readFileSync(source).toString());
   const options = {

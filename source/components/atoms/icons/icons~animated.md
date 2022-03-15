@@ -1,4 +1,0 @@
----
-title: Animated
-state: inprogress
----

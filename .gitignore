@@ -1,12 +1,7 @@
-.DS_STORE
-node_modules/
-public/*
-pattern_exports/
-yarn.lock
-package-lock.json
-.env
-
-#Pattern Lab
-dependencyGraph.json
-source/_meta/_head.mustache
-source/_meta/_foot.mustache
+/node_modules/
+/public/
+!/public/css/components.css
+!/public/css/components.css.map
+/source/_meta/_foot.mustache
+/source/_meta/_head.mustache
+/dependencyGraph.json

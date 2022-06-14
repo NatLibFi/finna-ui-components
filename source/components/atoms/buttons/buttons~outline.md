@@ -1,4 +1,0 @@
----
-title: Outline
-state: inprogress
----

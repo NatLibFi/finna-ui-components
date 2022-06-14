@@ -1,63 +1,48 @@
 {
-  "name": "ui-component-library-proto",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "postinstall": "npm run pl:install && npm run link:theme",
-    "pl:build": "patternlab build --config ./patternlab-config.json",
-    "pl:build-uikit": "cross-env-shell PL_CONFIG_PATH='${INIT_CWD}/.patternlabrc.js' npm run pl:build --prefix node_modules/@pattern-lab/uikit-workshop -- --patternlabrc '$PL_CONFIG_PATH'",
-    "pl:dev": "node ./node_modules/@pattern-lab/uikit-workshop/build-tools.js",
-    "pl:help": "patternlab --help",
-    "pl:install": "patternlab install --config ./patternlab-config.json",
-    "pl:serve": "patternlab serve --config ./patternlab-config.json",
-    "pl:start": "npm run pl:serve",
-    "pl:version": "patternlab --version",
-    "dev": "gulp watch",
-    "build": "gulp",
-    "link:theme": "gulp symLinkTheme",
-    "unlink:theme": "gulp unlinkTheme",
-    "copy:theme": "gulp copyTheme",
-    "list:tasks": "gulp --tasks",
-    "test:a11y": "npm run build && node ./test/a11y/index.js"
+  "name": "finna-ui-components",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NatLibFi/finna-ui-components.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "@pattern-lab/cli": "^5.14.3",
-    "@pattern-lab/core": "^5.14.3",
-    "@pattern-lab/uikit-workshop": "^5.14.3",
-    "chalk": "^4.1.0",
-    "cli-progress": "^3.8.2",
-    "dotenv": "^8.2.0",
-    "engine-phtml": "git://github.com/aleksip/engine-phtml.git",
-    "front-matter": "^4.0.2",
-    "gulp": "^4.0.2",
-    "pa11y": "^5.3.0",
-    "through2": "^4.0.2",
-    "yargs": "^16.0.3"
+    "easymde": "2.16.1"
   },
   "devDependencies": {
-    "browser-sync": "^2.26.7",
-    "eslint": "^7.3.1",
-    "gulp-autoprefixer": "^7.0.1",
-    "gulp-clean": "^0.4.0",
-    "gulp-clean-css": "^4.3.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-exec": "^5.0.0",
-    "gulp-less": "^4.0.1",
-    "gulp-rename": "^2.0.0",
-    "gulp-replace": "^1.0.0",
-    "gulp-sourcemaps": "^2.6.5",
-    "gulp-uglify": "^3.0.2",
-    "husky": "^4.2.5",
-    "less-plugin-glob": "^3.0.0",
-    "prompts": "^2.3.2"
+    "@pattern-lab/cli": "5.16.2",
+    "@pattern-lab/core": "5.16.2",
+    "@pattern-lab/uikit-workshop": "5.16.2",
+    "browser-sync": "2.27.8",
+    "concurrently": "7.0.0",
+    "design-token-transformer": "github:NatLibFi/finna-design-tokens",
+    "engine-phtml": "github:aleksip/engine-phtml",
+    "eslint": "8.11.0",
+    "fs-extra": "10.0.0",
+    "jquery-mockjax": "2.6.0",
+    "jshint": "2.13.4",
+    "less": "3.13.1",
+    "onchange": "7.1.0",
+    "stylelint": "14.3.0",
+    "stylelint-config-twbs-bootstrap": "3.0.1"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "./node_modules/.bin/eslint source"
-    }
+  "scripts": {
+    "build": "npm run vendor-update && npm run build:css && npm run build:pl",
+    "build:css": "npm run build:less",
+    "build:less": "node scripts/less-build.js",
+    "build:pl": "patternlab build --config ./patternlab-config.json",
+    "eslint": "eslint --ignore-pattern public/js/vendor --ignore-pattern public/js/styleguide/vendor public/js scripts",
+    "eslint-fix": "eslint --fix --ignore-pattern public/js/vendor --ignore-pattern public/js/styleguide/vendor public/js scripts",
+    "fix": "npm run fix:js",
+    "fix:js": "npm run eslint-fix",
+    "jshint": "jshint --exclude=public/js/vendor,public/js/styleguide/vendor public/js scripts",
+    "lint": "npm run lint:js",
+    "lint:js": "npm run eslint && npm run jshint",
+    "postinstall": "npm run build",
+    "qa": "npm run lint",
+    "qa-fix": "npm run fix",
+    "serve": "browser-sync start --server 'public' --files 'public' --reload-debounce 2000",
+    "vendor-update": "node ./scripts/assets.js",
+    "watch": "concurrently 'npm:watch:*' 'npm:serve'",
+    "watch:components": "onchange 'source/**/*' -- npm run build:pl",
+    "watch:less": "onchange 'assets/less/**/*.less' -- npm run build:less"
   }
 }

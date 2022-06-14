@@ -1,42 +1,42 @@
 <!DOCTYPE html>
-<html class="<?= $htmlClass ?? '' ?>" lang="en">
+<html class="<?= $htmlClass ?? '' ?>">
+  <head>
+    <title><?= $title ?? '' ?></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width"/>
 
-<head>
-  <title><?= $title ?? '' ?></title>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width" />
+    <!-- Dependencies from theme -->
+    <link rel="stylesheet" href="../../css/styleguide/theme.css?<?= $cacheBuster ?>" media="all"/>
 
-  <link rel="stylesheet" href="../../styles/style.min.css?<?= $cacheBuster ?>" media="all" />
-  <link rel="stylesheet" href="../../styles/patternlab/pattern-scaffolding.css?<?= $cacheBuster ?>" media="all" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css?<?= $cacheBuster ?>" media="all" />
+    <!-- Used in style guide only -->
+    <link rel="stylesheet" href="../../css/styleguide/styleguide.css?<?= $cacheBuster ?>" media="all"/>
 
-  <script src="../../js/vendor/jquery.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mockjax/2.5.1/jquery.mockjax.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+    <!-- Components -->
+    <link rel="stylesheet" href="../../css/components.css?<?= $cacheBuster ?>" media="all"/>
 
-  <script src="../../js/vendor/bootstrap.min.js"></script>
-  <script src="../../js/vendor/bootstrap-accessibility.min.js"></script>
-  <script src="../../js/vendor/easymde.min.js"></script>
-  <script src="../../js/vendor/global-vufind-mock.min.js"></script>
-  <script type="text/javascript" src="../../js/vendor/mockjax.min.js"></script>
-  <script type="text/javascript" src="../../js/main.min.js"></script>
-  <!-- Begin Pattern Lab (Required for Pattern Lab to run properly) -->
-  <?= $patternLabHead ?>
-  <!-- End Pattern Lab -->
-</head>
+    <!-- Component dependencies -->
+    <link rel="stylesheet" href="../../css/vendor/easymde.min.css?<?= $cacheBuster ?>" media="all"/>
 
-<body class="<?= $bodyClass ?? '' ?>">
-  <!-- Basic modal -->
-  <div id="modal" class="modal fade hidden-print" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
-        <div class="modal-body">
-          Loading...
-        </div>
-      </div>
-    </div>
-  </div>
+    <!-- Dependencies from theme -->
+    <script src="../../js/styleguide/vendor/jquery.min.js?<?= $cacheBuster ?>"></script>
+    <script src="../../js/styleguide/vendor/bootstrap.min.js?<?= $cacheBuster ?>"></script>
 
+    <!-- Used in style guide only -->
+    <script src="../../js/styleguide/vufind.js?<?= $cacheBuster ?>"></script>
+    <script src="../../js/styleguide/finna.js?<?= $cacheBuster ?>"></script>
+    <script src="../../js/styleguide/finna-layout.js?<?= $cacheBuster ?>"></script>
+    <script src="../../js/styleguide/vendor/jquery.mockjax.min.js?<?= $cacheBuster ?>"></script>
+    <script src="../../js/styleguide/mockjax.js?<?= $cacheBuster ?>"></script>
+
+    <!-- Dependencies from theme -->
+    <script src="../../js/styleguide/vendor/truncate.js?<?= $cacheBuster ?>"></script>
+
+    <!-- Component dependencies -->
+    <script src="../../js/vendor/easymde.min.js?<?= $cacheBuster ?>"></script>
+
+    <!-- Begin Pattern Lab (Required for Pattern Lab to run properly) -->
+    <?= $patternLabHead ?>
+    <!-- End Pattern Lab -->
+
+  </head>
+  <body class="<?= $bodyClass ?? '' ?>">

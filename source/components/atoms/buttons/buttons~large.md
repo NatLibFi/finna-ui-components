@@ -1,4 +1,0 @@
----
-title: Large
-state: inprogress
----

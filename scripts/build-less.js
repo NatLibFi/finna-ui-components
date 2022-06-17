@@ -3,12 +3,13 @@
 const fs = require('fs-extra');
 const less = require('less');
 const path = require('path');
-const config = require('../compile-config.json');
+const config = require('../scripts-config.json');
 
-if (!config.lessBuild) {
-  console.log(`Compile-config missing lessBuild`);
+if (!config.buildLess) {
+  console.log(`buildLess key missing from scripts-config.json`);
   return;
 }
+
 function renderLess(source, destination) {
   const options = {
     filename: path.resolve(source),
@@ -32,4 +33,4 @@ function renderLess(source, destination) {
 }
 
 fs.ensureDirSync('public/css/styleguide');
-config.lessBuild.forEach((file) => renderLess(...file));
+config.buildLess.forEach((file) => renderLess(...file));

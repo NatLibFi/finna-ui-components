@@ -1,6 +1,6 @@
 ---
 title: Alert
-state: inprogress
+state: complete
 ---
 
 #### Description

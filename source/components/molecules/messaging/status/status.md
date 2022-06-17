@@ -1,6 +1,6 @@
 ---
 title: Status
-state: inprogress
+state: complete
 ---
 
 #### Description

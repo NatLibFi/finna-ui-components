@@ -11,9 +11,9 @@ Creates a visual multiselect component.
 
 | Property         | Type   |
 | ---------------- | ------ |
-| `clearText`      | string |
-| `labelId`        | string |
-| `labelText`      | string |
+| `clear-text`     | string |
+| `label-id`       | string |
+| `label-text`     | string |
 | `label`          | string |
 | `placeholder`    | string |
 | `entries`        | array  |

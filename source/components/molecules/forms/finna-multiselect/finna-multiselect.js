@@ -24,6 +24,152 @@
  */
 class MultiSelect extends HTMLElement {
 
+
+  /**
+   * Set entries
+   * 
+   * @param Object entries
+   */
+  set entries(entries)
+  {
+    this.entriesStash = entries;
+  }
+
+  /**
+   * Get entries
+   *
+   * @return {Object} entries as an object
+   */
+  get entries()
+  {
+    if (typeof this.entriesStash !== 'object') {
+      return JSON.parse(this.entriesStash);
+    }
+    return this.entriesStash;
+  }
+
+  /**
+   * Set clear text
+   *
+   * @param String txt to display
+   * 
+   * @return void
+   */
+  set clearText(txt)
+  {
+    this.setAttribute('clear-text', txt);
+  }
+
+  /**
+   * Get clear text
+   *
+   * @return clearText
+   */
+  get clearText()
+  {
+    return this.getAttribute('clear-text');
+  }
+
+  /**
+   * Set label id
+   *
+   * @param {String} txt to display
+   */
+  set labelId(txt)
+  {
+    this.setAttribute('label-id', txt);
+  }
+
+  /**
+   * Get clear text
+   *
+   * @return {String}
+   */
+  get labelId()
+  {
+    return this.getAttribute('label-id');
+  }
+
+  /**
+   * Set label id
+   *
+   * @param {String} txt to display
+   */
+  set labelText(txt)
+  {
+    this.setAttribute('label-text', txt);
+  }
+   
+  /**
+   * Get clear text
+   *
+   * @return {String}
+   */
+  get labelId()
+  {
+    return this.getAttribute('label-text');
+  }
+
+  /**
+   * Set label
+   *
+   * @param {String} txt to display
+   */
+  set labelContent(txt)
+  {
+    this.setAttribute('label-content', txt);
+  }
+      
+  /**
+   * Get clear text
+   *
+   * @return {String}
+   */
+  get labelContent()
+  {
+    return this.getAttribute('label-content');
+  }
+
+  /**
+   * Set placeholder
+   *
+   * @param {String} txt to display
+   */
+  set placeholder(txt)
+  {
+    this.setAttribute('placeholder', txt);
+  }
+         
+  /**
+   * Get placeholder
+   *
+   * @return {String}
+   */
+  get placeholder()
+  {
+    return this.getAttribute('placeholder');
+  }
+
+  /**
+   * Set placeholder
+   *
+   * @param {String} txt to display
+   */
+  set name(txt)
+  {
+    this.setAttribute('name', txt);
+  }
+
+  /**
+   * Get name
+   *
+   * @return {String}
+   */
+  get name()
+  {
+    return this.getAttribute('name');
+  }
+
   /**
    * MultiSelect constructor.
    * 
@@ -33,33 +179,38 @@ class MultiSelect extends HTMLElement {
   {
     // Always call super first
     super();
-    this.entries = JSON.parse(this.dataset.entries);
-    delete(this.dataset.entries);
 
     this.regExp = new RegExp(/[a-öA-Ö0-9-_ ]/);
     this.words = [];
     this.wordCache = [];
     this.active = null;
     this.clicked = false;
+  }
 
+  /**
+   * When element is added to the dom.
+   */
+  connectedCallback()
+  {
+    console.log('yep');
     const fieldSet = document.createElement('fieldset');
     this.append(fieldSet);
 
     if (!this.id) {
-      this.id = `${this.dataset.labelId}_fms`;
+      this.id = `${this.labelId}_fms`;
     }
 
     if (!this.label) {
       const label = document.createElement('label');
-      label.setAttribute('id', this.dataset.labelId);
-      label.textContent = this.dataset.labelText;
+      label.setAttribute('id', this.labelId);
+      label.textContent = this.labelText;
       this.label = label;
     }
     fieldSet.append(this.label);
 
     const select = document.createElement('select');
     select.style.display = 'none';
-    select.setAttribute('name', this.dataset.name);
+    select.setAttribute('name', this.name);
     select.setAttribute('multiple', 'multiple');
     this.select = select;
     fieldSet.append(select);
@@ -68,7 +219,7 @@ class MultiSelect extends HTMLElement {
       const searchForm = document.createElement('input');
       searchForm.classList.add('search');
       searchForm.setAttribute('type', 'text');
-      searchForm.setAttribute('placeholder', this.dataset.placeholder);
+      searchForm.setAttribute('placeholder', this.placeholder);
       searchForm.setAttribute('aria-labelledby', this.label.id);
       this.search = searchForm;
     }
@@ -76,7 +227,7 @@ class MultiSelect extends HTMLElement {
 
     const ul = document.createElement('ul');
     ul.classList.add('list');
-    ul.setAttribute('aria-label', this.dataset.label);
+    ul.setAttribute('aria-label', this.label);
     ul.setAttribute('aria-multiselectable', 'true');
     ul.setAttribute('role', 'listbox');
     ul.setAttribute('aria-activedescendant', '');
@@ -87,7 +238,7 @@ class MultiSelect extends HTMLElement {
     if (!this.clear) {
       const clearButton = document.createElement('button');
       clearButton.classList.add('clear', 'btn', 'btn-link');
-      clearButton.textContent = this.dataset.clearText;
+      clearButton.textContent = this.clearText;
       this.clear = clearButton;
     }
     fieldSet.append(this.clear);
@@ -441,3 +592,5 @@ class MultiSelect extends HTMLElement {
 }
 
 customElements.define('finna-multiselect', MultiSelect);
+
+console.log('yep');

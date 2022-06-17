@@ -5,10 +5,10 @@
 const fs = require('fs-extra');
 const { minify } = require('terser');
 const path = require('path');
-const config = require('../compile-config.json');
+const config = require('../scripts-config.json');
 
-if (!config.buildComponents) {
-  console.log(`Compile-config missing buildComponents`);
+if (!config.minifyJs) {
+  console.log(`minifyJs key missing from scripts-config.json`);
   return;
 }
 
@@ -30,7 +30,7 @@ async function minifyJs(sources) {
 }
 
 minifyJs(
-  ...config.buildComponents,
+  ...config.minifyJs,
   'dist/js/components.min.js'
 );
 /* jshint ignore:end */

@@ -1,7 +1,4 @@
-
 // Concatenates and minifies JavaScript files.
-/* jshint ignore:start */
-// Ignore jshint as this does run in es8 (ES6 is only in the component library).
 const fs = require('fs-extra');
 const { minify } = require('terser');
 const path = require('path');
@@ -12,7 +9,7 @@ if (!config.minifyJs) {
   return;
 }
 
-async function minifyJs(sources) {
+async function minifyJs(sources, destination) {
   let files = {};
   sources.forEach((source) => files[source] = fs.readFileSync(source).toString());
   const options = {
@@ -33,4 +30,3 @@ minifyJs(
   ...config.minifyJs,
   'dist/js/components.min.js'
 );
-/* jshint ignore:end */

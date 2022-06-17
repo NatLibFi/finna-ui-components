@@ -42,10 +42,16 @@ class MultiSelect extends HTMLElement {
    */
   get entries()
   {
-    if (typeof this.entriesStash !== 'object') {
-      return JSON.parse(this.entriesStash);
+    const found = this.getAttribute('entries');
+    
+    if (!found) {
+      return {};
     }
-    return this.entriesStash;
+
+    if (typeof found !== 'object') {
+      return JSON.parse(found);
+    }
+    return found;
   }
 
   /**
@@ -105,7 +111,7 @@ class MultiSelect extends HTMLElement {
    *
    * @return {String}
    */
-  get labelId()
+  get labelText()
   {
     return this.getAttribute('label-text');
   }
@@ -298,10 +304,11 @@ class MultiSelect extends HTMLElement {
           this.words.pop();
           this.words.push(previousClone);
         } else if (level < previousLevel && level !== 0) {
-          currentParent = currentParent.closest('ul.parent-holder');
+          currentParent = currentParent.parentNode.closest('ul.parent-holder');
+          console.log(currentParent);
         }
         if (level !== 0) {
-          if (previousLevel !== level) {
+          if (previousLevel < level) {
             if (previousLevel === 0) {
               previousElement.classList.add('root');
             }
@@ -489,7 +496,7 @@ class MultiSelect extends HTMLElement {
             if (element.classList.contains('option-parent')) {
               element.setAttribute('aria-expanded', 'true');
               const child = element.firstChild;
-              if (child) {
+              if (child.classList) {
                 child.classList.remove('hidden');
               }
             }
@@ -585,12 +592,9 @@ class MultiSelect extends HTMLElement {
    * Clear the caches.
    */
   clearCaches() {
-    var _ = this;
-    _.wordCache = [];
-    _.charCache = "";
+    this.wordCache = [];
+    this.charCache = "";
   }
 }
 
 customElements.define('finna-multiselect', MultiSelect);
-
-console.log('yep');

@@ -19,6 +19,9 @@ var VuFind = (function VuFind() {
     translate: function translate(string) {
       return string;
     },
+    icon: function icon(name) {
+      return name;
+    },
     init: function init() {
       for (var i = 0; i < _submodules.length; i++) {
         if (this[_submodules[i]].init) {

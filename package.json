@@ -11,10 +11,10 @@
     "@pattern-lab/cli": "5.16.2",
     "@pattern-lab/core": "5.16.2",
     "@pattern-lab/uikit-workshop": "5.16.2",
-    "browser-sync": "2.27.8",
+    "browser-sync": "2.27.10",
     "concurrently": "7.0.0",
     "design-token-transformer": "github:NatLibFi/finna-design-tokens",
-    "engine-phtml": "github:aleksip/engine-phtml",
+    "engine-phtml": "2.0.1",
     "eslint": "8.11.0",
     "fs-extra": "10.0.0",
     "jquery-mockjax": "2.6.0",
@@ -25,10 +25,12 @@
     "stylelint-config-twbs-bootstrap": "3.0.1"
   },
   "scripts": {
-    "build": "npm run vendor-update && npm run build:css && npm run build:pl",
+    "build": "npm run copy-assets && npm run build:css && npm run build:pl",
     "build:css": "npm run build:less",
-    "build:less": "node scripts/less-build.js",
-    "build:pl": "patternlab build --config ./patternlab-config.json",
+    "build:less": "node scripts/build-less.js",
+    "build:pl": "patternlab build --config ./patternlab-config.json && npm run copy-js",
+    "copy-assets": "node ./scripts/copy-assets.js",
+    "copy-js": "node ./scripts/copy-js.js",
     "eslint": "eslint --ignore-pattern public/js/vendor --ignore-pattern public/js/styleguide/vendor public/js scripts",
     "eslint-fix": "eslint --fix --ignore-pattern public/js/vendor --ignore-pattern public/js/styleguide/vendor public/js scripts",
     "fix": "npm run fix:js",
@@ -39,10 +41,10 @@
     "postinstall": "npm run build",
     "qa": "npm run lint",
     "qa-fix": "npm run fix",
-    "serve": "browser-sync start --server 'public' --files 'public' --reload-debounce 2000",
-    "vendor-update": "node ./scripts/assets.js",
+    "serve": "browser-sync start --reload-debounce 2000 --server 'public' --files 'public'",
     "watch": "concurrently 'npm:watch:*' 'npm:serve'",
-    "watch:components": "onchange 'source/**/*' -- npm run build:pl",
-    "watch:less": "onchange 'assets/less/**/*.less' -- npm run build:less"
+    "watch:components": "onchange 'source/**/*.phtml' 'source/**/*.json' 'source/**/*.md' -- npm run build:pl",
+    "watch:js": "onchange 'source/**/*.js' -- npm run copy-js",
+    "watch:less": "onchange 'source/less/**/*.less' -- npm run build:less"
   }
 }

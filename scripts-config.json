@@ -1,0 +1,29 @@
+{
+  "buildLess": [
+    ["source/less/components.less", "public/css/components.css"],
+    ["source/less/styleguide.less", "public/css/styleguide/styleguide.css"],
+    ["source/less/theme.less", "public/css/styleguide/theme.css"]
+  ],
+  "copyAssets": {
+    "css": [
+      ["node_modules/easymde/dist/easymde.min.css", "source/css/vendor/easymde.min.css"]
+    ],
+    "fonts": [
+      ["../NDL-VuFind2/themes/bootstrap3/css/fonts", "source/fonts/styleguide"],
+      ["../NDL-VuFind2/themes/finna2/css/fonts", "source/fonts/styleguide"]
+    ],
+    "js": [
+      ["../NDL-VuFind2/themes/bootstrap3/js/truncate.js", "source/js/styleguide/vendor/truncate.js"],
+      ["../NDL-VuFind2/themes/bootstrap3/js/vendor/bootstrap.min.js", "source/js/styleguide/vendor/bootstrap.min.js"],
+      ["../NDL-VuFind2/themes/bootstrap3/js/vendor/jquery.min.js", "source/js/styleguide/vendor/jquery.min.js"],
+      ["node_modules/easymde/dist/easymde.min.js", "source/js/vendor/easymde.min.js"],
+      ["node_modules/jquery-mockjax/dist/jquery.mockjax.min.js", "source/js/styleguide/vendor/jquery.mockjax.min.js"]
+    ]
+  },
+  "copyJs": [
+    ["source/components/molecules/containers/finna-truncate/finna-truncate.js", "public/components/molecules/containers/finna-truncate/finna-truncate.js"],
+    ["source/components/organisms/navigation/finna-tabs-nav/finna-tabs-nav.js", "public/components/organisms/navigation/finna-tabs-nav/finna-tabs-nav.js"],
+    ["source/components/organisms/navigation/finna-tabs-nav/finna-tabs-nav.js", "public/components/organisms/navigation/finna-tabs-nav/finna-tabs-nav.js"],
+    ["source/components/organisms/widgets/finna-md-editable/finna-md-editable.js", "public/components/organisms/widgets/finna-md-editable/finna-md-editable.js"]
+  ]
+}

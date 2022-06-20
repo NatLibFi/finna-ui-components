@@ -30,7 +30,7 @@ Creates a visual multiselect component.
 
 `placeholder` Placeholder text for search input.
 
-`entries` Array of objects. 
+`entries` JSON encoded string of an array. 
     use htmlspecialchars(json_encode($list), ENT_QUOTES, 'UTF-8'); to convert into
     proper object in php
     Objects must have the next values:

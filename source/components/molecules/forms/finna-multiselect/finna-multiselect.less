@@ -13,6 +13,16 @@ finna-multiselect {
     list-style: none;
     padding-left: 0px;
   }
+  li.option-parent.root {
+    position: relative;
+    > .line {
+      position: absolute;
+      left: 8px;
+      height: 74%;
+      border-left: 2px solid black;
+      top: 20px;
+    }
+  }
   ul.list {
     height: 200px;
     background-color: white;
@@ -33,6 +43,9 @@ finna-multiselect {
         display: inline-block;
         width: 12px;
         font-size: 16px;
+        position: relative;
+        background-color: white;
+        z-index: 2;
       }
       &[aria-selected="true"] {
         &::before {
@@ -41,16 +54,21 @@ finna-multiselect {
       }
     }
     .option.option-child {
-      .generate-hierarchy(6);
-      .generate-hierarchy(@n, @i: 1) when (@i =< @n) {
-        &.child-width-@{i} {
-          padding: 0 0 0 ((@i) * 15px);
-        }
-        .generate-hierarchy(@n, (@i + 1));
+      position: relative;
+      > .child-line {
+        border-bottom: 2px solid black;
+        border-left: 2px solid black;
+        height: 100%;
+        position: absolute;
+        top: -50%;
+        z-index: 1;
       }
     }
     .option.active {
       background-color: lightgray;
+      &::before {
+        background-color: lightgray;
+      }
     }
   }
 }

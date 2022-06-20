@@ -14,9 +14,9 @@ Creates a visual multiselect component.
 | `clear-text`     | string |
 | `label-id`       | string |
 | `label-text`     | string |
-| `label`          | string |
+| `description`    | string |
 | `placeholder`    | string |
-| `entries`        | array  |
+| `entries`        | string |
 
 ### Notes
 
@@ -26,7 +26,7 @@ Creates a visual multiselect component.
 
 `labelText` Translation for the label element.
 
-`label` Aria-label for the UL element.
+`description` Aria-label for the UL element.
 
 `placeholder` Placeholder text for search input.
 

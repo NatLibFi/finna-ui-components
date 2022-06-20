@@ -24,7 +24,6 @@
  */
 class MultiSelect extends HTMLElement {
 
-
   /**
    * Set entries
    * 
@@ -117,13 +116,13 @@ class MultiSelect extends HTMLElement {
   }
 
   /**
-   * Set label
+   * Set label id
    *
    * @param {String} txt to display
    */
-  set labelContent(txt)
+  set description(txt)
   {
-    this.setAttribute('label-content', txt);
+    this.setAttribute('description', txt);
   }
       
   /**
@@ -131,9 +130,9 @@ class MultiSelect extends HTMLElement {
    *
    * @return {String}
    */
-  get labelContent()
+  get description()
   {
-    return this.getAttribute('label-content');
+    return this.getAttribute('description');
   }
 
   /**
@@ -191,6 +190,7 @@ class MultiSelect extends HTMLElement {
     this.wordCache = [];
     this.active = null;
     this.clicked = false;
+    this.levelStep = 10;
   }
 
   /**
@@ -198,7 +198,6 @@ class MultiSelect extends HTMLElement {
    */
   connectedCallback()
   {
-    console.log('yep');
     const fieldSet = document.createElement('fieldset');
     this.append(fieldSet);
 
@@ -233,7 +232,7 @@ class MultiSelect extends HTMLElement {
 
     const ul = document.createElement('ul');
     ul.classList.add('list');
-    ul.setAttribute('aria-label', this.label);
+    ul.setAttribute('aria-label', this.description);
     ul.setAttribute('aria-multiselectable', 'true');
     ul.setAttribute('role', 'listbox');
     ul.setAttribute('aria-activedescendant', '');
@@ -268,13 +267,13 @@ class MultiSelect extends HTMLElement {
       option.value = document.createTextNode(entry.value).nodeValue;
       option.textContent = innerValue;
       this.select.append(option);
-
       const multiOption = document.createElement('li');
       multiOption.classList.add('option');
       multiOption.setAttribute('id', `${this.id}_opt_${index++}`);
       multiOption.reference = option;
-
-      multiOption.textContent = innerValue;
+      const multiOptionP = document.createElement('span');
+      multiOptionP.append(innerValue);
+      multiOption.append(multiOptionP);
       multiOption.dataset.formatted = innerValue;
       if (entry.selected) {
         option.setAttribute('selected', 'selected');
@@ -292,7 +291,7 @@ class MultiSelect extends HTMLElement {
         }
         if (level > previousLevel) {
           const previousClone = previousElement.cloneNode(true);
-          previousClone.textContent = previousElement.innerHTML;
+          previousClone.innerHTML = previousElement.innerHTML;
           previousClone.reference = previousElement.reference;
           previousElement.textContent = '';
           previousElement.removeAttribute('aria-selected');
@@ -304,25 +303,33 @@ class MultiSelect extends HTMLElement {
           this.words.pop();
           this.words.push(previousClone);
         } else if (level < previousLevel && level !== 0) {
-          currentParent = currentParent.parentNode.closest('ul.parent-holder');
-          console.log(currentParent);
+          currentParent = currentParent.closest('li.option-parent');
         }
         if (level !== 0) {
           if (previousLevel < level) {
-            if (previousLevel === 0) {
-              previousElement.classList.add('root');
-            }
             previousElement.classList.add('option-parent');
             previousElement.setAttribute('aria-expanded', 'true');
+            previousElement.style.paddingLeft = `0`;
             const group = document.createElement('ul');
             group.classList.add('parent-holder');
             group.setAttribute('role', 'group');
             previousElement.insertAdjacentElement('beforeend', group);
             currentParent = group;
+            if (previousLevel === 0) {
+              previousElement.classList.add('root');
+              group.style.paddingLeft = `${this.levelStep}px`;
+            }
           }
+          const childLine = document.createElement('div');
+          childLine.classList.add('child-line');
+          multiOption.insertAdjacentElement('afterbegin', childLine);
           multiOption.classList.add('option-child');
-          multiOption.classList.add('child-width-' + level);
+          multiOption.style.paddingLeft = `${this.levelStep * (level)}px`;
+
+          //multiOption.classList.add(`child-width-${level}`);
           currentParent.insertAdjacentElement('beforeend', multiOption);
+          childLine.style.width = `${this.levelStep * level}px`;
+          childLine.style.left = `0`;
         }
         previousLevel = level;
       } else {
@@ -362,15 +369,28 @@ class MultiSelect extends HTMLElement {
       }
 
       if (this.active === null) {
-        this.setActive(this.multiSelect.querySelector('.option:not(.hidden)'));
-        this.scrollList(true);
+        // Focus must be set on the first selected element if found
+        const selected
+          = this.multiSelect.querySelector('.option.selected:not(.hidden)');
+        if (selected) {
+          this.setActive(selected);
+        } else {
+          this.setActive(this.multiSelect.querySelector('.option:not(.hidden)'));
+        }
+        
+        this.scrollList();
       }
     });
 
-    // Add dynamic listener to the list element, to check when the user clicks an option
+    // Add dynamic listener to the list element
+    // to check when the user clicks an option
     this.multiSelect.addEventListener('click', (e) => {
-      if (e.target && e.target.classList.contains('option')){
-        this.setActive(e.target);
+      if (!e.target) {
+        return;
+      }
+      const closest = e.target.closest('.option');
+      if (closest){
+        this.setActive(closest);
         this.setSelected();
       }
     });
@@ -413,7 +433,7 @@ class MultiSelect extends HTMLElement {
       if (hasActive === false) {
         this.clearActives();
         this.setActive(this.wordCache[0]);
-        this.scrollList(true);
+        this.scrollList();
       } else {
         let lookFor = this.wordCache.indexOf(this.active) + 1;
         if (lookFor > this.wordCache.length - 1) {
@@ -422,7 +442,7 @@ class MultiSelect extends HTMLElement {
         const current = this.wordCache[lookFor];
         if (current) {
           this.setActive(current);
-          this.scrollList(true);
+          this.scrollList();
         }
       }
       this.charCache = keyLower;
@@ -461,7 +481,7 @@ class MultiSelect extends HTMLElement {
         const current = this.wordCache[lookFor];
         if (current) {
           this.setActive(current);
-          this.scrollList(true);
+          this.scrollList();
         }
       } else {
         this.setSelected();
@@ -567,25 +587,19 @@ class MultiSelect extends HTMLElement {
 
   /**
    * Scroll the list.
-   *
-   * @param {bool} clip Need to clip.
    */
-  scrollList(clip) {
+  scrollList() {
     if (!this.active) {
       return;
     }
-    const style = window.getComputedStyle(this.active);
-    let top = style.getPropertyValue('margin-top');
-    top = this.active.offsetTop - parseFloat(top);
 
-    if (clip) {
-      this.multiSelect.scrollTop = top;
-      return;
+    var curtop = 0;
+    let obj = this.active;
+    while (!obj.classList.contains('list')) {
+      curtop += obj.offsetTop;
+      obj = obj.offsetParent;
     }
-
-    if (top < this.multiSelect.scrollTop || top >= this.multiSelect.scrollTop) {
-      this.multiSelect.scrollTop = top;
-    }
+    this.multiSelect.scrollTop = curtop;
   }
 
   /**

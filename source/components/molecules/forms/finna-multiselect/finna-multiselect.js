@@ -310,7 +310,6 @@ class MultiSelect extends HTMLElement {
           multiOption.classList.add('option-child');
           multiOption.style.paddingLeft = `${this.levelStep * (level)}px`;
 
-          //multiOption.classList.add(`child-width-${level}`);
           currentParent.insertAdjacentElement('beforeend', multiOption);
           childLine.style.width = `${this.levelStep * level}px`;
           childLine.style.left = `0`;

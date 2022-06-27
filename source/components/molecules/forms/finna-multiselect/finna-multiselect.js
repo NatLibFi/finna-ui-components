@@ -224,8 +224,11 @@ class MultiSelect extends HTMLElement {
       const searchForm = document.createElement('input');
       searchForm.classList.add('search');
       searchForm.setAttribute('type', 'text');
+      searchForm.setAttribute('role', 'combobox');
       searchForm.setAttribute('placeholder', this.placeholder);
       searchForm.setAttribute('aria-labelledby', this.label.id);
+      searchForm.setAttribute('aria-autocomplete', '');
+      searchForm.setAttribute('data-active-option', '');
       this.search = searchForm;
     }
     fieldSet.append(this.search);
@@ -561,7 +564,7 @@ class MultiSelect extends HTMLElement {
     this.clearActives();
     this.active = element;
     this.active.classList.add('active');
-    this.multiSelect.setAttribute('aria-activedescendant', element.id);
+    this.search.setAttribute('data-active-option', element.id);
   }
 
   /**
@@ -578,7 +581,7 @@ class MultiSelect extends HTMLElement {
    * Clear active selection.
    */
   clearActives() {
-    this.multiSelect.setAttribute('aria-activedescendant', '');
+    this.search.setAttribute('data-active-option', '');
     if (this.active) {
       this.active.classList.remove('active');
       this.active = null;

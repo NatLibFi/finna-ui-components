@@ -116,26 +116,6 @@ class MultiSelect extends HTMLElement {
   }
 
   /**
-   * Set label id
-   *
-   * @param {String} txt to display
-   */
-  set description(txt)
-  {
-    this.setAttribute('description', txt);
-  }
-      
-  /**
-   * Get clear text
-   *
-   * @return {String}
-   */
-  get description()
-  {
-    return this.getAttribute('description');
-  }
-
-  /**
    * Set placeholder
    *
    * @param {String} txt to display
@@ -235,7 +215,6 @@ class MultiSelect extends HTMLElement {
 
     const ul = document.createElement('ul');
     ul.classList.add('list');
-    ul.setAttribute('aria-label', this.description);
     ul.setAttribute('aria-multiselectable', 'true');
     ul.setAttribute('role', 'listbox');
     ul.setAttribute('aria-activedescendant', '');
@@ -274,6 +253,7 @@ class MultiSelect extends HTMLElement {
       multiOption.classList.add('option');
       multiOption.setAttribute('id', `${this.id}_opt_${index++}`);
       multiOption.reference = option;
+      multiOption.setAttribute('role', 'option');
       const multiOptionP = document.createElement('span');
       multiOptionP.append(innerValue);
       multiOption.append(multiOptionP);
@@ -299,6 +279,7 @@ class MultiSelect extends HTMLElement {
           previousElement.textContent = '';
           previousElement.removeAttribute('aria-selected');
           previousElement.removeAttribute('id');
+          previousElement.removeAttribute('role');
           previousElement.classList.remove('option', 'option-child');
           delete previousElement.dataset.formatted;
           previousElement.append(previousClone);

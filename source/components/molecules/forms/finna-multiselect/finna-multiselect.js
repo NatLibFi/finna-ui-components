@@ -365,8 +365,6 @@ class MultiSelect extends HTMLElement {
       }
     });
 
-    // Add dynamic listener to the list element
-    // to check when the user clicks an option
     this.multiSelect.addEventListener('click', (e) => {
       if (!e.target) {
         return;

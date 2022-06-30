@@ -250,7 +250,7 @@ class MultiSelect extends HTMLElement {
       option.value = document.createTextNode(entry.value).nodeValue;
       option.textContent = innerValue;
       this.select.append(option);
-      const multiOption = document.createElement('li');
+      const multiOption = document.createElement('div');
       multiOption.classList.add('option');
       multiOption.setAttribute('id', `${this.id}_opt_${index++}`);
       multiOption.reference = option;
@@ -288,14 +288,14 @@ class MultiSelect extends HTMLElement {
           this.words.pop();
           this.words.push(previousClone);
         } else if (level < previousLevel && level !== 0) {
-          currentParent = currentParent.closest('li.option-parent');
+          currentParent = currentParent.closest('div.option-parent');
         }
         if (level !== 0) {
           if (previousLevel < level) {
             previousElement.classList.add('option-parent');
             previousElement.setAttribute('aria-expanded', 'true');
             previousElement.style.paddingLeft = `0`;
-            const group = document.createElement('ul');
+            const group = document.createElement('div');
             group.classList.add('parent-holder');
             group.setAttribute('role', 'group');
             previousElement.insertAdjacentElement('beforeend', group);

@@ -207,6 +207,7 @@ class MultiSelect extends HTMLElement {
       searchForm.setAttribute('role', 'combobox');
       searchForm.setAttribute('placeholder', this.placeholder);
       searchForm.setAttribute('aria-labelledby', this.label.id);
+      searchForm.setAttribute('aria-expanded', 'true');
       searchForm.setAttribute('aria-autocomplete', '');
       searchForm.setAttribute('data-active-option', '');
       this.search = searchForm;
@@ -217,11 +218,11 @@ class MultiSelect extends HTMLElement {
     ul.classList.add('list');
     ul.setAttribute('aria-multiselectable', 'true');
     ul.setAttribute('role', 'listbox');
-    ul.setAttribute('aria-activedescendant', '');
     ul.setAttribute('tabindex', '0');
+    ul.id = `${this.id}_tree`;
     this.multiSelect = ul;
     fieldSet.append(ul);
-
+    this.search.setAttribute('aria-controls', this.multiSelect.id);
     if (!this.clear) {
       const clearButton = document.createElement('button');
       clearButton.classList.add('clear', 'btn', 'btn-link');

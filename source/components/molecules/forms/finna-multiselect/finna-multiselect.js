@@ -217,7 +217,7 @@ class MultiSelect extends HTMLElement {
     const ul = document.createElement('ul');
     ul.classList.add('list');
     ul.setAttribute('aria-multiselectable', 'true');
-    ul.setAttribute('role', 'listbox');
+    ul.setAttribute('role', 'tree');
     ul.setAttribute('tabindex', '0');
     ul.id = `${this.id}_tree`;
     this.multiSelect = ul;
@@ -242,19 +242,19 @@ class MultiSelect extends HTMLElement {
   {
     let index = 0;
     let previousLevel = 0;
-    let previousElement;
-    let currentParent;
+    let appendTo = this.multiSelect;
+    this.multiSelect.dataset.level = 0;
     this.entries.forEach((entry) => {
       const innerValue = document.createTextNode(entry.displayText).nodeValue;
       const option = document.createElement('option');
       option.value = document.createTextNode(entry.value).nodeValue;
       option.textContent = innerValue;
       this.select.append(option);
-      const multiOption = document.createElement('div');
+      const multiOption = document.createElement('li');
       multiOption.classList.add('option');
       multiOption.setAttribute('id', `${this.id}_opt_${index++}`);
       multiOption.reference = option;
-      multiOption.setAttribute('role', 'option');
+      multiOption.setAttribute('role', 'treeitem');
       const multiOptionP = document.createElement('span');
       multiOptionP.append(innerValue);
       multiOption.append(multiOptionP);
@@ -270,58 +270,42 @@ class MultiSelect extends HTMLElement {
       if ('level' in entry) {
         const level = parseInt(entry.level);
         if (level === 0) {
-          this.multiSelect.append(multiOption);
-          currentParent = multiOption;
+          appendTo.append(multiOption);
         }
-        if (level > previousLevel) {
-          const previousClone = previousElement.cloneNode(true);
-          previousClone.innerHTML = previousElement.innerHTML;
-          previousClone.reference = previousElement.reference;
-          previousElement.textContent = '';
-          previousElement.removeAttribute('aria-selected');
-          previousElement.removeAttribute('id');
-          previousElement.removeAttribute('role');
-          previousElement.classList.remove('option', 'option-child');
-          delete previousElement.dataset.formatted;
-          previousElement.append(previousClone);
-
-          this.words.pop();
-          this.words.push(previousClone);
-        } else if (level < previousLevel && level !== 0) {
-          currentParent = currentParent.closest('div.option-parent');
+        if (level > 0 && level > previousLevel) {
+          // format the structure here;
+          const holder = document.createElement('li');
+          holder.classList.add('group-holder');
+          const group = document.createElement('ul');
+          group.classList.add('parent-holder');
+          group.setAttribute('role', 'group');
+          group.dataset.level = level;
+          group.append(multiOption);
+          group.setAttribute('aria-expanded', 'true');
+          holder.append(group);
+          appendTo.append(holder);
+          appendTo = group;
+          previousLevel = level;
+        } else if (level < previousLevel) {
+          appendTo = appendTo.closest(`[data-level="${level}"]`);
         }
         if (level !== 0) {
-          if (previousLevel < level) {
-            previousElement.classList.add('option-parent');
-            previousElement.setAttribute('aria-expanded', 'true');
-            previousElement.style.paddingLeft = `0`;
-            const group = document.createElement('div');
-            group.classList.add('parent-holder');
-            group.setAttribute('role', 'group');
-            previousElement.insertAdjacentElement('beforeend', group);
-            currentParent = group;
-            if (previousLevel === 0) {
-              previousElement.classList.add('root');
-              group.style.paddingLeft = `${this.levelStep}px`;
-            }
-          }
           const childLine = document.createElement('div');
           childLine.classList.add('child-line');
           multiOption.insertAdjacentElement('afterbegin', childLine);
           multiOption.classList.add('option-child');
           multiOption.style.paddingLeft = `${this.levelStep * (level)}px`;
 
-          currentParent.insertAdjacentElement('beforeend', multiOption);
           childLine.style.width = `${this.levelStep * level}px`;
           childLine.style.left = `0`;
         }
+        appendTo.append(multiOption);
         previousLevel = level;
       } else {
         this.multiSelect.append(multiOption);
       }
       
       this.words.push(multiOption);
-      previousElement = multiOption;
     });
   }
   
@@ -490,29 +474,32 @@ class MultiSelect extends HTMLElement {
           this.words.forEach((option) => {
             option.classList.remove('hidden');
           });
+          this.multiSelect.querySelectorAll('.parent-holder[aria-expanded]').forEach(p => {
+            p.setAttribute('aria-expanded', 'true');
+          });
         } else {
           const showParent = (element) => {
-            if (!element.classList) {
-              return;
-            }
-            if (element.classList.contains('option-parent')) {
+            if (element.classList.contains('parent-holder')) {
               element.setAttribute('aria-expanded', 'true');
-              const child = element.firstChild;
-              if (child.classList) {
-                child.classList.remove('hidden');
+            }
+            if (element.classList.contains('group-holder')) {
+              // Show the adjacent node as it is the parent choice
+              let optionFound = false;
+              let previous = element.previousElementSibling;
+              while (!optionFound && previous) {
+                if (previous.classList.contains('option')) {
+                  previous.classList.remove('hidden');
+                  optionFound = true;
+                }
+                previous = previous.previousElementSibling;
               }
             }
-            if (element.classList.contains('root')) {
-              return;
-            }
-            if (element.parentNode
-                && this.multiSelect.contains(element.parentNode)
-            ) {
+            if (this.multiSelect.contains(element.parentNode)) {
               showParent(element.parentNode);
             }
           };
           const parents
-            = this.multiSelect.querySelectorAll('.option-parent[aria-expanded]');
+            = this.multiSelect.querySelectorAll('.parent-holder[aria-expanded]');
           if (parents.length) {
             parents.forEach((parent) => {
               parent.setAttribute('aria-expanded', 'false');

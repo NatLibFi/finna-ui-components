@@ -219,6 +219,7 @@ class MultiSelect extends HTMLElement {
     ul.setAttribute('aria-multiselectable', 'true');
     ul.setAttribute('role', 'tree');
     ul.setAttribute('tabindex', '0');
+    ul.setAttribute('aria-label', this.labelText)
     ul.id = `${this.id}_tree`;
     this.multiSelect = ul;
     fieldSet.append(ul);
@@ -264,7 +265,7 @@ class MultiSelect extends HTMLElement {
         multiOption.classList.add('selected');
       }
       multiOption.setAttribute(
-        'aria-selected',
+        'aria-checked',
         option.getAttribute('selected') === 'selected'
       );
       if ('level' in entry) {
@@ -279,11 +280,17 @@ class MultiSelect extends HTMLElement {
           const group = document.createElement('ul');
           group.classList.add('parent-holder');
           group.setAttribute('role', 'group');
+
           group.dataset.level = level;
           group.append(multiOption);
           group.setAttribute('aria-expanded', 'true');
           holder.append(group);
           appendTo.append(holder);
+          // We need an aria label which is previous elements value
+          const labelHolder = holder.previousElementSibling;
+          if (labelHolder && labelHolder.classList.contains('option')) {
+            group.setAttribute('aria-label', labelHolder.dataset.formatted);
+          }
           appendTo = group;
           previousLevel = level;
         } else if (level < previousLevel) {
@@ -530,6 +537,7 @@ class MultiSelect extends HTMLElement {
     this.clearActives();
     this.active = element;
     this.active.classList.add('active');
+    this.active.setAttribute('aria-selected', true)
     this.search.setAttribute('data-active-option', element.id);
   }
 
@@ -539,7 +547,7 @@ class MultiSelect extends HTMLElement {
   setSelected() {
     const selected = !this.active.reference.selected;
     this.active.reference.selected = selected;
-    this.active.setAttribute('aria-selected', selected);
+    this.active.setAttribute('aria-checked', selected);
     this.active.classList.toggle('selected', selected);
   }
 
@@ -550,6 +558,7 @@ class MultiSelect extends HTMLElement {
     this.search.setAttribute('data-active-option', '');
     if (this.active) {
       this.active.classList.remove('active');
+      this.active.setAttribute('aria-selected', false);
       this.active = null;
     }
   }

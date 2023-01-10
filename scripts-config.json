@@ -24,6 +24,7 @@
     ["source/components/molecules/containers/finna-truncate/finna-truncate.js", "public/components/molecules/containers/finna-truncate/finna-truncate.js"],
     ["source/components/organisms/navigation/finna-tabs-nav/finna-tabs-nav.js", "public/components/organisms/navigation/finna-tabs-nav/finna-tabs-nav.js"],
     ["source/components/organisms/navigation/finna-tabs-nav/finna-tabs-nav.js", "public/components/organisms/navigation/finna-tabs-nav/finna-tabs-nav.js"],
-    ["source/components/organisms/widgets/finna-md-editable/finna-md-editable.js", "public/components/organisms/widgets/finna-md-editable/finna-md-editable.js"]
+    ["source/components/organisms/widgets/finna-md-editable/finna-md-editable.js", "public/components/organisms/widgets/finna-md-editable/finna-md-editable.js"],
+    ["source/components/molecules/forms/finna-multiselect/finna-multiselect.js", "public/components/molecules/forms/finna-multiselect/finna-multiselect.js"]
   ]
 }

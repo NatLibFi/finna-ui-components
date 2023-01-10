@@ -22,7 +22,8 @@
     "less": "3.13.1",
     "onchange": "7.1.0",
     "stylelint": "14.3.0",
-    "stylelint-config-twbs-bootstrap": "3.0.1"
+    "stylelint-config-twbs-bootstrap": "3.0.1",
+    "terser": "5.12.1"
   },
   "overrides": {
     "got": "11.8.5"

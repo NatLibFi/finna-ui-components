@@ -10,10 +10,13 @@
   "devDependencies": {
     "@pattern-lab/cli": "5.16.2",
     "@pattern-lab/core": "5.16.2",
+    "@pattern-lab/engine-twig-php": "5.16.2",
     "@pattern-lab/uikit-workshop": "5.16.2",
     "browser-sync": "2.27.11",
-    "concurrently": "7.0.0",
+    "concurrently": "7.4.0",
+    "cross-var-no-babel": "1.2.0",
     "design-token-transformer": "github:NatLibFi/finna-design-tokens",
+    "dotenv-cli": "6.0.0",
     "engine-phtml": "2.0.1",
     "eslint": "8.11.0",
     "fs-extra": "10.0.0",
@@ -32,7 +35,8 @@
     "build": "npm run copy-assets && npm run build:css && npm run build:pl",
     "build:css": "npm run build:less",
     "build:less": "node scripts/build-less.js",
-    "build:pl": "patternlab build --config ./patternlab-config.json && npm run copy-js",
+    "build:pl": "patternlab build --config ./patternlab-config.json",
+    "browser-sync": "dotenv -e ../../.env -- cross-var browser-sync start --proxy %DRUSH_OPTIONS_URI% --serveStatic 'css' --files 'css'",
     "copy-assets": "node ./scripts/copy-assets.js",
     "copy-js": "node ./scripts/copy-js.js",
     "eslint": "eslint --ignore-pattern public/js/vendor --ignore-pattern public/js/styleguide/vendor public/js scripts",
@@ -45,10 +49,12 @@
     "postinstall": "npm run build",
     "qa": "npm run lint",
     "qa-fix": "npm run fix",
-    "serve": "browser-sync start --reload-debounce 2000 --server 'public' --files 'public'",
-    "watch": "concurrently 'npm:watch:*' 'npm:serve'",
+    "serve": "concurrently 'npm:browser-sync' 'npm:watch:*'",
+    "serve:pl": "patternlab serve --config ./patternlab-config.json",
+    "watch": "concurrently 'npm:watch:*(!pl)'",
     "watch:components": "onchange 'source/**/*.phtml' 'source/**/*.json' 'source/**/*.md' -- npm run build:pl",
     "watch:js": "onchange 'source/**/*.js' -- npm run copy-js",
-    "watch:less": "onchange 'source/less/**/*.less' -- npm run build:less"
+    "watch:less": "onchange 'source/less/**/*.less' -- npm run build:less",
+    "watch:pl": "onchange 'source/**/*.phtml' 'source/**/*.js' 'source/**/*.json' 'source/**/*.md' -- npm run build:pl"
   }
 }

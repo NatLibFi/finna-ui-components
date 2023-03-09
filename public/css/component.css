@@ -1,0 +1,22 @@
+body {
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 15px;
+}
+.node--type-aipa-lrmi .field--name-field-records {
+    display: flex;
+    flex-wrap: wrap;
+  }
+.node--type-aipa-lrmi .field--name-field-records > .field__item {
+      width: 33%;
+    }
+.node--type-aipa-lrmi .node--type-curated-record h2 {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+.node--type-aipa-lrmi .node--type-curated-record img {
+      width: 100%;
+      height: auto;
+    }
+
+/*# sourceMappingURL=component.css.map */

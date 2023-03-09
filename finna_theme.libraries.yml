@@ -1,0 +1,18 @@
+global-styling:
+  css:
+    base:
+      public/css/base.css: {}
+    component:
+      public/css/component.css: {}
+    layout:
+      public/css/layout.css: {}
+    state:
+      public/css/state.css: {}
+    theme:
+      public/css/theme.css: {}
+
+admin-overrides:
+  version: 1.x
+  css:
+    theme:
+      public/css/admin-overrides.css: {}

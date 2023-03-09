@@ -70,7 +70,7 @@
       "css": "public/css"
     }
   },
-  "patternExtension": "phtml",
+  "patternExtension": "twig",
   "patternStateCascade": [
     "inprogress",
     "inreview",
@@ -92,7 +92,37 @@
   "theme": {
     "color": "dark",
     "density": "compact",
-    "layout": "horizontal"
+    "layout": "horizontal",
+    "noViewAll": false
+  },
+  "engines": {
+    "handlebars": {
+      "package": "@pattern-lab/engine-handlebars",
+      "fileExtensions": [
+        "handlebars",
+        "hbs"
+      ],
+      "extend": "helpers/*.js"
+    },
+    "twig": {
+      "namespaces": [
+        {
+          "id": "molecules",
+          "recursive": true,
+          "paths": [
+            "source/components/molecules"
+          ]
+        }
+      ],
+      "alterTwigEnv": [
+        {
+          "file": "alter-twig.php",
+          "functions": [
+            "addCustomExtension"
+          ]
+        }
+      ]
+    }
   },
   "uikits": [
     {
@@ -103,5 +133,7 @@
       "excludedPatternStates": [],
       "excludedTags": []
     }
-  ]
+  ],
+  "patternWrapClassesEnable": false,
+  "patternWrapClassesKey": []
 }

@@ -222,6 +222,28 @@ finna-truncate span[slot="label"] {
   border: none;
   background-color: transparent;
 }
+.finna-bazaar-browse-bar {
+  color: #fff;
+  background-color: #595959;
+}
+.finna-bazaar-browse-bar .finna-bazaar-browse-bar-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.finna-bazaar-browse-bar .finna-bazaar-browse-bar-layout::before,
+.finna-bazaar-browse-bar .finna-bazaar-browse-bar-layout::after {
+  content: none;
+}
+.finna-bazaar-browse-bar .finna-bazaar-browse-bar-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
 .finna-multi-level-nav {
   margin-top: 12px;
   margin-bottom: 12px;

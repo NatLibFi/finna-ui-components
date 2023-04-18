@@ -1,0 +1,68 @@
+.node--type-curated-record.grid-result {
+  width: 100%;
+  & .grid-body {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+  }
+  & .text-center {
+    text-align: center;
+  }
+  & .grid-image {
+    overflow: hidden;
+    flex-basis: 250px;
+    position: relative;
+    display: flex;
+    background-color: #f7f7f7;
+    flex-flow: column;
+    & .record-image-container {
+      margin-bottom: 0;
+      height: 60%;
+      display: flex;
+      align-items: center;
+      position: initial;
+      justify-content: center;
+      flex: 1 1;
+    }
+    & .recordcover-holder {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+    & .recordcover-container {
+      display: flex;
+      height: 100%;
+    }
+    & .image-popup-trigger {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      flex-direction: column;
+      height: 100%;
+    }
+    & img {
+      width: auto;
+      max-width: 100%;
+      flex-shrink: 0;
+      position: relative;
+    }
+  }
+  & .grid-title {
+    padding-top: 5px;
+    overflow: hidden;
+    background: 0 0;
+    & .title {
+      font-size: 1.15em;
+      line-height: 1.5;
+      text-overflow: ellipsis;
+      position: relative;
+      white-space: nowrap;
+      overflow: hidden;
+      font-weight: 700;
+      margin: 0;
+      padding: 0;
+      /* margin-bottom: 21px; */
+      padding-bottom: .1em;
+    }
+  }
+}

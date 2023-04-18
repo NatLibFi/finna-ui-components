@@ -1,0 +1,48 @@
+@import "../../node_modules/design-token-transformer/build/css/_variables.css";
+
+:root {
+  /* Color system */
+  --finna-color-global-notification-banner: #fffec6;
+  --finna-color-border: var(--finna-color-gray-400);
+
+  /* Spacing */
+  --finna-spacer: 1rem;
+  --finna-spacer-0: 0;
+  /* stylelint-disable function-disallowed-list */
+  --finna-spacer-1: calc(var(--finna-spacer) * .25);
+  --finna-spacer-2: calc(var(--finna-spacer) * .5);
+  --finna-spacer-3: var(--finna-spacer);
+  --finna-spacer-4: calc(var(--finna-spacer) * 1.5);
+  --finna-spacer-5: calc(var(--finna-spacer) * 3);
+  /* stylelint-enable function-disallowed-list */
+
+  /* Grid breakpoints */
+  --finna-breakpoint-xs: 0;
+  --finna-breakpoint-sm: 576px;
+  --finna-breakpoint-md: 768px;
+  --finna-breakpoint-lg: 992px;
+  --finna-breakpoint-xl: 1200px;
+  --finna-breakpoint-xxl: 1400px;
+
+  /* Typography */
+  --finna-typography-icon-font-family: "FontAwesome";
+  --finna-typography-body-large-font-size: 20px;
+  --finna-typography-body-large-line-height: 1.3;
+  --finna-typography-body-small-font-size: 14px;
+  --finna-typography-body-small-line-height: 1.4;
+  --finna-typography-font-weight-bold: 500;
+
+  /* Z-index */
+  --finna-zindex-dropdown: 1000;
+  --finna-zindex-sticky: 1020;
+  --finna-zindex-fixed: 1030;
+  --finna-zindex-offcanvas-backdrop: 1040;
+  --finna-zindex-offcanvas: 1045;
+  --finna-zindex-modal-backdrop: 1050;
+  --finna-zindex-modal: 1055;
+  --finna-zindex-popover: 1070;
+  --finna-zindex-tooltip: 1080;
+}
+
+@custom-media --finna-media-breakpoint-md-down (width < 768px);
+@custom-media --finna-media-breakpoint-lg-down (width < 992px);

@@ -24,6 +24,10 @@
     "jshint": "2.13.4",
     "less": "3.13.1",
     "onchange": "7.1.0",
+    "postcss": "8.4.5",
+    "postcss-import": "14.0.2",
+    "postcss-preset-env": "7.2.3",
+    "postcss-reporter": "7.0.5",
     "stylelint": "14.16.1",
     "stylelint-config-twbs-bootstrap": "3.2.1"
   },
@@ -33,10 +37,11 @@
   },
   "scripts": {
     "build": "npm run copy-assets && npm run build:css && npm run build:pl",
-    "build:css": "npm run build:less",
+    "build:css": "npm run build:less && npm run build:pcss",
     "build:less": "node scripts/build-less.js",
+    "build:pcss": "node scripts/build-postcss.js",
     "build:pl": "patternlab build --config ./patternlab-config.json",
-    "browser-sync": "dotenv -e ../../.env -- cross-var browser-sync start --proxy %DRUSH_OPTIONS_URI% --serveStatic 'css' --files 'css'",
+    "browser-sync": "dotenv -- cross-var browser-sync start --proxy %BROWSERSYNC_PROXY% --serveStatic 'public/css' --files 'public/css'",
     "copy-assets": "node ./scripts/copy-assets.js",
     "copy-js": "node ./scripts/copy-js.js",
     "eslint": "eslint --ignore-pattern public/js/vendor --ignore-pattern public/js/styleguide/vendor public/js scripts",
@@ -55,6 +60,7 @@
     "watch:components": "onchange 'source/**/*.phtml' 'source/**/*.json' 'source/**/*.md' -- npm run build:pl",
     "watch:js": "onchange 'source/**/*.js' -- npm run copy-js",
     "watch:less": "onchange 'source/less/**/*.less' -- npm run build:less",
+    "watch:pcss": "onchange 'source/pcss/**/*.pcss' -- npm run build:pcss",
     "watch:pl": "onchange 'source/**/*.phtml' 'source/**/*.js' 'source/**/*.json' 'source/**/*.md' -- npm run build:pl"
   }
 }

@@ -9,28 +9,28 @@
   ]
 %}
 {{ attach_library('classy/node') }}
-<article{{ attributes.addClass(classes) }} id="encapsulated-record-{{ node.id }}">
+<article{{ attributes.addClass(classes) }}>
 
   {{ title_prefix }}
   {% if label and not page %}
     <h2{{ title_attributes }}>
-      {{ label }}
+      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
     </h2>
   {% endif %}
   {{ title_suffix }}
 
+  {% if display_submitted %}
+    <footer class="node__meta">
+      {{ author_picture }}
+      <div{{ author_attributes.addClass('node__submitted') }}>
+        {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
+        {{ metadata }}
+      </div>
+    </footer>
+  {% endif %}
+
   <div{{ content_attributes.addClass('node__content') }}>
-    {{ content.field_authors }}
-    {{ content.field_description }}
-    <details>
-      <summary>Tavoite ja sisältöalue</summary>
-      {{ content.field_learning_resources }}
-    </details>
-    <details>
-      <summary>Tehtäväideat</summary>
-      {{ content.field_assignment_ideas }}
-    </details>
-    {{ content.field_records }}
+    {{ content }}
   </div>
 
 </article>

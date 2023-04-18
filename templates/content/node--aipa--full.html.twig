@@ -1,0 +1,35 @@
+{%
+  set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  ]
+%}
+{{ attach_library('classy/node') }}
+<article{{ attributes.addClass(classes) }}>
+
+  <div{{ content_attributes.addClass('node__content') }}>
+    {{ content.field_authors }}
+    {{ content.field_usage_rights }}
+    {{ content.field_description }}
+
+    <div class="record-toc">
+      <p><strong>Sisältö:</strong></p>
+      <ul>
+        {% for i in content.field_lists['#items']|keys %}
+          <li>
+            <a href="#encapsulated-record-{{ content.field_lists[i]['#node'].id }}">
+              {{ content.field_lists[i]['#node'].label }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    {{ content.field_lists }}
+  </div>
+
+</article>

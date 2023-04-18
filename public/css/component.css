@@ -1,22 +1,151 @@
+:root {
+  /* Color system */
+
+  /* Spacing */
+  /* stylelint-disable function-disallowed-list */
+  /* stylelint-enable function-disallowed-list */
+
+  /* Grid breakpoints */
+
+  /* Typography */
+
+  /* Z-index */
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
 body {
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 15px;
 }
-.node--type-aipa-lrmi .field--name-field-records {
-    display: flex;
-    flex-wrap: wrap;
+
+.node--type-aipa .record-toc {
+    margin: 15px 0;
+    padding: 10px;
+    background-color: #e9ecef;
   }
-.node--type-aipa-lrmi .field--name-field-records > .field__item {
-      width: 33%;
+
+.node--type-aipa .record-toc ul {
+      padding: 0;
     }
-.node--type-aipa-lrmi .node--type-curated-record h2 {
+
+.node--type-aipa .record-toc li {
+      list-style: none;
+    }
+
+.node--type-aipa-lrmi details {
+    margin: 1rem 0;
+    border: 1px solid #ced4da;
+  }
+
+.node--type-aipa-lrmi details > * {
+      padding: calc(1rem * .5);
+    }
+
+.node--type-aipa-lrmi details summary {
+      background-color: #e9ecef;
+    }
+
+.node--type-curated-record.grid-result {
+  width: 100%;
+}
+
+.node--type-curated-record.grid-result .grid-body {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+  }
+
+.node--type-curated-record.grid-result .text-center {
+    text-align: center;
+  }
+
+.node--type-curated-record.grid-result .grid-image {
+    overflow: hidden;
+    flex-basis: 250px;
+    position: relative;
+    display: flex;
+    background-color: #f7f7f7;
+    flex-flow: column;
+  }
+
+.node--type-curated-record.grid-result .grid-image .record-image-container {
+      margin-bottom: 0;
+      height: 60%;
+      display: flex;
+      align-items: center;
+      position: static;
+      position: initial;
+      justify-content: center;
+      flex: 1 1;
+    }
+
+.node--type-curated-record.grid-result .grid-image .recordcover-holder {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
+.node--type-curated-record.grid-result .grid-image .recordcover-container {
+      display: flex;
+      height: 100%;
+    }
+
+.node--type-curated-record.grid-result .grid-image .image-popup-trigger {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      flex-direction: column;
+      height: 100%;
+    }
+
+.node--type-curated-record.grid-result .grid-image img {
+      width: auto;
+      max-width: 100%;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+.node--type-curated-record.grid-result .grid-title {
+    padding-top: 5px;
+    overflow: hidden;
+    background: 0 0;
+  }
+
+.node--type-curated-record.grid-result .grid-title .title {
+      font-size: 1.15em;
+      line-height: 1.5;
       text-overflow: ellipsis;
+      position: relative;
       white-space: nowrap;
       overflow: hidden;
+      font-weight: 700;
+      margin: 0;
+      padding: 0;
+      /* margin-bottom: 21px; */
+      padding-bottom: .1em;
     }
-.node--type-aipa-lrmi .node--type-curated-record img {
-      width: 100%;
-      height: auto;
-    }
+
+.field--name-field-records.search-grid {
+  overflow: hidden;
+  padding-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.field--name-field-records.search-grid .grid:not(.recordcovers) {
+    padding: 0 5px 10px;
+    margin-bottom: 0;
+  }
+
+.field--name-field-records.search-grid .grid.result {
+    width: 33%;
+    display: flex;
+    float: left;
+  }
 
 /*# sourceMappingURL=component.css.map */

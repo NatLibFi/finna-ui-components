@@ -15,4 +15,5 @@
 /source/js/styleguide/vendor/
 /source/js/vendor/
 /vendor/
+/.env
 /dependencyGraph.json

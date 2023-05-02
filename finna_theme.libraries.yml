@@ -16,3 +16,9 @@ admin-overrides:
   css:
     theme:
       public/css/admin-overrides.css: {}
+  js:
+    source/js/admin-overrides.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/once

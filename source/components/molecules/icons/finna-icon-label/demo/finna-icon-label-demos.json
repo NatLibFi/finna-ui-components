@@ -1,0 +1,12 @@
+{
+  "a11yLabel": "Accessibility label",
+  "attributes": {
+  },
+  "iconClass": [
+    "fa",
+    "fa-triangle-exclamation",
+    "fa-lg"
+  ],
+  "label": "Label",
+  "tooltip": "Tooltip"
+}

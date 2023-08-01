@@ -1,0 +1,29 @@
+{
+  "a11yLabel": "Accessibility label",
+  "attributes": {
+    "class": [
+      "btn",
+      "btn-primary"
+    ]
+  },
+  "iconClass": [
+    "fa",
+    "fa-info-circle"
+  ],
+  "label": "Label",
+  "tooltip": "Tooltip",
+  "__disabledButtonAttributes": {
+    "class": [
+      "btn",
+      "btn-primary"
+    ],
+    "disabled": "disabled"
+  },
+  "__linkAttributes": {
+    "href": "https://foo.bar.com",
+    "class": [
+      "btn",
+      "btn-primary"
+    ]
+  }
+}

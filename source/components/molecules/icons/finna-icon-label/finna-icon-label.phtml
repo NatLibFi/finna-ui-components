@@ -1,0 +1,33 @@
+<?php
+  $__attributes = $this->htmlAttributes($attributes ?? []);
+  if (isset($class)) {
+    $__attributes->add('class', $class);
+  }
+  if (isset($tooltip)) {
+    $__attributes->set([
+      'data-bs-placement' => $tooltipPlacement ?? 'top',
+      'data-bs-toggle' => 'tooltip',
+      'data-html' => 'true',
+      'data-placement' => $tooltipPlacement ?? 'top',
+      'data-toggle' => 'tooltip',
+      'title' => $tooltip,
+    ]);
+  }
+  if (isset($iconClass)) {
+    $__iconAttributes = $this->htmlAttributes(['class' => $iconClass]);
+    $__iconAttributes['aria-hidden'] = 'true';
+  }
+  if (isset($label)) {
+    $__label = $label;
+    if (!($htmlLabel ?? false)) {
+      $__label = $this->escapeHtml($__label);
+    }
+  }
+  // Avoid unwanted whitespace in all possible variations.
+?><span<?= $__attributes->add('class', 'finna-icon-label'); ?>><?php
+  if (isset($iconClass) || isset($__label) || isset($a11yLabel)): ?><?php
+    if (isset($iconClass)): ?><i<?= $__iconAttributes ?>></i><?php endif; ?><?php
+    if (isset($a11yLabel)): ?><span class="sr-only"><?= $this->escapeHtml($a11yLabel) ?></span><?php endif; ?><?php
+    if (isset($iconClass) && isset($__label)): ?> <?php endif; ?><?=
+    $__label ?? '' ?><?php
+  endif; ?></span>

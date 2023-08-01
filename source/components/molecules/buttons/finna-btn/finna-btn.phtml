@@ -1,17 +1,45 @@
 <?php
   $__attributes = $this->htmlAttributes($attributes ?? []);
-  if (!isset($__attributes['type'])) {
-    $__attributes['type'] = 'button';
+  if (isset($class)) {
+    $__attributes->add('class', $class);
   }
-  if (!isset($label) && isset($ariaLabel)) {
-    $__attributes['aria-label'] = $ariaLabel;
+  if (isset($href)) {
+    $__attributes['href'] = $href;
   }
-  // Avoid unwanted whitespace in all possible variations.
+  if (isset($__attributes['href'])) {
+    $__tag = 'a';
+    $__attributes['role'] = 'button';
+    if (isset($ariaCurrent)) {
+      $__attributes['aria-current'] = $ariaCurrent;
+    }
+  } else {
+    $__tag = 'button';
+    $__attributes['type'] = $type ?? $__attributes['type'] ?? 'button';
+  }
+  if (isset($id)) {
+    $__attributes['id'] = $id;
+  }
+  $__a11yLabel = $a11yLabel ?? null;
+  if (isset($tooltip)) {
+    $__attributes->set([
+      'data-bs-placement' => $tooltipPlacement ?? 'top',
+      'data-bs-toggle' => 'tooltip',
+      'data-html' => 'true',
+      'data-placement' => $tooltipPlacement ?? 'top',
+      'data-toggle' => 'tooltip',
+      'title' => $tooltip,
+    ]);
+    if (!isset($label) && !isset($a11yLabel)) {
+      $__a11yLabel = $tooltip;
+    }
+  }
+  $__iconLabelValues = [
+    'a11yLabel' => $__a11yLabel,
+    'htmlLabel' => $htmlLabel ?? false,
+    'iconClass' => $iconClass ?? null,
+    'label' => $label ?? null,
+  ];
 ?>
-<button<?= $__attributes->add('class', 'finna-btn') ?>><?php
-  if (isset($iconClass) || isset($label)): ?><?php
-    if (isset($iconClass)): ?><i class="<?= $iconClass ?>" aria-hidden="true"></i><?php endif; ?><?php
-    if (isset($iconClass) && isset($label)): ?> <?php endif; ?><?=
-    $label ?? '' ?><?php
-  endif;
-?></button>
+<<?= $__tag ?><?= $__attributes->add('class', 'finna-btn') ?>><?=
+  $this->render('components/molecules/icons/finna-icon-label', $__iconLabelValues)
+?></<?= $__tag ?>>

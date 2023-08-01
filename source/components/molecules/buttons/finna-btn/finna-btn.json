@@ -2,8 +2,8 @@
   "attributes": {
     "class": [
       "btn",
-      "btn-default"
+      "btn-primary"
     ]
   },
-  "label": "Button"
+  "label": "Label"
 }

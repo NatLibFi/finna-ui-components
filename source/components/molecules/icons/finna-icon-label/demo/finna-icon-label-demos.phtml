@@ -1,0 +1,59 @@
+<h6>Icon and/or label - With icon and label</h6>
+
+<?= $this->render('components/molecules/icons/finna-icon-label', [
+    'attributes' => $attributes,
+    'a11yLabel' => null,
+    'iconClass' => $iconClass,
+    'label' => $label,
+    'tooltip' => null,
+  ]); ?>
+
+<h6 class="mt-5">Icon and/or label - With icon, label and tooltip</h6>
+
+<?= $this->render('components/molecules/icons/finna-icon-label', [
+    'attributes' => $attributes,
+    'a11yLabel' => null,
+    'iconClass' => $iconClass,
+    'label' => $label,
+    'tooltip' => $tooltip,
+  ]); ?>
+
+<h6 class="mt-5">Icon and/or label - With icon and accessibility label</h6>
+
+<?= $this->render('components/molecules/icons/finna-icon-label', [
+    'attributes' => $attributes,
+    'a11yLabel' => $a11yLabel,
+    'iconClass' => $iconClass,
+    'label' => null,
+    'tooltip' => null,
+  ]); ?>
+
+<h6 class="mt-5">Icon and/or label - With icon and tooltip</h6>
+
+<?= $this->render('components/molecules/icons/finna-icon-label', [
+    'attributes' => $attributes,
+    'a11yLabel' => null,
+    'iconClass' => $iconClass,
+    'label' => null,
+    'tooltip' => $tooltip,
+  ]); ?>
+
+<h6 class="mt-5">Icon and/or label - With label</h6>
+
+<?= $this->render('components/molecules/icons/finna-icon-label', [
+    'attributes' => $attributes,
+    'a11yLabel' => null,
+    'iconClass' => null,
+    'label' => $label,
+    'tooltip' => null,
+  ]); ?>
+
+<h6 class="mt-5">Icon and/or label - With label and tooltip</h6>
+
+<?= $this->render('components/molecules/icons/finna-icon-label', [
+    'attributes' => $attributes,
+    'a11yLabel' => null,
+    'iconClass' => null,
+    'label' => $label,
+    'tooltip' => $tooltip,
+  ]); ?>

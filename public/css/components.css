@@ -1,3 +1,7 @@
+:root {
+  --cc-cookie-category-block-bg: #eeeeee;
+  --cc-btn-border-radius: 4px;
+}
 .finna-btn {
   cursor: pointer;
 }

@@ -36,5 +36,15 @@ body.gin-login .toolbar-icon-default::before {
 .ief-entity-operations:not(:empty) {
   min-width: 16rem;
 }
+/* Published radio button */
+#edit-status-value--wrapper,
+  #edit-status-value--wrapper .form-radios {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+  }
+#edit-status-value--wrapper .fieldset__legend span::after {
+    content: ':';
+  }
 
 /*# sourceMappingURL=admin-overrides.css.map */

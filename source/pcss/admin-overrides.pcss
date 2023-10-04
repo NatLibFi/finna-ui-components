@@ -4,33 +4,24 @@ body.gin-login .toolbar-icon-default::before {
 }
 
 /* Claro layout/node-add.css overrides */
-@media screen and (min-width: 61rem) {
-  .layout-region--node-main,
-  .layout-region--node-footer,
-  .layout-region--node-secondary {
-    float: unset;
-    width: unset;
-    padding-right: unset;
+@media (min-width: 61rem) {
+  .layout-node-form {
+    grid-template-columns: minmax(22.5rem, 1fr);
   }
-  [dir="rtl"] .layout-region--node-main,
-  [dir="rtl"] .layout-region--node-footer,
-  [dir="rtl"] .layout-region--node-secondary {
-    float: unset;
-    padding-right: unset;
-    padding-left: unset;
-  }
-  .layout-region--node-main .layout-region__content,
-  .layout-region--node-footer .layout-region__content,
-  .layout-region--node-secondary .layout-region__content {
-    max-width: 56rem;
-    margin-right: auto;
-    margin-left: auto;
-  }
-  .layout-region--node-footer .layout-region__content {
-    margin-top: 1.5rem;
+  .layout-region--node-main > .layout-region__content > .form-wrapper:last-of-type > div > .claro-details {
+    margin-bottom: 0;
   }
   .layout-region--node-secondary {
-    margin-top: unset;
+    grid-column: 1;
+    margin-inline: auto;
+    width: min(52rem, 100%);
+    grid-row: unset;
+    margin-block-start: 0;
+  }
+  .layout-region--node-footer {
+    .layout-region__content {
+      margin-top: 0;
+    }
   }
 }
 

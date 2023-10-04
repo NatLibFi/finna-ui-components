@@ -1,7 +1,7 @@
 name: Finna
 type: theme
 description: 'Finna Drupal theme.'
-core_version_requirement: ^9.5
+core_version_requirement: ^10.1
 libraries:
   - finna_theme/global-styling
 base theme: stable9

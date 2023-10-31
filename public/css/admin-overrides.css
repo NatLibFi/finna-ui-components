@@ -36,6 +36,10 @@ body.gin-login .toolbar-icon-default::before {
 .ief-entity-operations:not(:empty) {
   min-width: 16rem;
 }
+/* Choices.js elements */
+.choices {
+  width: 100% !important;
+}
 /* Published radio button */
 #edit-status-value--wrapper,
   #edit-status-value--wrapper .form-radios {

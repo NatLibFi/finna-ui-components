@@ -8,6 +8,7 @@ body.gin-login .toolbar-icon-default::before {
   .layout-node-form {
     grid-template-columns: minmax(22.5rem, 1fr);
   }
+  .layout-region--node-main > .layout-region__content > .claro-details,
   .layout-region--node-main > .layout-region__content > .form-wrapper:last-of-type > div > .claro-details {
     margin-bottom: 0;
   }
@@ -30,6 +31,11 @@ body.gin-login .toolbar-icon-default::before {
   display: none;
 }
 
+/* Hide advanced options from node edit forms for now. */
+.layout-node-form #edit-advanced {
+  display: none;
+}
+
 /* Hide tabledrag toggle */
 .tabledrag-toggle-weight-wrapper {
   display: none;
@@ -41,6 +47,9 @@ body.gin-login .toolbar-icon-default::before {
 }
 
 /* Choices.js elements */
+.claro-autocomplete {
+  width: 100% !important;
+}
 .choices {
   width: 100% !important;
 }

@@ -32,4 +32,6 @@ A truncation component that supports both element-based and height-based truncat
 
 `topToggle` only supports boolean values for height-based truncation.
 
+Height-based truncation is only done if it saves at least 1.5 rows. This accounts for the room the more button takes as well as any fractional imprecision.
+
 ### Variations

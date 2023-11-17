@@ -1,4 +1,4 @@
-<p>These demos use the <code>finna-truncate</code> component template. The demos are wrapped in a truncated element to demostrate that truncated elements can be nested.</p>
+<p>These demos use the <code>finna-truncate</code> component template. The demos are wrapped in a truncated element to demonstrate that truncated elements can be nested.</p>
 
 <?php ob_start(); ?>
 
@@ -6,24 +6,25 @@
 
 <hr>
 
-<h6>Defaults (height-based, 3 rows, default label)</h6>
+<h6>Defaults (0 rows, default more and less labels and icons)</h6>
 
 <?= $this->render('components/molecules/containers/finna-truncate/finna-truncate.phtml', [
-    'content' => '<p>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>'
+    'content' => '<p>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>',
   ]); ?>
 
 <hr>
 
-<h6><code>'rows' => 0</code></h6>
+<h6><code>'labelIcons' => false, 'rows' => 3</code></h6>
 
 <?= $this->render('components/molecules/containers/finna-truncate/finna-truncate.phtml', [
     'content' => 'Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    'rows' => 0
+    'labelIcons' => false,
+    'rows' => 3,
   ]); ?>
 
 <hr>
 
-<h6><code>'element' => 'li'</code></h6>
+<h6><code>'element' => 'li', 'rows' => 3</code></h6>
 
 <?= $this->render('components/molecules/containers/finna-truncate/finna-truncate.phtml', [
     'element' => 'li',
@@ -36,7 +37,8 @@
   <li><a>Link 6</a></li>
   <li><a>Link 7</a></li>
   <li><a>Link 8</a></li>
-</ul>'
+</ul>',
+    'rows' => 3,
   ]); ?>
 
 <hr>
@@ -56,7 +58,7 @@
   <li><a>Link 8</a></li>
 </ul>',
     'inPlaceToggle' => true,
-    'rows' => 5
+    'rows' => 5,
   ]); ?>
 
 <hr>
@@ -96,7 +98,7 @@
   <li><a>Link 8</a></li>
 </ul>',
     'inPlaceToggle' => true,
-    'rows' => 0
+    'rows' => 0,
   ]); ?>
 
 <hr>
@@ -112,5 +114,5 @@
     'lessLabel' => 'Hide demos',
     'moreLabel' => 'Show demos',
     'topToggle' => 1,
-    'rows' => 0
+    'rows' => 0,
   ]); ?>

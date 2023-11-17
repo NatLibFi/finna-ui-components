@@ -1,3 +1,7 @@
+:root {
+  --cc-cookie-category-block-bg: #eeeeee;
+  --cc-btn-border-radius: 4px;
+}
 .finna-btn {
   cursor: pointer;
 }
@@ -130,6 +134,18 @@ finna-panel > [slot="heading"] {
 .finna-truncate.height-based > :last-child {
   margin-bottom: 0;
 }
+.finna-truncate-btn-wrapper-default .more-btn,
+.finna-truncate-btn-wrapper-default .less-btn {
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9em;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
 finna-truncate {
   display: block;
   outline: 1px dotted #d1d1d1;
@@ -141,6 +157,24 @@ finna-truncate span[slot="label"] {
   margin-bottom: 15px;
   font-weight: bold;
   text-transform: uppercase;
+}
+.finna-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.finna-tag-list dt {
+  font-weight: normal;
+  padding: 5px 10px 5px 0;
+}
+.finna-tag-list dt:after {
+  content: ':';
+}
+.finna-tag-list li,
+.finna-tag-list dd {
+  border-radius: 0.5em;
+  background-color: #f4f4f4;
+  padding: 5px 10px;
 }
 .finna-nav {
   font-size: 1em;
@@ -221,6 +255,30 @@ finna-truncate span[slot="label"] {
 .finna-tooltip-btn {
   border: none;
   background-color: transparent;
+}
+.finna-educational-level-data {
+  font-size: 16px;
+  line-height: 1.5;
+}
+.finna-educational-level-data * {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  font-weight: normal;
+  line-height: inherit;
+}
+.finna-educational-level-data ul {
+  margin-left: 25px;
+}
+.finna-educational-level-data li {
+  list-style-type: disc;
+}
+.finna-educational-level-data dl > *,
+.finna-educational-level-data .educational-level-objective > * {
+  display: inline-block;
+}
+.finna-educational-level-data dd:not(:last-of-type):after {
+  content: ',';
 }
 .finna-bazaar-browse-bar {
   color: #fff;

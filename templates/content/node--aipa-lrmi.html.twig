@@ -8,7 +8,6 @@
     view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
   ]
 %}
-{{ attach_library('classy/node') }}
 <article{{ attributes.addClass(classes) }} id="encapsulated-record-{{ node.id }}">
 
   {{ title_prefix }}
@@ -31,6 +30,7 @@
       {{ content.field_study_objectives_be }}
 
       {{ content.field_educational_subjects_uss }}
+      {{ content.field_educational_modules_uss }}
       {{ content.field_study_contents_uss }}
       {{ content.field_study_objectives_uss }}
 

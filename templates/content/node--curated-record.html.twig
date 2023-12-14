@@ -8,7 +8,6 @@
     view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
   ]
 %}
-{{ attach_library('classy/node') }}
 <article{{ attributes.addClass(classes, 'grid-result') }}>
   <div{{ content_attributes.addClass('node__content', 'grid-body') }}>
     <div class="text-center grid-image">
